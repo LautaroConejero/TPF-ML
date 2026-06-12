@@ -1,0 +1,18 @@
+Ventanas temporales - idea de features
+
+- Baseline simple: usar solo sensores/settings del ciclo actual para predecir RUL.
+
+- Variante temporal: para cada motor y ciclo t, usar los ultimos N ciclos hasta t.
+
+- Ejemplo:
+  motor 1, ciclo 100, ventana N=30 -> usar ciclos 71 a 100 para predecir RUL en ciclo 100.
+
+- Features por sensor dentro de la ventana:
+  ultimo valor, promedio, desvio, minimo, maximo, delta ultimo-primero, pendiente.
+
+- En train se pueden crear ejemplos para muchos ciclos de cada motor.
+
+- En validacion/test se usa solo la ultima ventana disponible de cada motor para generar
+  una prediccion final de RUL por motor.
+
+- Si un motor tiene menos de N ciclos, usar todos los ciclos disponibles hasta ese punto.

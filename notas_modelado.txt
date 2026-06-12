@@ -1,0 +1,32 @@
+Notas de modelado - C-MAPSS RUL
+
+1. No entrenar un modelo separado por motor individual.
+
+Cada motor es una trayectoria dentro del dataset, no un conjunto suficientemente grande
+para entrenar un modelo propio. Si se entrenara un modelo por motor, el modelo no podria
+generalizar a motores nuevos, que es justamente el objetivo del problema.
+
+2. Enfoque correcto para la tarea basica.
+
+Entrenar un modelo global usando muchos motores de entrenamiento. Cada fila o ventana
+temporal aporta ejemplos supervisados con RUL calculado en train. Para validacion y test,
+la prediccion debe evaluarse por motor, normalmente usando la ultima observacion o una
+ventana final de cada motor.
+
+3. Modelos separados por subset.
+
+Entrenar un modelo por subset si tiene sentido:
+
+- un modelo para FD001;
+- un modelo para FD002;
+- un modelo para FD003;
+- un modelo para FD004.
+
+Cada subset representa un escenario experimental distinto. FD001 y FD003 tienen una sola
+condicion operativa, mientras que FD002 y FD004 tienen seis condiciones operativas.
+FD003 y FD004 tambien incorporan dos modos de falla. Por eso, un modelo separado por
+subset puede aprender mejor la distribucion especifica de cada escenario.
+
+Esta estrategia puede compararse contra un modelo unico entrenado con datos combinados,
+incluyendo una variable que indique el subset de origen.
+

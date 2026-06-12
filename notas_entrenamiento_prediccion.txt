@@ -1,0 +1,17 @@
+Entrenamiento y prediccion - C-MAPSS RUL
+
+- Objetivo: predecir el RUL, es decir, cuantos ciclos le quedan a un motor antes de fallar.
+
+- En train, cada motor llega hasta la falla. Por eso se puede calcular RUL por ciclo:
+  RUL = ciclo_final_del_motor - ciclo_actual.
+
+- El modelo se entrena con ejemplos por ciclo o por ventana temporal:
+  sensores/settings -> RUL.
+
+- En test, cada motor esta truncado antes de fallar. El archivo RUL_FD00X.txt da una sola
+  etiqueta por motor: el RUL en el ultimo ciclo observado.
+
+- Por eso la evaluacion final es una prediccion por motor:
+  ultima fila o ultima ventana del motor -> RUL estimado.
+
+- Validacion: separar por motores completos, no por filas, para evitar fuga de informacion.
