@@ -1,0 +1,31 @@
+Hallazgo exploratorio - clusters en FD003
+
+- Analisis detallado: notebooks/03_eda_fd003_patrones_degradacion.ipynb.
+
+- El analisis no supervisado en FD003 encontro dos grupos de motores bastante separados al resumir cada trayectoria por su firma de degradacion.
+
+- FD003 es un caso especialmente interesante porque tiene una sola condicion operativa y dos modos de falla declarados por el dataset.
+
+- Como los settings son practicamente iguales entre clusters, la separacion no parece explicarse por condiciones operativas.
+
+- Las diferencias principales entre grupos aparecen en sensores como sensor_9, sensor_14 y sensor_7.
+
+- Las trayectorias promedio por cluster muestran patrones distintos. En sensor_9 y sensor_14 ambos grupos crecen hacia el final, pero con distinta intensidad; en sensor_7 un grupo aumenta claramente y el otro disminuye.
+
+- Los clusters tambien difieren en vida media:
+  cluster 0: aproximadamente 305 ciclos;
+  cluster 1: aproximadamente 202 ciclos.
+
+- Esto puede indicar dos patrones de degradacion distintos, posiblemente compatibles con los dos fault modes de FD003.
+
+- No se puede afirmar que cada cluster corresponda a un fault mode real, porque el dataset no trae etiquetas de tipo de falla por motor.
+
+- El control sin features de slope mantiene la separacion y obtiene un silhouette aproximado de 0.52. Esto refuerza que el hallazgo no depende solamente de dividir los deltas por la duracion total del motor.
+
+- Este analisis sirve como baseline exploratorio para trabajos posteriores:
+  analizar errores del modelo por cluster;
+  comparar trayectorias promedio por cluster;
+  probar features o modelos especificos por patron de degradacion;
+  repetir el clustering sin slopes ni vida util para verificar que no este separando solo motores largos vs cortos.
+
+- FD004 no permite una interpretacion igual de limpia porque combina dos fault modes con seis condiciones operativas.
