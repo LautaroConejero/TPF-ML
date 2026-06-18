@@ -1,6 +1,3 @@
-from __future__ import annotations
-
-from dataclasses import dataclass
 from pathlib import Path
 
 import pandas as pd
@@ -15,14 +12,20 @@ FEATURE_COLUMNS = SETTING_COLUMNS + SENSOR_COLUMNS
 COLUMN_NAMES = INDEX_COLUMNS + FEATURE_COLUMNS
 
 
-@dataclass(frozen=True)
 class CmapssData:
     """Container for one C-MAPSS subset."""
 
-    subset: str
-    train: pd.DataFrame
-    test: pd.DataFrame
-    rul: pd.DataFrame
+    def __init__(
+        self,
+        subset: str,
+        train: pd.DataFrame,
+        test: pd.DataFrame,
+        rul: pd.DataFrame,
+    ):
+        self.subset = subset
+        self.train = train
+        self.test = test
+        self.rul = rul
 
 
 def normalize_subset_name(subset: str) -> str:
