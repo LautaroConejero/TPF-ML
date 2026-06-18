@@ -445,6 +445,150 @@ def prepare_fd001_temporal_with_cutoff_eval(
     }
 
 
+def prepare_fd001_current_cycle_validation_only(
+    data_dir="CMAPSSData",
+    eval_size=0.2,
+    random_state=42,
+    max_rul=DEFAULT_RUL_CAP,
+    cut_ruls=DEFAULT_CUT_RULS,
+    drop_columns=None,
+):
+    """Prepare current-cycle FD001 artificial validation without official test data."""
+    data = load_cmapss_subset("FD001", data_dir=_resolve_data_dir(data_dir))
+    feature_columns = fd001_feature_columns(drop_columns)
+    dropped_columns = list(drop_columns or FD001_CONSTANT_COLUMNS)
+
+    train = add_train_rul(data.train, max_rul=None)
+    train["RUL_raw"] = train["RUL"]
+    if max_rul is not None:
+        train["RUL"] = train["RUL"].clip(upper=max_rul)
+
+    train_units, eval_units = split_units(
+        train,
+        unit_col="unit",
+        test_size=eval_size,
+        random_state=random_state,
+    )
+    train_df = train.loc[train["unit"].isin(train_units)].copy()
+    eval_source_df = train.loc[train["unit"].isin(eval_units)].copy()
+    eval_cutoff_df = make_fd001_artificial_cutoffs(
+        eval_source_df,
+        cut_ruls=cut_ruls,
+        max_rul=max_rul,
+    )
+
+    scaler = StandardScaler()
+    X_train = pd.DataFrame(
+        scaler.fit_transform(train_df[feature_columns]),
+        columns=feature_columns,
+        index=train_df.index,
+    )
+    X_eval = pd.DataFrame(
+        scaler.transform(eval_cutoff_df[feature_columns]),
+        columns=feature_columns,
+        index=eval_cutoff_df.index,
+    )
+
+    return {
+        "feature_columns": feature_columns,
+        "dropped_columns": dropped_columns,
+        "train_units": train_units,
+        "eval_units": eval_units,
+        "scaler": scaler,
+        "train_df": train_df,
+        "eval_source_df": eval_source_df,
+        "eval_df": eval_cutoff_df,
+        "eval_cutoff_df": eval_cutoff_df,
+        "X_train": X_train,
+        "y_train": train_df["RUL"].copy(),
+        "y_train_raw": train_df["RUL_raw"].copy(),
+        "X_eval": X_eval,
+        "y_eval": eval_cutoff_df["RUL"].copy(),
+        "y_eval_raw": eval_cutoff_df["RUL_raw"].copy(),
+    }
+
+
+def prepare_fd001_temporal_validation_only(
+    data_dir="CMAPSSData",
+    eval_size=0.2,
+    random_state=42,
+    max_rul=DEFAULT_RUL_CAP,
+    cut_ruls=DEFAULT_CUT_RULS,
+    window_size=DEFAULT_TEMPORAL_WINDOW,
+    drop_columns=None,
+):
+    """Prepare temporal tabular FD001 artificial validation without official test data."""
+    data = load_cmapss_subset("FD001", data_dir=_resolve_data_dir(data_dir))
+    base_feature_columns = fd001_feature_columns(drop_columns)
+    dropped_columns = list(drop_columns or FD001_CONSTANT_COLUMNS)
+
+    train = add_train_rul(data.train, max_rul=None)
+    train["RUL_raw"] = train["RUL"]
+    if max_rul is not None:
+        train["RUL"] = train["RUL"].clip(upper=max_rul)
+
+    train_units, eval_units = split_units(
+        train,
+        unit_col="unit",
+        test_size=eval_size,
+        random_state=random_state,
+    )
+    train_source_df = train.loc[train["unit"].isin(train_units)].copy()
+    eval_source_df = train.loc[train["unit"].isin(eval_units)].copy()
+    eval_cutoff_df = make_fd001_artificial_cutoffs(
+        eval_source_df,
+        cut_ruls=cut_ruls,
+        max_rul=max_rul,
+    )
+
+    train_temporal_df = make_temporal_features(
+        train_source_df,
+        endpoints_df=train_source_df,
+        feature_columns=base_feature_columns,
+        window_size=window_size,
+    )
+    eval_temporal_df = make_temporal_features(
+        eval_source_df,
+        endpoints_df=eval_cutoff_df,
+        feature_columns=base_feature_columns,
+        window_size=window_size,
+    )
+    temporal_columns = temporal_feature_columns(base_feature_columns)
+
+    scaler = StandardScaler()
+    X_train = pd.DataFrame(
+        scaler.fit_transform(train_temporal_df[temporal_columns]),
+        columns=temporal_columns,
+        index=train_temporal_df.index,
+    )
+    X_eval = pd.DataFrame(
+        scaler.transform(eval_temporal_df[temporal_columns]),
+        columns=temporal_columns,
+        index=eval_temporal_df.index,
+    )
+
+    return {
+        "feature_columns": temporal_columns,
+        "base_feature_columns": base_feature_columns,
+        "dropped_columns": dropped_columns,
+        "window_size": window_size,
+        "train_units": train_units,
+        "eval_units": eval_units,
+        "scaler": scaler,
+        "train_df": train_temporal_df,
+        "train_source_df": train_source_df,
+        "eval_source_df": eval_source_df,
+        "eval_df": eval_temporal_df,
+        "eval_cutoff_df": eval_cutoff_df,
+        "X_train": X_train,
+        "y_train": train_temporal_df["RUL"].copy(),
+        "y_train_raw": train_temporal_df["RUL_raw"].copy(),
+        "X_eval": X_eval,
+        "y_eval": eval_temporal_df["RUL"].copy(),
+        "y_eval_raw": eval_temporal_df["RUL_raw"].copy(),
+    }
+
+
 def prepare_fd001_current_cycle_full_train_for_test(
     data_dir="CMAPSSData",
     max_rul=DEFAULT_RUL_CAP,
