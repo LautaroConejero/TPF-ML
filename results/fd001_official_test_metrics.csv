@@ -1,0 +1,2 @@
+representation,model_name,n_test,mae,rmse,r2,cmapss_score,cmapss_score_mean,dangerous_error_pct
+temporal_w30,RandomForestRegressor,100,12.853522094254442,17.793268932800302,0.8166622312912588,750.2827015224317,7.502827015224317,16.0
