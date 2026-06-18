@@ -1,0 +1,28 @@
+Resumen final de validacion FD001
+=================================
+
+Problema:
+Prediccion de Remaining Useful Life (RUL) para FD001 de NASA C-MAPSS.
+
+Validacion usada:
+Se uso validacion artificial por motores completos retenidos y cutoffs de RUL. Las metricas se calcularon contra RUL_raw. El test oficial no se uso para seleccionar modelos.
+
+Modelos comparados:
+Ridge y RandomForest como baselines; XGBRegressor; LGBMRegressor; MLP_tabular_cfg_03; variantes de LGBM con distintas ventanas, caps de RUL y sample weights.
+
+Hallazgos principales:
+- LGBMRegressor con temporal_w50 y rul_cap=125 fue el mejor candidato global por validacion.
+- El esquema sample_weight=bin_weights logro el menor C-MAPSS asymmetric score.
+- La variante sin pesos tuvo menor dangerous_error_pct en validacion.
+- MLP_tabular_cfg_03 no fue estable entre seeds, aunque habia tenido buen MAE en la busqueda inicial.
+- XGBRegressor tuvo buen dangerous_error_pct, pero peor desempeno global que LGBM w50.
+- RandomForest quedo superado como modelo final, aunque sigue siendo una baseline fuerte.
+
+Modelo candidato final por validacion:
+LGBMRegressor, features temporales, window_size=50, rul_cap=125, sample_weight_scheme=bin_weights.
+
+Alternativa conservadora:
+LGBMRegressor, features temporales, window_size=50, rul_cap=125, sample_weight_scheme=none.
+
+Nota:
+El test oficial todavia no fue usado para seleccionar modelos.
