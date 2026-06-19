@@ -1,0 +1,241 @@
+Explicacion del entrenamiento FD001
+===================================
+
+Objetivo
+--------
+El problema se planteo como regresion de RUL: predecir cuantos ciclos le quedan a cada motor antes de fallar.
+
+
+1. Calculo del RUL real
+----------------------
+En train, cada motor llega hasta la falla. Por eso para cada fila se calcula:
+
+RUL_raw = ciclo_final_del_motor - ciclo_actual
+
+Ejemplo:
+si un motor falla en ciclo 200 y estamos en ciclo 150:
+
+RUL_raw = 200 - 150 = 50
+
+Ese RUL_raw es la verdad real usada para evaluar.
+
+
+2. RUL cap para entrenar
+------------------------
+Para entrenar se usa un target cappeado:
+
+RUL_train = min(RUL_raw, 125)
+
+Esto significa que valores mayores a 125 se tratan como 125 durante entrenamiento.
+
+La razon:
+- Al inicio de vida, el motor suele verse sano.
+- No es tan util exigir al modelo distinguir entre 180, 220 o 250 ciclos restantes.
+- El cap concentra el aprendizaje en la zona donde la degradacion importa mas.
+
+Importante:
+El cap se usa para entrenar, pero las metricas se calculan contra RUL_raw.
+
+
+3. Features temporales
+----------------------
+No se uso solo la fila actual. Para cada motor y ciclo se toma una ventana temporal de ciclos anteriores.
+
+Ejemplo:
+con window_size=50, para el ciclo 120 se usan los ciclos 71 a 120.
+
+Para cada sensor se calculan resumenes:
+- last
+- mean
+- std
+- min
+- max
+- delta = ultimo - primero
+- slope = pendiente lineal
+
+Asi el modelo recibe una fila tabular que resume la historia reciente del motor.
+No se usan modelos secuenciales ni ventanas crudas.
+
+
+4. Validacion artificial
+------------------------
+No se uso el test oficial para elegir modelos.
+
+La validacion se hizo separando motores completos:
+- motores train: se usan para entrenar
+- motores validacion: se usan para simular test
+
+No se separan filas al azar, porque eso mezclaria ciclos del mismo motor entre train y validacion.
+
+En motores de validacion se crean cutoffs artificiales.
+
+Ejemplo:
+si un motor falla en ciclo 200:
+
+cut_rul = 20  -> usar ciclo 180
+cut_rul = 50  -> usar ciclo 150
+cut_rul = 80  -> usar ciclo 120
+cut_rul = 110 -> usar ciclo 90
+cut_rul = 140 -> usar ciclo 60
+
+Cada cutoff genera una fila de validacion con RUL real conocido.
+Esto imita el test oficial, donde los motores estan truncados antes de fallar.
+
+
+5. Como se calcula el error
+---------------------------
+El modelo predice:
+
+y_pred_rul
+
+El error se calcula como:
+
+error = y_pred_rul - y_true_rul_raw
+
+Si el error es positivo, el modelo sobreestima la vida util.
+Ejemplo:
+
+RUL real = 30
+RUL predicho = 55
+error = +25
+
+Esto es peligroso porque el modelo diria que el motor aguanta mas de lo real.
+
+Si el error es negativo, el modelo es conservador.
+Ejemplo:
+
+RUL real = 80
+RUL predicho = 50
+error = -30
+
+Esto no es ideal, pero suele ser menos grave que sobreestimar vida util.
+
+
+6. Metricas usadas
+------------------
+MAE:
+Promedio del error absoluto.
+
+MAE = promedio(|error|)
+
+RMSE:
+Raiz del promedio del error cuadratico. Penaliza mas los errores grandes.
+
+RMSE = sqrt(promedio(error^2))
+
+R2:
+Mide cuanto explica el modelo frente a predecir una media.
+
+C-MAPSS asymmetric score:
+Score asimetrico de la competencia. Penaliza mas predecir tarde que temprano.
+Es importante porque en motores es mas grave decir que queda mucha vida cuando no es cierto.
+
+dangerous_error_pct:
+Porcentaje de casos donde:
+
+y_pred_rul - y_true_rul_raw > 20
+
+Es decir, sobreestimaciones de mas de 20 ciclos.
+
+Metricas por bins de RUL:
+Se analiza rendimiento por rangos:
+- RUL 0-30
+- RUL 30-60
+- RUL 60-90
+- RUL 90+
+
+Esto es util porque el error cerca de falla no vale lo mismo que el error cuando el motor esta lejos de fallar.
+
+
+7. Con que metrica se entrena
+-----------------------------
+Los modelos no entrenan directamente con C-MAPSS ni dangerous_error_pct.
+
+La loss de entrenamiento principal es squared error / MSE:
+
+MSE = promedio((RUL_train - RUL_predicho)^2)
+
+Segun modelo:
+- LGBMRegressor: objetivo de regresion tipo L2 / squared error.
+- XGBRegressor: objective="reg:squarederror".
+- RandomForestRegressor: criterion="squared_error".
+- Ridge: error cuadratico con regularizacion L2.
+- MLP: MSELoss.
+
+Resumen:
+- Entrenamiento: squared error sobre RUL cappeado.
+- Evaluacion/seleccion: C-MAPSS, RMSE, dangerous_error_pct y MAE contra RUL_raw.
+
+
+8. Dangerous error
+------------------
+El dangerous_error_pct no se penaliza directamente en la loss de entrenamiento.
+
+No hay una loss que diga explicitamente:
+
+si y_pred - y_true > 20, penalizar mas
+
+Pero si influye en:
+- evaluacion
+- seleccion del modelo
+- comparacion entre candidatos
+
+Ademas, el C-MAPSS score penaliza mas las sobreestimaciones, aunque se usa para evaluar y seleccionar, no para entrenar.
+
+
+9. Sample weights
+-----------------
+Se probaron pesos para dar mas importancia a casos cerca de falla:
+
+RUL 0-30  -> peso 4
+RUL 30-60 -> peso 2
+RUL 60-90 -> peso 1.5
+RUL 90+   -> peso 1
+
+Esto no penaliza dangerous error directamente, pero hace que el modelo preste mas atencion a los casos criticos.
+
+Resultado:
+- bin_weights mejoro el C-MAPSS score.
+- sin pesos tuvo menor dangerous_error_pct.
+
+Por eso quedaron dos opciones:
+- candidato por score: LGBM w50 cap125 bin_weights
+- alternativa conservadora: LGBM w50 cap125 sin pesos
+
+
+10. Criterio de seleccion
+-------------------------
+La seleccion final por validacion artificial priorizo:
+
+1. menor C-MAPSS score
+2. menor RMSE
+3. menor dangerous_error_pct
+4. MAE como apoyo
+
+Esto evita elegir un modelo solo porque baja RMSE, pero se equivoca de forma peligrosa cerca de falla.
+
+
+11. Posible mejora futura
+-------------------------
+Si se quisiera penalizar dangerous error directamente, se podria probar:
+- custom loss asimetrica en XGBoost/LightGBM
+- post-processing conservador restando algunos ciclos a la prediccion
+- optimizar una correccion por validacion artificial
+
+Pero para este pipeline se mantuvo un enfoque mas simple y defendible:
+- entrenar con squared error
+- seleccionar con metricas alineadas al mantenimiento predictivo
+- no usar test oficial para elegir modelos
+
+
+Resumen final
+-------------
+El proceso fue util porque:
+- valida por motores completos, no por filas aleatorias
+- simula test con cutoffs artificiales
+- entrena con RUL cappeado pero evalua contra RUL real
+- usa historia resumida mediante ventanas temporales
+- mide dangerous errors explicitamente
+- analiza el rendimiento por zonas de RUL
+- prioriza una metrica asimetrica alineada con mantenimiento
+- mantiene el test oficial separado de la seleccion

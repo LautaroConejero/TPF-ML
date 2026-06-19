@@ -1,4 +1,6 @@
 from collections import OrderedDict
+from itertools import product
+import json
 
 import numpy as np
 import pandas as pd
@@ -138,6 +140,425 @@ def lgbm_factory(random_state=42):
         n_jobs=-1,
         verbose=-1,
     )
+
+
+def rul_priority_weights(y_true):
+    y_true = np.asarray(y_true, dtype=float)
+    return np.select(
+        [y_true <= 30, (y_true > 30) & (y_true <= 60), (y_true > 60) & (y_true <= 90)],
+        [4.0, 2.0, 1.5],
+        default=1.0,
+    )
+
+
+def cmapss_weighted_objective(y_true, y_pred):
+    """LightGBM objective approximating C-MAPSS with extra weight near failure."""
+    error = np.clip(np.asarray(y_pred, dtype=float) - np.asarray(y_true, dtype=float), -50.0, 50.0)
+    weights = rul_priority_weights(y_true)
+
+    early = error < 0
+    grad = np.where(
+        early,
+        -(1.0 / 13.0) * np.exp(-error / 13.0),
+        (1.0 / 10.0) * np.exp(error / 10.0),
+    )
+    hess = np.where(
+        early,
+        (1.0 / (13.0 ** 2)) * np.exp(-error / 13.0),
+        (1.0 / (10.0 ** 2)) * np.exp(error / 10.0),
+    )
+    return weights * grad, weights * hess
+
+
+def lgbm_cmapss_objective_factory(random_state=42):
+    from lightgbm import LGBMRegressor
+
+    return LGBMRegressor(
+        objective=cmapss_weighted_objective,
+        n_estimators=220,
+        max_depth=-1,
+        num_leaves=31,
+        learning_rate=0.035,
+        subsample=0.85,
+        colsample_bytree=0.85,
+        reg_lambda=0.1,
+        random_state=random_state,
+        n_jobs=-1,
+        verbose=-1,
+    )
+
+
+def make_rul_priority_weights(y_true, low_weight=2.0, mid_weight=1.4, high_weight=1.15):
+    y_true = np.asarray(y_true, dtype=float)
+    return np.select(
+        [y_true <= 30, (y_true > 30) & (y_true <= 60), (y_true > 60) & (y_true <= 90)],
+        [low_weight, mid_weight, high_weight],
+        default=1.0,
+    )
+
+
+def make_cmapss_like_objective(
+    over_scale=14.0,
+    under_scale=18.0,
+    low_weight=2.0,
+    mid_weight=1.4,
+    high_weight=1.15,
+    clip_error=45.0,
+):
+    def objective(y_true, y_pred):
+        error = np.clip(np.asarray(y_pred, dtype=float) - np.asarray(y_true, dtype=float), -clip_error, clip_error)
+        weights = make_rul_priority_weights(
+            y_true,
+            low_weight=low_weight,
+            mid_weight=mid_weight,
+            high_weight=high_weight,
+        )
+        over = error >= 0
+        grad = np.where(
+            over,
+            (1.0 / over_scale) * np.exp(error / over_scale),
+            -(1.0 / under_scale) * np.exp(-error / under_scale),
+        )
+        hess = np.where(
+            over,
+            (1.0 / (over_scale ** 2)) * np.exp(error / over_scale),
+            (1.0 / (under_scale ** 2)) * np.exp(-error / under_scale),
+        )
+        return weights * grad, weights * hess
+
+    return objective
+
+
+def lgbm_asymmetric_objective_factory(
+    random_state=42,
+    over_scale=14.0,
+    under_scale=18.0,
+    low_weight=2.0,
+    mid_weight=1.4,
+    high_weight=1.15,
+):
+    from lightgbm import LGBMRegressor
+
+    return LGBMRegressor(
+        objective=make_cmapss_like_objective(
+            over_scale=over_scale,
+            under_scale=under_scale,
+            low_weight=low_weight,
+            mid_weight=mid_weight,
+            high_weight=high_weight,
+        ),
+        n_estimators=220,
+        max_depth=-1,
+        num_leaves=31,
+        learning_rate=0.035,
+        subsample=0.85,
+        colsample_bytree=0.85,
+        reg_lambda=0.1,
+        random_state=random_state,
+        n_jobs=-1,
+        verbose=-1,
+    )
+
+
+def lgbm_quantile_factory(alpha=0.45, random_state=42):
+    from lightgbm import LGBMRegressor
+
+    return LGBMRegressor(
+        objective="quantile",
+        alpha=alpha,
+        n_estimators=240,
+        max_depth=-1,
+        num_leaves=31,
+        learning_rate=0.03,
+        subsample=0.85,
+        colsample_bytree=0.85,
+        reg_lambda=0.1,
+        random_state=random_state,
+        n_jobs=-1,
+        verbose=-1,
+    )
+
+
+def lgbm_huber_factory(alpha=0.9, random_state=42):
+    from lightgbm import LGBMRegressor
+
+    return LGBMRegressor(
+        objective="huber",
+        alpha=alpha,
+        n_estimators=240,
+        max_depth=-1,
+        num_leaves=31,
+        learning_rate=0.03,
+        subsample=0.85,
+        colsample_bytree=0.85,
+        reg_lambda=0.1,
+        random_state=random_state,
+        n_jobs=-1,
+        verbose=-1,
+    )
+
+
+def shifted_prediction_table(predictions, offset, model_name):
+    from src.fd001_modeling import add_rul_bins
+
+    result = predictions.copy()
+    result["y_pred_rul"] = np.clip(result["y_pred_rul"].to_numpy(dtype=float) - float(offset), 0.0, None)
+    result["model_name"] = model_name
+    result["error"] = result["y_pred_rul"] - result["y_true_rul_raw"]
+    result["abs_error"] = result["error"].abs()
+    result["dangerous_error"] = result["error"] > 20.0
+    result["conservative_error"] = result["error"] < -20.0
+    if "rul_bin" in result.columns:
+        result = result.drop(columns=["rul_bin"])
+    return add_rul_bins(result)
+
+
+def add_operational_error_columns(metrics, predictions):
+    result = metrics.copy()
+    extras = []
+    for _, row in result.iterrows():
+        mask = (
+            (predictions["model_name"].astype(str) == str(row["model_name"]))
+            & (predictions["representation"].astype(str) == str(row["representation"]))
+        )
+        for key in ["sample_weight_scheme", "training_objective"]:
+            if key in result.columns and key in predictions.columns and pd.notna(row.get(key)):
+                mask &= predictions[key].astype(str) == str(row[key])
+        group = predictions.loc[mask]
+        extras.append(
+            {
+                "mean_error": group["error"].mean(),
+                "median_error": group["error"].median(),
+                "conservative_error_pct": group["conservative_error"].mean() * 100.0,
+                "p95_overestimate": group["error"].clip(lower=0).quantile(0.95),
+            }
+        )
+    return pd.concat([result.reset_index(drop=True), pd.DataFrame(extras)], axis=1)
+
+
+def fd001_lgbm_param_space():
+    return OrderedDict(
+        [
+            ("learning_rate", [0.02, 0.03, 0.05, 0.08]),
+            ("n_estimators", [400, 700, 1000, 1300]),
+            ("num_leaves", [15, 31, 47, 63]),
+            ("max_depth", [4, 6, 8, -1]),
+            ("min_child_samples", [10, 20, 40, 60]),
+            ("subsample", [0.8, 0.9, 1.0]),
+            ("colsample_bytree", [0.8, 0.9, 1.0]),
+            ("reg_alpha", [0.0, 0.1, 0.5, 1.0]),
+            ("reg_lambda", [0.0, 1.0, 5.0, 10.0]),
+        ]
+    )
+
+
+def sample_lgbm_param_configs(n_configs=30, random_state=42):
+    space = fd001_lgbm_param_space()
+    keys = list(space)
+    all_configs = [dict(zip(keys, values)) for values in product(*(space[key] for key in keys))]
+    rng = np.random.default_rng(random_state)
+    indices = rng.choice(len(all_configs), size=int(n_configs), replace=False)
+    return [all_configs[int(idx)] for idx in indices]
+
+
+def base_lgbm_bin_weights_params():
+    return {
+        "learning_rate": 0.035,
+        "n_estimators": 220,
+        "num_leaves": 31,
+        "max_depth": -1,
+        "min_child_samples": 20,
+        "subsample": 0.85,
+        "colsample_bytree": 0.85,
+        "reg_alpha": 0.0,
+        "reg_lambda": 0.1,
+    }
+
+
+def make_lgbm_from_search_params(config, random_state=42):
+    from lightgbm import LGBMRegressor
+
+    params = dict(config["params"])
+    params.update(
+        {
+            "objective": config["objective"],
+            "random_state": random_state,
+            "n_jobs": -1,
+            "verbose": -1,
+        }
+    )
+    if config["objective"] == "quantile":
+        params["alpha"] = float(config["alpha"])
+    return LGBMRegressor(**params)
+
+
+def make_lgbm_search_configs(n_family_a=30, n_family_b=30, random_state=42, quantile_alphas=(0.35, 0.40, 0.45)):
+    configs = []
+    for i, params in enumerate(sample_lgbm_param_configs(n_family_a, random_state=random_state)):
+        configs.append(
+            {
+                "candidate_label": f"A_regression_bin_weights_search_{i:02d}",
+                "family": "A_regression_bin_weights",
+                "objective": "regression",
+                "alpha": np.nan,
+                "sample_weight_scheme": "bin_weights",
+                "params": params,
+            }
+        )
+
+    per_alpha = [n_family_b // len(quantile_alphas)] * len(quantile_alphas)
+    for idx in range(n_family_b % len(quantile_alphas)):
+        per_alpha[idx] += 1
+    offset = 1000
+    counter = 0
+    for alpha, n_configs in zip(quantile_alphas, per_alpha):
+        sampled = sample_lgbm_param_configs(n_configs, random_state=random_state + offset + int(alpha * 100))
+        for params in sampled:
+            configs.append(
+                {
+                    "candidate_label": f"B_quantile_a{int(alpha * 100):03d}_search_{counter:02d}",
+                    "family": "B_quantile_no_weights",
+                    "objective": "quantile",
+                    "alpha": float(alpha),
+                    "sample_weight_scheme": "none",
+                    "params": params,
+                }
+            )
+            counter += 1
+    return configs
+
+
+def params_to_json(params):
+    return json.dumps(params, sort_keys=True, separators=(",", ":"))
+
+
+def config_identity(config):
+    alpha = "" if pd.isna(config.get("alpha", np.nan)) else f"{float(config['alpha']):.2f}"
+    return "|".join(
+        [
+            str(config["family"]),
+            str(config["objective"]),
+            alpha,
+            str(config["sample_weight_scheme"]),
+            params_to_json(config["params"]),
+        ]
+    )
+
+
+def evaluate_lgbm_search_config(prepared, config, random_state=42, window_size=50, rul_cap=125):
+    model = make_lgbm_from_search_params(config, random_state=random_state)
+    weights = weights_from_scheme(prepared["y_train_raw"], config["sample_weight_scheme"])
+    predictions = fit_predict_model(
+        prepared,
+        model,
+        model_name=config["candidate_label"],
+        representation=f"temporal_w{window_size}",
+        sample_weight=weights,
+    )
+    row, _ = metric_row_from_predictions(
+        predictions,
+        extra={
+            "candidate_label": config["candidate_label"],
+            "candidate_id": config_identity(config),
+            "family": config["family"],
+            "objective": config["objective"],
+            "alpha": config["alpha"],
+            "sample_weight_scheme": config["sample_weight_scheme"],
+            "window_size": window_size,
+            "rul_cap": rul_cap,
+            "random_state": random_state,
+            "params": params_to_json(config["params"]),
+        },
+    )
+    row["conservative_error_pct"] = float(predictions["conservative_error"].mean() * 100.0)
+    row["bias_mean"] = float(predictions["error"].mean())
+    return row
+
+
+def base_lgbm_candidate_config():
+    return {
+        "candidate_label": "base_regression_bin_weights",
+        "family": "A_regression_bin_weights",
+        "objective": "regression",
+        "alpha": np.nan,
+        "sample_weight_scheme": "bin_weights",
+        "params": base_lgbm_bin_weights_params(),
+    }
+
+
+def configs_from_search_rows(rows):
+    configs = []
+    for _, row in rows.iterrows():
+        configs.append(
+            {
+                "candidate_label": row["candidate_label"],
+                "family": row["family"],
+                "objective": row["objective"],
+                "alpha": row["alpha"],
+                "sample_weight_scheme": row["sample_weight_scheme"],
+                "params": json.loads(row["params"]),
+            }
+        )
+    return configs
+
+
+def select_lgbm_robustness_candidates(search_results):
+    selected_rows = []
+    selected_rows.append(search_results.sort_values("cmapss_score", ascending=True).iloc[0])
+    selected_rows.append(search_results.sort_values("rmse", ascending=True).iloc[0])
+    selected_rows.append(search_results.sort_values(["dangerous_error_pct", "rmse"], ascending=[True, True]).iloc[0])
+    selected_rows.append(
+        search_results.loc[search_results["family"] == "A_regression_bin_weights"]
+        .sort_values("cmapss_score", ascending=True)
+        .iloc[0]
+    )
+    selected_rows.append(
+        search_results.loc[search_results["family"] == "B_quantile_no_weights"]
+        .sort_values("cmapss_score", ascending=True)
+        .iloc[0]
+    )
+
+    configs = configs_from_search_rows(pd.DataFrame(selected_rows))
+    configs.append(base_lgbm_candidate_config())
+
+    unique = OrderedDict()
+    for config in configs:
+        unique[config_identity(config)] = config
+    result = list(unique.values())
+    for idx, config in enumerate(result):
+        config["candidate_label"] = f"candidate_{idx:02d}_{config['candidate_label']}"
+    return result
+
+
+def summarize_lgbm_robustness(robustness):
+    group_cols = ["candidate_id", "candidate_label", "family", "objective", "alpha", "sample_weight_scheme", "params"]
+    metrics = [
+        "mae",
+        "rmse",
+        "r2",
+        "cmapss_score",
+        "dangerous_error_pct",
+        "conservative_error_pct",
+        "bias_mean",
+    ]
+    grouped = robustness.groupby(group_cols, dropna=False)
+    summary = grouped[metrics].agg(["mean", "std"]).reset_index()
+    summary.columns = [
+        "_".join([part for part in col if part]) if isinstance(col, tuple) else col
+        for col in summary.columns
+    ]
+    worst = grouped.agg(
+        worst_rmse=("rmse", "max"),
+        worst_cmapss_score=("cmapss_score", "max"),
+        worst_dangerous_error_pct=("dangerous_error_pct", "max"),
+    ).reset_index()
+    result = summary.merge(worst, on=group_cols, how="left")
+    rename = {}
+    for metric in metrics:
+        rename[f"{metric}_mean"] = f"mean_{metric}"
+        rename[f"{metric}_std"] = f"std_{metric}"
+    result = result.rename(columns=rename)
+    return result.sort_values(["mean_cmapss_score", "mean_rmse"]).reset_index(drop=True)
 
 
 def fit_predict_model(prepared, model, model_name, representation, sample_weight=None):

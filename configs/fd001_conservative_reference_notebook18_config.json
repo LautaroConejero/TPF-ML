@@ -1,0 +1,61 @@
+{
+  "dataset": "FD001",
+  "task": "RUL regression",
+  "model_family": "LightGBM",
+  "model_name": "base_regression_bin_weights",
+  "robustness_candidate_label": "candidate_04_base_regression_bin_weights",
+  "representation": "temporal",
+  "window_size": 50,
+  "rul_cap": 125,
+  "objective": "regression",
+  "alpha": null,
+  "sample_weight_scheme": "bin_weights",
+  "selected_from": "notebook_18_lgbm_final_search_and_robustness",
+  "selection_basis": "conservative reference candidate from baseline regression + bin_weights evaluated in multi-split robustness",
+  "validation_protocol": "artificial cutoffs by held-out units, multi-split robustness",
+  "official_test_used_for_selection": false,
+  "dangerous_error_threshold": 20,
+  "hyperparameters_source": "baseline definition in notebook 18",
+  "hyperparameters": {
+    "colsample_bytree": 0.85,
+    "learning_rate": 0.035,
+    "max_depth": -1,
+    "min_child_samples": 20,
+    "n_estimators": 220,
+    "num_leaves": 31,
+    "reg_alpha": 0.0,
+    "reg_lambda": 0.1,
+    "subsample": 0.85
+  },
+  "robustness_random_states": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "validation_summary": {
+    "mean_mae": 11.59195247420737,
+    "std_mae": 1.2292803564030554,
+    "mean_rmse": 15.02459684696007,
+    "std_rmse": 1.7105802381919624,
+    "mean_r2": 0.8724706186473098,
+    "std_r2": 0.0284457489399268,
+    "mean_cmapss_score": 323.5263827152449,
+    "std_cmapss_score": 109.35623107867733,
+    "mean_dangerous_error_pct": 4.638631210059781,
+    "std_dangerous_error_pct": 2.9109612876483224,
+    "mean_conservative_error_pct": 14.0691403834261,
+    "std_conservative_error_pct": 2.655626047815278,
+    "mean_bias_mean": -2.301920153399183,
+    "std_bias_mean": 1.7258745880557558,
+    "worst_rmse": 17.05721471002157,
+    "worst_cmapss_score": 449.0020824117663,
+    "worst_dangerous_error_pct": 7.07070707070707
+  },
+  "source_files": {
+    "hyper_search_results": "results/fd001_lgbm_final_hyper_search.csv",
+    "robustness_detail": "results/fd001_lgbm_final_candidate_robustness.csv",
+    "robustness_summary": "results/fd001_lgbm_final_candidate_robustness_summary.csv"
+  }
+}

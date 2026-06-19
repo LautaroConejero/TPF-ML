@@ -1,0 +1,34 @@
+FD001 - Experimento quantile para reducir dangerous error
+
+Objetivo:
+Reducir errores peligrosos sin volver el modelo demasiado conservador.
+Un dangerous error ocurre cuando el modelo sobreestima el RUL real por mas de 20 ciclos.
+
+Contexto:
+El candidato principal por validacion artificial sigue siendo:
+LGBMRegressor + temporal_w50 + rul_cap=125 + bin_weights.
+Este modelo mantiene el mejor balance global por C-MAPSS/RMSE.
+
+Motivo de la prueba quantile:
+El entrenamiento clasico con squared_error busca una prediccion central y trata los errores de forma bastante simetrica.
+En RUL, sobreestimar vida util es mas riesgoso que subestimarla.
+Por eso se probo LightGBM con objective="quantile", alpha=0.40.
+La idea no es tomar el 40% de la prediccion, sino entrenar el modelo para estimar un percentil algo menor que la prediccion central.
+
+Resultado por validacion artificial:
+LGBM w50 cap125 bin_weights:
+MAE 11.194, RMSE 14.038, C-MAPSS 251.554, dangerous error 7.071%.
+
+LGBM quantile alpha=0.40:
+MAE 11.063, RMSE 14.366, C-MAPSS 254.947, dangerous error 4.040%.
+
+Lectura:
+Quantile alpha=0.40 baja bastante el dangerous error con un costo bajo en RMSE y C-MAPSS.
+No reemplaza automaticamente al candidato principal, pero queda como alternativa si se prioriza seguridad operativa.
+
+Decision:
+Mantener como candidato principal LGBM w50 cap125 bin_weights.
+Guardar LGBM quantile alpha=0.40 como alternativa menos riesgosa frente a sobreestimaciones.
+
+Nota:
+El test oficial no fue usado para seleccionar ni validar este experimento.
