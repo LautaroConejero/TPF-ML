@@ -1,0 +1,41 @@
+FD002 - seleccion de modelo y busqueda de hiperparametros
+
+Resumen del trabajo:
+- FD001 se habia modelado con features temporales, RUL capped, validacion por unidades y cortes artificiales.
+- FD002 no debe tratarse como FD001 puro: tiene seis condiciones operativas que cambian dentro de cada motor.
+- El EDA mostro que los settings separan seis conditions y que normalizar sensores por condition recupera senal de RUL.
+
+Decision de modelado:
+- Se comparo un baseline estilo FD001 sin condiciones contra modelos temporales condition-aware.
+- Se eligio una representacion condition-normalized: settings, sensores crudos, condition_id/one-hot y sensores z-score por condition.
+- Con LightGBM y XGBoost disponibles, la busqueda final compara transferencia LGBM FD001/FD003, LGBM adaptado a FD002 y XGBoost.
+- Ademas se probo una representacion condition_fault_sensitive inspirada en FD003: pendientes, deltas, volatilidad y aceleracion sobre sensores normalizados por condition.
+- La aceptacion del modelo final sigue usando C-MAPSS de validacion artificial; el test oficial se reserva para reporte.
+
+Mejor candidato interno:
+- xgb_condition_fault_sensitive_mid_guard: C-MAPSS 982.893, RMSE 16.229, dangerous error 9.69%.
+- feature_set=condition_fault_sensitive, modelo=xgboost, pesos=mid_rul_guard.
+
+Comparacion principal:
+- xgb_condition_fault_sensitive_mid_guard: C-MAPSS 982.893, RMSE 16.229, feature_set=condition_fault_sensitive.
+- xgb_condition_fault_sensitive_weighted: C-MAPSS 986.629, RMSE 15.946, feature_set=condition_fault_sensitive.
+- xgb_squarederror_condition_normalized_weighted: C-MAPSS 1036.835, RMSE 16.154, feature_set=condition_normalized.
+- lgbm_quantile_a04_condition_normalized_weighted: C-MAPSS 1043.206, RMSE 16.419, feature_set=condition_normalized.
+- xgb_condition_fault_sensitive_shallow_w50: C-MAPSS 1078.493, RMSE 16.406, feature_set=condition_fault_sensitive.
+- fd001_fd003_lgbm_reference_condition_normalized: C-MAPSS 1085.172, RMSE 16.422, feature_set=condition_normalized.
+
+Config final guardado en:
+- configs/FD002/fd002_best_model_config.json
+
+Busqueda feature engineering:
+- results/FD002/fd002_feature_engineering_search.csv
+
+Predicciones oficiales guardadas en:
+- predictions/fd002_best_model_predictions.csv
+
+Reporte en test oficial:
+- El test oficial no selecciona el modelo. Se reporta para control: C-MAPSS 5349.925, RMSE 25.280 y dangerous error 5.02%.
+- Frente al candidato anterior, validation mejora, official dangerous error baja, pero official C-MAPSS sube; el trade-off queda documentado en fd002_feature_engineering_interpretation.txt.
+
+Nota metodologica:
+- El test oficial no se uso para elegir hiperparametros; solo para reportar el candidato final.

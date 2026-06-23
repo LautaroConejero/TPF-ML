@@ -1,0 +1,47 @@
+FD002 - mejora por feature engineering condition-aware
+
+Contexto comparativo:
+- FD001 tiene una sola condicion operativa y un solo modo de falla. Ahi funciono bien un LightGBM temporal con window_size=50, RUL cap 125, objective quantile alpha=0.4 y sin sample weights.
+- FD003 mantiene una condicion operativa, pero agrega complejidad de degradacion. El salto real no vino de cambiar mucho hiperparametros, sino de agregar features fault-sensitive: pendientes, deltas, volatilidad, aceleracion e interacciones en sensores con senal de degradacion.
+- FD002 no es una copia de FD001/FD003: tiene seis condiciones operativas que cambian dentro de las trayectorias. Por eso la mejora base fue primero condition-aware: inferir condition_id desde settings, one-hot por condition y z-scores de sensores dentro de cada condition.
+
+Diagnostico previo en FD002:
+- La transferencia cruda del modelo FD001/FD003 no alcanza porque mezcla regimenes operativos distintos.
+- El mejor candidato anterior era xgb_squarederror_condition_normalized_weighted: C-MAPSS 1036.835, RMSE 16.154 y dangerous error 10.47%.
+- Los errores peligrosos de validacion estaban concentrados en RUL medio: 21.15% en 30-60 y 30.77% en 60-90. Cerca de falla, 0-30, el modelo ya era estable.
+
+Feature engineering agregado:
+- Se creo feature_set=condition_fault_sensitive.
+- Mantiene las features condition_normalized y agrega features de degradacion sobre sensores normalizados por condition.
+- Sensores usados: sensor_2, sensor_3, sensor_4, sensor_7, sensor_8, sensor_9, sensor_11, sensor_12, sensor_13, sensor_14, sensor_15 y sensor_17.
+- Por sensor se agregan slope_10, slope_30, slope_main, delta_10, delta_30, volatility_10, volatility_30, slope_diff_10_main, slope_ratio_10_main y acceleration_10_30.
+- Se agregan algunas interacciones inspiradas en FD003 y en el EDA FD002: sensor_9-sensor_7, sensor_14-sensor_7, sensor_9-sensor_14, sensor_4-sensor_11 y sensor_15-sensor_2.
+- Tambien se probo un esquema mid_rul_guard para ponderar mas la banda 30-90 RUL, que era donde aparecian los errores peligrosos.
+
+Resultados principales de validacion artificial:
+- xgb_condition_fault_sensitive_mid_guard: C-MAPSS 982.893, RMSE 16.229, dangerous error 9.69%.
+- xgb_condition_fault_sensitive_weighted: C-MAPSS 986.629, RMSE 15.946, dangerous error 11.63%.
+- xgb_squarederror_condition_normalized_weighted: C-MAPSS 1036.835, RMSE 16.154, dangerous error 10.47%.
+- lgbm_quantile_a04_condition_normalized_weighted: C-MAPSS 1043.206, RMSE 16.419, dangerous error 6.20%.
+
+Lectura por bandas de RUL:
+- Frente al mejor XGB anterior, el candidato nuevo baja C-MAPSS total en validacion y reduce los errores peligrosos de la zona media.
+- En 30-60 RUL, dangerous error baja de 21.15% a 17.31%.
+- En 60-90 RUL, dangerous error baja de 30.77% a 28.85%.
+- En 0-30 RUL se mantiene en 0.00% dangerous error, aunque el RMSE sube levemente.
+- En 90+ el modelo nuevo empeora algo; esto explica que no baje RMSE tanto como baja C-MAPSS.
+
+Decision final:
+- El candidato final interno pasa a ser xgb_condition_fault_sensitive_mid_guard.
+- No es el mismo modelo final que FD001/FD003: FD002 conserva XGBoost porque fue la familia mas fuerte cuando se modelan sus seis condiciones operativas.
+- Si cambia la representacion: ahora usa condition_fault_sensitive en vez de solo condition_normalized.
+- La mejora no viene de una busqueda enorme de hiperparametros, sino de representar mejor la degradacion despues de normalizar por condicion.
+- El test oficial se sigue usando solo para reporte, no para elegir modelo. En ese test, el candidato nuevo baja dangerous error a 5.02%, pero sube C-MAPSS a 5349.925; ese trade-off queda registrado y no se usa como criterio de seleccion para evitar ajustar contra el test.
+
+Artefactos actualizados:
+- src/fd002_modeling.py
+- results/FD002/fd002_feature_engineering_search.csv
+- results/FD002/fd002_final_candidate_ranking.csv
+- configs/FD002/fd002_best_model_config.json
+- predictions/fd002_best_model_predictions.csv
+- checkpoints/fd002_best_model.joblib
