@@ -1,0 +1,22 @@
+field,value
+model_name,fd003_lgbm_w50_cap125_quantile_a04_none_fault_sensitive
+model_family,LightGBM
+feature_set,fault_sensitive
+window_size,50
+rul_cap,125
+objective,quantile
+alpha,0.4
+sample_weight_scheme,none
+selected_by,artificial_validation_multi_split
+validation_protocol,"train_FD003 only, held-out units, artificial cutoffs, multi-split"
+official_test_used,False
+official_test_used_for_selection,False
+hyperparameters.colsample_bytree,0.8
+hyperparameters.learning_rate,0.03
+hyperparameters.max_depth,-1
+hyperparameters.min_child_samples,10
+hyperparameters.n_estimators,1300
+hyperparameters.num_leaves,15
+hyperparameters.reg_alpha,0.5
+hyperparameters.reg_lambda,10.0
+hyperparameters.subsample,0.9

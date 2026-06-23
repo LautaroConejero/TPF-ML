@@ -1,0 +1,19 @@
+FD003 - Refinamiento acotado de hiperparametros LightGBM
+
+Se mantuvo fijo el enfoque del candidato actual: LightGBM, feature_set fault_sensitive, window_size=50, rul_cap=125, objective quantile, alpha=0.4 y sin sample weights.
+No se usaron clusters, cluster probabilities, mixture of experts ni test oficial.
+La validacion fue la misma de los notebooks anteriores: train_FD003, motores completos held-out, cortes artificiales y random states [0, 1, 2, 3, 4].
+
+Se evaluaron 24 combinaciones de hiperparametros internos de LightGBM, incluyendo siempre la configuracion actual.
+Los hiperparametros refinados fueron num_leaves, min_child_samples, reg_lambda, reg_alpha, subsample y colsample_bytree. Se mantuvieron learning_rate=0.03, n_estimators=1300 y max_depth=-1.
+
+Candidato actual:
+- C-MAPSS 404.182, worst C-MAPSS 443.162, RMSE 16.367, dangerous 5.00%.
+Mejor refinamiento encontrado:
+- fd003_lgbm_refinement_search_20: C-MAPSS 400.787, worst C-MAPSS 439.739, RMSE 16.260, dangerous 5.40%.
+
+Deltas best - current: C-MAPSS -3.395, worst C-MAPSS -3.423, RMSE -0.107, dangerous 0.40 puntos porcentuales.
+
+Decision: no se reemplaza el candidato final actual. El mejor refinamiento no mejora de forma suficientemente defendible considerando C-MAPSS, worst C-MAPSS, dangerous error y estabilidad.
+
+Conclusion prudente: este notebook sirve como cierre de robustez. Si no hay mejora clara, se mantiene el modelo fault-sensitive actual por simplicidad y estabilidad.

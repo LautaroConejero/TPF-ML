@@ -1,0 +1,15 @@
+FD003 - Interpretacion de evaluacion interna
+
+Se uso solamente validacion interna, no test oficial. La validacion interna se construye desde train_FD003.txt: los motores se separan como held-out units, sobre esos motores se generan cortes artificiales y en cada corte se predice RUL usando solo informacion disponible hasta ese ciclo. Como esos motores pertenecen al train, se conoce su ciclo final y se puede calcular el RUL real sin tocar el dataset oficial de test.
+
+El modelo final evaluado es fd003_lgbm_w50_cap125_quantile_a04_none_fault_sensitive. Es un LightGBM con window_size=50, rul_cap=125, objective quantile, alpha=0.4, sin sample weights y feature_set fault_sensitive. Las features fault-sensitive agregan informacion temporal sobre sensores asociados a patrones latentes de degradacion, especialmente sensor_7, sensor_9, sensor_12, sensor_14 y sensor_15. No se usan etiquetas de fault mode porque FD003 no las provee por motor, y tampoco se usa cluster_id como feature.
+
+Los resultados internos globales fueron: MAE 12.162, RMSE 16.398, R2 0.851, C-MAPSS total sobre todas las predicciones 2020.912, C-MAPSS promedio por split 404.182, dangerous error 5.00% y conservative error 13.60%. El bias medio fue -3.651, lo que indica una tendencia global conservadora si el valor es negativo.
+
+Por rangos de RUL, el mejor RMSE aparece en el bin 0-30 y el peor RMSE en el bin 101+. El mayor porcentaje de dangerous errors aparece en el bin 61-100. Esto es importante para interpretar donde el modelo puede ser mas riesgoso: los dangerous errors representan sobreestimar la vida remanente por mas de 20 ciclos.
+
+Los pseudo-clusters y mixture of experts fueron descartados porque no mejoraron al modelo fault-sensitive. El refinamiento de hiperparametros tambien fue descartado como reemplazo final: aunque redujo marginalmente C-MAPSS, aumento dangerous error y no fue una mejora suficientemente robusta.
+
+El ranking de mantenimiento interno ordena los casos por menor RUL predicho. No es una evaluacion oficial, pero sirve para mostrar como el modelo podria priorizar motores que parecen estar mas cerca de falla dentro de esta validacion interna.
+
+Advertencia: estos resultados corresponden a validacion interna y no deben presentarse como evaluacion oficial de test.
