@@ -1,0 +1,24 @@
+Hallazgo exploratorio - conditions en FD002
+
+- Analisis detallado: notebooks/EDA/FD002/04_eda_fd002_conditions.ipynb.
+
+- FD002 tiene seis condiciones operativas y un solo modo de falla. Por eso el foco del EDA no es separar fault modes, sino separar regimen operativo de degradacion.
+
+- Los settings permiten identificar las seis conditions de forma muy clara. En la muestra usada para validar k, el silhouette de k=6 es aproximadamente 0.997.
+
+- Los centros de conditions son consistentes con seis regimes diferenciados en setting_1, setting_2 y setting_3.
+
+- Cada motor de train recorre las seis conditions. Esto implica que la condition cambia dentro de las trayectorias y debe considerarse a nivel fila o ventana.
+
+- La distribucion train/test por condition es parecida a nivel fila. La condition 6 aparece mas que las demas, cerca de 25% de las filas; las otras quedan cerca de 15%.
+
+- Los sensores cambian mucho segun condition. Los mas afectados por regimen son:
+  sensor_11, sensor_15, sensor_8, sensor_18, sensor_9, sensor_14, sensor_3, sensor_17, sensor_4 y sensor_5.
+
+- La correlacion global sensor-RUL subestima la senal porque mezcla regimes operativos. Ejemplo:
+  sensor_11 tiene correlacion global absoluta aproximada de 0.047, pero dentro de condition promedia aproximadamente 0.693.
+
+- Al normalizar sensores por condition, reaparecen correlaciones fuertes con RUL. Los sensores mas informativos pasan a ser:
+  sensor_11, sensor_4, sensor_15, sensor_2, sensor_17 y sensor_3.
+
+- Conclusion para modelado: en FD002 conviene incluir condition_id o normalizar sensores por condition. Un baseline que ignore conditions seria metodologicamente debil.

@@ -1,0 +1,20 @@
+FD001 - Configuracion final candidata
+
+Modelo principal elegido:
+candidate_03_B_quantile_a040_search_14
+LightGBM con objective quantile, alpha=0.40, features temporales, window_size=50, rul_cap=125 y sin sample weights.
+
+Motivo:
+Fue seleccionado desde el notebook 18 porque obtuvo el mejor C-MAPSS promedio en la robustez multi-split entre los candidatos LightGBM finales, manteniendo RMSE comparable al modelo base.
+Metricas robustas principales: mean RMSE 15.088, mean C-MAPSS 307.445, mean dangerous error 5.045%.
+Config guardada en: configs/FD001/fd001_final_quantile_candidate_notebook18_config.json
+
+Modelo conservador alternativo:
+base_regression_bin_weights
+LightGBM regression + bin_weights, temporal_w50, rul_cap=125.
+Queda como referencia conservadora por su perfil competitivo y menor dangerous error medio.
+Metricas robustas principales: mean RMSE 15.025, mean C-MAPSS 323.526, mean dangerous error 4.639%.
+Config guardada en: configs/FD001/fd001_conservative_reference_notebook18_config.json
+
+Aclaracion:
+La eleccion se hizo solo con validacion artificial por motores/cutoffs y robustez multi-split. El test oficial FD001 no fue usado para seleccionar estos modelos.

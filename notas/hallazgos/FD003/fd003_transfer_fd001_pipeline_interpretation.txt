@@ -1,0 +1,20 @@
+FD003 - Interpretacion de transferencia FD001 -> FD003
+
+Se transfirio directamente a FD003 el pipeline final seleccionado para FD001: LightGBM con features temporales, window_size=50, rul_cap=125, objective quantile alpha=0.40 y sin sample weights.
+
+FD003 mantiene una sola condicion operativa, igual que FD001, pero agrega dos modos de falla declarados por el dataset. Como no hay etiquetas reales de fault mode por motor, esto no se interpreta como confirmacion de modos de falla individuales. Aun asi, era esperable una caida de performance respecto de FD001 porque la relacion entre sensores y RUL puede ser menos homogenea.
+
+Comparacion robusta FD001 vs FD003:
+- MAE: FD001 11.657 -> FD003 12.080.
+- RMSE: FD001 15.088 -> FD003 16.449.
+- R2: FD001 0.872 -> FD003 0.849.
+- C-MAPSS score: FD001 307.445 -> FD003 424.430.
+- Dangerous error %: FD001 5.045% -> FD003 5.600%.
+- Conservative error %: FD001 14.861% -> FD003 13.400%.
+- Bias medio: FD001 -3.128 -> FD003 -3.593.
+
+Interpretacion:
+El RMSE empeora moderadamente al pasar de FD001 a FD003. El C-MAPSS empeora mas que el RMSE, lo que sugiere presencia de errores extremos mas costosos bajo la metrica asimetrica. El dangerous error % se mantiene relativamente controlado, con una suba leve. El modelo conserva un sesgo algo conservador, ya que el bias medio sigue siendo negativo.
+
+Conclusion:
+El pipeline FD001 generaliza razonablemente a FD003, pero el deterioro en C-MAPSS justifica analizar los errores por patrones latentes de degradacion.
