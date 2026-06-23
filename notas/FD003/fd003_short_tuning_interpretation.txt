@@ -1,0 +1,13 @@
+FD003 - Short tuning interpretation
+
+Se hizo tuning corto usando solo train_FD003, separacion por motores completos y cortes artificiales. No se uso test oficial.
+
+Mejor candidato: fd003_lgbm_w50_cap125_quantile_a04_none
+window_size=50, rul_cap=125, objective=quantile, alpha=0.4, sample_weight_scheme=none.
+
+Comparado contra el baseline transferido desde FD001:
+- C-MAPSS: 424.430 -> 424.430.
+- RMSE: 16.449 -> 16.449.
+- Dangerous error %: 5.600% -> 5.600%.
+
+La seleccion prioriza C-MAPSS promedio, manteniendo dangerous error y RMSE como criterios secundarios. Esta etapa no cambia todavia el modelo final del proyecto: deja un candidato FD003 especifico para comparar contra features sensibles y pseudo-clusters.

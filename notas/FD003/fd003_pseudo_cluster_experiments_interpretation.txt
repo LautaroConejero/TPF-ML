@@ -1,0 +1,20 @@
+FD003 - Experimentos pseudo-cluster sin leakage
+
+Metodologia:
+Se uso solamente train_FD003 con validacion artificial por motores completos y cortes internos.
+Los clusters se reconstruyeron dentro de cada split usando solo motores de entrenamiento.
+Para validacion no se uso cluster_id verdadero: se usaron probabilidades predichas por un clasificador auxiliar.
+Los clusters aproximan patrones latentes de degradacion; no son etiquetas reales de fault mode.
+
+Resultados promedio multi-split:
+- global_baseline: C-MAPSS 404.182, RMSE 16.367, dangerous 5.00%, conservative 13.60%, bias -3.651.
+- global_with_cluster_probs: C-MAPSS 426.584, RMSE 16.608, dangerous 5.40%, conservative 13.00%, bias -3.480.
+- mixture_of_experts_soft: C-MAPSS 462.562, RMSE 16.520, dangerous 6.40%, conservative 13.60%, bias -2.920.
+
+Cluster classifier OOF accuracy media: 0.996.
+Cambio C-MAPSS global_with_cluster_probs vs baseline: 22.402.
+Cambio C-MAPSS mixture_of_experts_soft vs baseline: 58.380.
+
+En RUL medio 61-100, la menor penalizacion media queda en global_baseline (5.420).
+
+Las variantes pseudo-cluster no mejoran al baseline global; agregan complejidad sin ganancia suficiente en esta validacion.
