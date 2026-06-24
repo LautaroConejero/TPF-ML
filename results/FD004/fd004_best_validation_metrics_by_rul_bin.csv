@@ -1,0 +1,5 @@
+representation,model_name,rul_bin,n_eval,mae,rmse,r2,cmapss_score,cmapss_score_mean,dangerous_error_pct
+temporal_w70_condition_fault_sensitive,fd004_xgb_fs_bin_weights_w70,90+,98,18.985576512862224,23.00160251591382,-1.352418514145414,703.5770712259196,7.17935786965224,0.0
+temporal_w70_condition_fault_sensitive,fd004_xgb_fs_bin_weights_w70,60-90,50,18.426054801940918,22.61947454173358,0.0,571.1539332988086,11.423078665976172,32.0
+temporal_w70_condition_fault_sensitive,fd004_xgb_fs_bin_weights_w70,30-60,50,13.497302589416504,17.009488120478384,0.0,359.5847539415878,7.1916950788317555,22.0
+temporal_w70_condition_fault_sensitive,fd004_xgb_fs_bin_weights_w70,0-30,50,6.055721988677979,11.287022733822969,0.0,335.328904844952,6.706578096899039,6.0

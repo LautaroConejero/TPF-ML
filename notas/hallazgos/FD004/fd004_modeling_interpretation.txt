@@ -1,0 +1,38 @@
+FD004 - modelo final interno
+
+Lectura previa:
+- FD004 mezcla la dificultad de FD002 (seis condiciones operativas que cambian dentro del motor) con la de FD003 (dos patrones de degradacion sin etiqueta por unidad).
+- Por eso no conviene copiar FD002 o FD003 en crudo. Primero se controla la condicion operativa y despues se agregan features de degradacion calculadas hasta el ciclo observado.
+- Los clusters residuales del EDA no se usan como target ni feature directa para evitar leakage de trayectoria completa.
+
+Comparacion FD002/FD003 transferida:
+- fd002_xgb_condition_fault_sensitive_mid_guard: C-MAPSS 2144.495, RMSE 20.492, dangerous 11.69%, feature_set=condition_fault_sensitive.
+- fd002_xgb_condition_normalized_weighted: C-MAPSS 2247.708, RMSE 20.267, dangerous 11.69%, feature_set=condition_normalized.
+- fd003_lgbm_reference_condition_fault_sensitive: C-MAPSS 2303.906, RMSE 20.711, dangerous 12.50%, feature_set=condition_fault_sensitive.
+- fd003_lgbm_reference_condition_normalized: C-MAPSS 2423.503, RMSE 20.708, dangerous 11.69%, feature_set=condition_normalized.
+- fd002_lgbm_quantile_condition_normalized_weighted: C-MAPSS 3555.929, RMSE 21.289, dangerous 10.08%, feature_set=condition_normalized.
+- fd003_lgbm_reference_raw: C-MAPSS 8589.303, RMSE 27.780, dangerous 15.32%, feature_set=raw.
+
+Busqueda de hiperparametros acotada:
+- fd004_xgb_fs_bin_weights_w70: C-MAPSS 1969.645, RMSE 19.906, dangerous 12.10%.
+- fd004_xgb_fs_bin_weights_depth3: C-MAPSS 2019.109, RMSE 20.079, dangerous 12.50%.
+- fd004_xgb_fs_mid_guard_depth3: C-MAPSS 2144.495, RMSE 20.492, dangerous 11.69%.
+- fd004_xgb_fs_mid_guard_depth2_reg10: C-MAPSS 2270.199, RMSE 20.566, dangerous 9.68%.
+- fd004_lgbm_fs_quantile_a04_leaves15: C-MAPSS 2303.906, RMSE 20.711, dangerous 12.50%.
+- fd004_lgbm_fs_quantile_a04_weighted: C-MAPSS 2476.671, RMSE 20.928, dangerous 9.27%.
+
+Seleccion multi-split:
+- fd004_xgb_fs_bin_weights_w70: mean C-MAPSS 1233.728, mean RMSE 16.989, mean dangerous 6.69%, worst C-MAPSS 1509.380.
+
+Modelo final:
+- fd004_xgb_fs_bin_weights_w70
+- feature_set=condition_fault_sensitive, window_size=70, n_features=469.
+
+Artefactos:
+- src/fd004_modeling.py
+- results/FD004/fd004_model_family_comparison.csv
+- results/FD004/fd004_hyperparam_search.csv
+- results/FD004/fd004_finalist_multisplit_summary.csv
+- configs/FD004/fd004_best_model_config.json
+- predictions/fd004_best_model_predictions.csv
+- checkpoints/fd004_best_model.joblib
