@@ -4,8 +4,9 @@ Indice final de notas del TP
 Nota integradora principal
 --------------------------
 - notas/resumen_final_tp.txt
+- notebooks/conclusion/01_conclusion_final.ipynb
 
-Esta es la nota de cierre del TP. Resume objetivo, EDA, decisiones metodologicas, modelos finales, metricas oficiales, ranking de mantenimiento, implementaciones finales y revision de codigo.
+La nota de texto resume objetivo, EDA, decisiones metodologicas, modelos finales, metricas oficiales, ranking de mantenimiento, implementaciones finales y revision de codigo. El notebook de conclusion muestra esas mismas decisiones en formato presentable, con tablas y graficos cargados desde los artefactos finales.
 
 Notas de EDA
 ------------

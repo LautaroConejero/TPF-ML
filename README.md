@@ -17,6 +17,7 @@ Lecturas recomendadas:
 
 - `notas/resumen_final_tp.txt`
 - `notas/indice_notas_final.txt`
+- `notebooks/conclusion/01_conclusion_final.ipynb`
 - `conclusion/README.md`
 
 Para regenerar el cierre:
