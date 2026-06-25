@@ -5,9 +5,9 @@ Reducir errores peligrosos sin volver el modelo demasiado conservador.
 Un dangerous error ocurre cuando el modelo sobreestima el RUL real por mas de 20 ciclos.
 
 Contexto:
-El candidato principal por validacion artificial sigue siendo:
+El candidato principal inicial por validacion artificial era:
 LGBMRegressor + temporal_w50 + rul_cap=125 + bin_weights.
-Este modelo mantiene el mejor balance global por C-MAPSS/RMSE.
+Ese modelo mantenia buen balance global, pero no cerraba tan bien el riesgo de sobreestimaciones ni la robustez multi-split.
 
 Motivo de la prueba quantile:
 El entrenamiento clasico con squared_error busca una prediccion central y trata los errores de forma bastante simetrica.
@@ -26,9 +26,19 @@ Lectura:
 Quantile alpha=0.40 baja bastante el dangerous error con un costo bajo en RMSE y C-MAPSS.
 No reemplaza automaticamente al candidato principal, pero queda como alternativa si se prioriza seguridad operativa.
 
-Decision:
-Mantener como candidato principal LGBM w50 cap125 bin_weights.
-Guardar LGBM quantile alpha=0.40 como alternativa menos riesgosa frente a sobreestimaciones.
+Decision final actualizada:
+Luego de la busqueda final y la prueba de robustez multi-split, el modelo quantile alpha=0.40 sin sample weights paso a ser el modelo final de FD001:
+candidate_03_B_quantile_a040_search_14.
+
+La razon del cambio es que el criterio final del TP no fue elegir solo por una corrida de validacion, sino por desempeno medio y estabilidad entre splits. Bajo ese criterio, el LightGBM quantile w50 cap125 sin pesos fue mas defendible que la variante con bin_weights.
+
+Metricas oficiales finales del modelo elegido:
+- MAE 10.673
+- RMSE 13.949
+- R2 0.887
+- C-MAPSS total 283.898
+- C-MAPSS medio 2.839
+- dangerous error 8.00%
 
 Nota:
 El test oficial no fue usado para seleccionar ni validar este experimento.

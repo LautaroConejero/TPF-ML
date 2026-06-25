@@ -8,7 +8,6 @@ from sklearn.preprocessing import StandardScaler
 
 from src.fd003_transfer_utils import (
     evaluate_fd003_transfer_split,
-    load_fd003_train,
     prepare_fd003_temporal_validation_only,
 )
 

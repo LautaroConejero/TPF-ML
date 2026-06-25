@@ -1,0 +1,62 @@
+Indice final de notas del TP
+============================
+
+Nota integradora principal
+--------------------------
+- notas/resumen_final_tp.txt
+
+Esta es la nota de cierre del TP. Resume objetivo, EDA, decisiones metodologicas, modelos finales, metricas oficiales, ranking de mantenimiento, implementaciones finales y revision de codigo.
+
+Notas de EDA
+------------
+- notas/EDA/general/descrip_datos.txt
+- notas/EDA/general/hallazgos_eda.txt
+
+Estas notas explican la estructura C-MAPSS, las diferencias entre FD001-FD004, el rol de las condiciones operativas y por que no conviene entrenar un unico modelo global.
+
+Notas FD001
+-----------
+- notas/hallazgos/FD001/resumen_fd001_validacion_final.txt
+- notas/hallazgos/FD001/hallazgo_fd001_quantile_dangerous_error.txt
+- notas/hallazgos/FD001/fd001_final_candidate_config_summary.txt
+- notas/ideas_y_justificaciones/explicacion_entrenamiento_fd001.txt
+- notas/ideas_y_justificaciones/justificacion_decisiones_fd001_pdf.txt
+
+FD001 queda cerrado con LightGBM quantile alpha=0.40, temporal_w50, rul_cap=125 y sin sample weights. Las notas de ideas/justificaciones incluyen etapas intermedias y ahora tienen una aclaracion de cierre para evitar confundirlas con la decision final.
+
+Notas FD002
+-----------
+- notas/hallazgos/FD002/hallazgo_fd002_conditions.txt
+- notas/hallazgos/FD002/fd002_model_selection_interpretation.txt
+- notas/hallazgos/FD002/fd002_feature_engineering_interpretation.txt
+
+FD002 queda cerrado con XGBoost condition_fault_sensitive, window_size=50 y mid_rul_guard. La nota de feature engineering incluye el cierre final y la prueba de robustez posterior.
+
+Notas FD003
+-----------
+- notas/FD003/fd003_resumen_completo_trabajo.txt
+- notas/FD003/fd003_model_improvement_global_interpretation.txt
+- notas/FD003/fd003_internal_validation_evaluation_interpretation.txt
+- notas/hallazgos/FD003/hallazgo_clusters_fd003.txt
+- notas/hallazgos/FD003/fd003_cluster_error_analysis_interpretation.txt
+
+FD003 queda cerrado con LightGBM quantile alpha=0.40, temporal_w50, rul_cap=125, sin sample weights y features fault_sensitive. Los pseudo-clusters quedan documentados como experimento descartado.
+
+Notas FD004
+-----------
+- notas/hallazgos/FD004/hallazgo_fd004_conditions_fault_patterns.txt
+- notas/hallazgos/FD004/fd004_modeling_interpretation.txt
+
+FD004 queda cerrado con XGBoost condition_fault_sensitive, window_size=70 y bin_weights. La nota final explica la comparacion con FD002/FD003, la busqueda acotada y la evaluacion oficial.
+
+Carpeta conclusion
+------------------
+- conclusion/README.md
+- conclusion/final_model_summary.csv
+- conclusion/final_metric_summary.csv
+- conclusion/final_rul_bin_metrics.csv
+- conclusion/maintenance_priority_ranking.csv
+- conclusion/maintenance_decision_summary.csv
+- conclusion/final_conclusion_payload.json
+
+La carpeta conclusion contiene los artefactos finales listos para reporte: modelos finales, metricas oficiales, metricas por rangos de RUL, ranking operativo de mantenimiento y reglas simples de decision.

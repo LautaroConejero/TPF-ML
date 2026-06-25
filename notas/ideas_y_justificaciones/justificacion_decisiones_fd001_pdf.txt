@@ -60,3 +60,15 @@ Fuente: Damage Propagation Modeling for Aircraft Engine Run-to-Failure Simulatio
 Nota final
 ----------
 El test oficial todavia no fue usado para seleccionar modelos. Esto respeta la idea del paper de evitar sobreajuste al conjunto de test y separar seleccion de evaluacion final.
+
+Actualizacion de cierre del TP
+------------------------------
+Esta nota explica la justificacion metodologica de la etapa FD001 y conserva decisiones historicas de esa fase. En el cierre final, luego de ampliar la busqueda y evaluar robustez multi-split, el modelo elegido para FD001 no fue la variante con bin_weights sino:
+
+- candidate_03_B_quantile_a040_search_14
+- LightGBM quantile alpha=0.40
+- temporal_w50
+- rul_cap=125
+- sample_weight_scheme=none
+
+La razon es que la seleccion final considero estabilidad entre splits y C-MAPSS medio, no solo una comparacion puntual. El test oficial siguio separado de la seleccion y se uso solo para reporte final.

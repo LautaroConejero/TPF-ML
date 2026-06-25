@@ -45,3 +45,11 @@ Artefactos actualizados:
 - configs/FD002/fd002_best_model_config.json
 - predictions/fd002_best_model_predictions.csv
 - checkpoints/fd002_best_model.joblib
+
+Cierre final del TP:
+- Se agrego una prueba de robustez posterior sobre FD002 para verificar si habia una mejora clara adicional.
+- No se encontro una mejora suficientemente interesante como para reemplazar el modelo final ya elegido.
+- Por eso se mantuvo xgb_condition_fault_sensitive_mid_guard como modelo final.
+- En el test oficial final obtuvo MAE 16.619, RMSE 25.280, R2 0.779, C-MAPSS total 5349.925, C-MAPSS medio 20.656 y dangerous error 5.02%.
+- La lectura final es que FD002 queda muy condicionado por sus seis regimenes operativos: normalizar por condicion y agregar features fault-sensitive fue mas importante que hacer una busqueda grande de hiperparametros.
+- Artefactos de la revision: results/FD002/fd002_robustness_probe_summary.csv y results/FD002/fd002_robustness_probe_detail.csv.

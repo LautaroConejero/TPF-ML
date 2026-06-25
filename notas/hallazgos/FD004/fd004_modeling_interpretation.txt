@@ -28,6 +28,20 @@ Modelo final:
 - fd004_xgb_fs_bin_weights_w70
 - feature_set=condition_fault_sensitive, window_size=70, n_features=469.
 
+Evaluacion oficial final:
+- MAE 17.909.
+- RMSE 26.071.
+- R2 0.771.
+- C-MAPSS total 4600.217.
+- C-MAPSS medio 18.549.
+- dangerous error 6.45%.
+
+Lectura final:
+- FD004 confirma que no alcanzaba con transferir FD002 o FD003 en crudo.
+- El modelo necesitaba combinar las dos ideas: controlar condicion operativa como en FD002 y capturar patrones de degradacion como en FD003.
+- XGBoost quedo por encima de LightGBM en esta configuracion final, especialmente con una ventana temporal mas amplia de 70 ciclos.
+- El test oficial se uso solo para reporte final; la seleccion se hizo con validacion artificial y multi-split.
+
 Artefactos:
 - src/fd004_modeling.py
 - results/FD004/fd004_model_family_comparison.csv

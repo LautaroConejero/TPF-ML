@@ -12,12 +12,10 @@ from src.data_splitting import split_units
 from src.fd003_cluster_utils import (
     build_fd003_unit_cluster_features,
     cmapss_penalty,
-    fit_fd003_unit_clusters,
 )
 from src.fd003_transfer_utils import (
     fd003_feature_columns,
     load_fd003_train,
-    make_lgbm_from_fd001_config,
 )
 from src.preprocessed_FD001 import (
     make_fd001_artificial_cutoffs,

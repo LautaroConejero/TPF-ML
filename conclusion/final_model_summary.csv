@@ -1,0 +1,5 @@
+dataset,final_model,model_family,feature_set,window_size,rul_cap,sample_weight_scheme,selection_basis
+FD001,candidate_03_B_quantile_a040_search_14,LightGBM,temporal,50,125,none,best mean C-MAPSS score in multi-split robustness among final LightGBM candidates
+FD002,xgb_condition_fault_sensitive_mid_guard,xgboost,condition_fault_sensitive,50,125,mid_rul_guard,Best model selected by lowest C-MAPSS score on artificial-cutoff validation. Official FD002 test is used only after selection for final reporting.
+FD003,fd003_lgbm_w50_cap125_quantile_a04_none_fault_sensitive,LightGBM,fault_sensitive,50,125,none,"lowest mean C-MAPSS in artificial validation, dangerous error and RMSE as secondary criteria"
+FD004,fd004_xgb_fs_bin_weights_w70,xgboost,condition_fault_sensitive,70,125,bin_weights,Candidates are selected by lowest mean C-MAPSS on artificial-cutoff validation over held-out engine units. Official FD004 test is used only after selection for final reporting.

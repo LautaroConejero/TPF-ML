@@ -239,3 +239,9 @@ El proceso fue util porque:
 - analiza el rendimiento por zonas de RUL
 - prioriza una metrica asimetrica alineada con mantenimiento
 - mantiene el test oficial separado de la seleccion
+
+Actualizacion de cierre del TP
+------------------------------
+Esta nota describe la logica de entrenamiento y los resultados intermedios de FD001. En la seleccion final, despues de la robustez multi-split, el modelo oficial de FD001 quedo como candidate_03_B_quantile_a040_search_14: LightGBM quantile alpha=0.40, temporal_w50, rul_cap=125 y sin sample weights.
+
+Por eso, la frase "candidato por score: LGBM w50 cap125 bin_weights" debe leerse como una conclusion intermedia de la etapa de sample weights, no como la decision final del TP.

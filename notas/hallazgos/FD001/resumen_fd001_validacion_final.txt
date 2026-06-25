@@ -5,24 +5,45 @@ Problema:
 Prediccion de Remaining Useful Life (RUL) para FD001 de NASA C-MAPSS.
 
 Validacion usada:
-Se uso validacion artificial por motores completos retenidos y cutoffs de RUL. Las metricas se calcularon contra RUL_raw. El test oficial no se uso para seleccionar modelos.
+Se uso validacion artificial por motores completos retenidos y cutoffs de RUL. Las metricas se calcularon contra RUL_raw. El test oficial se uso solo una vez al final para reporte, no para seleccionar modelos ni hiperparametros.
 
 Modelos comparados:
-Ridge y RandomForest como baselines; XGBRegressor; LGBMRegressor; MLP_tabular_cfg_03; variantes de LGBM con distintas ventanas, caps de RUL y sample weights.
+Ridge y RandomForest como baselines; XGBRegressor; LGBMRegressor; MLP_tabular_cfg_03; variantes de LGBM con distintas ventanas, caps de RUL, objective quantile, sample weights y robustez multi-split.
 
 Hallazgos principales:
-- LGBMRegressor con temporal_w50 y rul_cap=125 fue el mejor candidato global por validacion.
-- El esquema sample_weight=bin_weights logro el menor C-MAPSS asymmetric score.
-- La variante sin pesos tuvo menor dangerous_error_pct en validacion.
-- MLP_tabular_cfg_03 no fue estable entre seeds, aunque habia tenido buen MAE en la busqueda inicial.
-- XGBRegressor tuvo buen dangerous_error_pct, pero peor desempeno global que LGBM w50.
-- RandomForest quedo superado como modelo final, aunque sigue siendo una baseline fuerte.
+- FD001 fue el punto de partida porque tiene una sola condicion operativa y un solo modo de falla.
+- Las features temporales superaron a las features de ultimo ciclo, especialmente cuando se uso window_size=50 y RUL cap 125.
+- RandomForest quedo como baseline fuerte, pero fue superado por boosting.
+- La MLP no fue suficientemente estable entre seeds como para defenderla como modelo final.
+- Los sample weights redujeron algunas penalizaciones, pero no fueron la mejor opcion final cuando se miro robustez multi-split.
+- LightGBM quantile alpha=0.40 permitio reducir sobreestimaciones peligrosas sin destruir RMSE ni C-MAPSS.
 
-Modelo candidato final por validacion:
-LGBMRegressor, features temporales, window_size=50, rul_cap=125, sample_weight_scheme=bin_weights.
+Decision final:
+El modelo final de FD001 queda como:
+- candidate_03_B_quantile_a040_search_14
+- LightGBM
+- objective=quantile, alpha=0.40
+- feature_set=temporal
+- window_size=50
+- rul_cap=125
+- sample_weight_scheme=none
 
-Alternativa conservadora:
-LGBMRegressor, features temporales, window_size=50, rul_cap=125, sample_weight_scheme=none.
+Motivo de la decision:
+En la seleccion final se priorizo C-MAPSS medio en validacion artificial multi-split, con RMSE y dangerous error como criterios secundarios. El modelo final mantiene una prediccion algo prudente, pero no tan conservadora como para perder demasiado ajuste global.
 
-Nota:
-El test oficial todavia no fue usado para seleccionar modelos.
+Metricas oficiales finales:
+- MAE 10.673
+- RMSE 13.949
+- R2 0.887
+- C-MAPSS total 283.898
+- C-MAPSS medio 2.839
+- dangerous error 8.00%
+
+Artefactos finales:
+- configs/FD001/fd001_best_model_config.json
+- results/FD001/fd001_official_test_metrics.csv
+- results/FD001/fd001_final_quantile_official_test_metrics.csv
+- results/FD001/fd001_final_quantile_official_test_metrics_by_rul_bin.csv
+- results/FD001/fd001_final_quantile_official_test_predictions.csv
+- predictions/fd001_best_model_predictions.csv
+- predictions/fd001_final_quantile_best_model_predictions.csv

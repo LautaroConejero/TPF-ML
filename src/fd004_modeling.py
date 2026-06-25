@@ -1,9 +1,13 @@
 from __future__ import annotations
 
 import argparse
-import json
 import os
 from pathlib import Path
+import sys
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 os.environ.setdefault("LOKY_MAX_CPU_COUNT", "4")
 os.environ.setdefault("MPLBACKEND", "Agg")
@@ -12,7 +16,6 @@ os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
 os.environ.setdefault("MKL_NUM_THREADS", "1")
 os.environ.setdefault("NUMEXPR_NUM_THREADS", "1")
 
-import numpy as np
 import pandas as pd
 
 from src.data import add_train_rul, last_cycle_rows, load_cmapss_subset
@@ -36,16 +39,16 @@ from src.fd002_modeling import (
     make_fd002_fault_sensitive_features,
     make_model,
     make_temporal_features_fast,
-    params_to_json,
+    metric_row,
     resolve_data_dir,
     scale_temporal_frames,
     selection_sort,
     temporal_columns_for_base,
+    write_json,
 )
 from src.preprocessed_FD001 import make_fd001_artificial_cutoffs
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
 FD004_FAULT_SENSITIVE_SENSORS = [
     "sensor_2",
     "sensor_3",
@@ -298,26 +301,6 @@ def fit_predict_config(prepared, config, random_state=42):
     predictions["sample_weight_scheme"] = config.get("sample_weight_scheme", "none")
     predictions["model_type"] = config["model_type"]
     return model, predictions
-
-
-def metric_row(predictions, config, prepared, extra=None):
-    row = metrics_by_model(predictions).iloc[0].to_dict()
-    row.update(
-        {
-            "candidate_label": config["candidate_label"],
-            "model_type": config["model_type"],
-            "feature_set": prepared["feature_set"],
-            "window_size": prepared["window_size"],
-            "rul_cap": prepared["rul_cap"],
-            "sample_weight_scheme": config.get("sample_weight_scheme", "none"),
-            "n_features": len(prepared["feature_columns"]),
-            "params": params_to_json(config.get("params", {})),
-            "selection_note": config.get("selection_note", ""),
-        }
-    )
-    if extra:
-        row.update(extra)
-    return row
 
 
 def evaluate_configs(configs, data_dir="CMAPSSData", random_state=42, rul_cap=DEFAULT_RUL_CAP):
@@ -691,13 +674,6 @@ def single_prediction_metrics(predictions, n_col="n_test"):
     return pd.DataFrame([row])
 
 
-def write_json(path, payload):
-    path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("w", encoding="utf-8") as file:
-        json.dump(payload, file, indent=2, sort_keys=False)
-
-
 def build_best_model_config(
     best_config,
     validation_summary,
@@ -923,8 +899,14 @@ def run_fd004_modeling_workflow(
             },
             paths["checkpoints"] / "fd004_best_model.joblib",
         )
-    except Exception:
-        pass
+    except Exception as exc:
+        import warnings
+
+        warnings.warn(
+            f"Could not save FD004 checkpoint: {exc}",
+            RuntimeWarning,
+            stacklevel=2,
+        )
 
     config_payload = build_best_model_config(
         best_config=best_config,

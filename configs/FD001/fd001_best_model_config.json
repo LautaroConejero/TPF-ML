@@ -1,12 +1,15 @@
 {
-  "dataset": "NASA C-MAPSS FD001",
+  "dataset": "FD001",
   "task": "Remaining Useful Life regression",
-  "selection_policy": "Best model selected by lowest RMSE on artificial-cutoff validation. Official test is used only once for final reporting.",
+  "selection_policy": "best mean C-MAPSS score in multi-split robustness among final LightGBM candidates",
+  "official_test_used_for_selection": false,
   "preprocessing": {
     "rul_raw_definition": "max_cycle - cycle for train; RUL_FD001.txt for official test last cycle",
     "training_target": "RUL capped",
     "metric_target": "RUL_raw uncapped",
     "rul_cap": 125,
+    "representation": "temporal",
+    "window_size": 50,
     "dropped_columns": [
       "setting_3",
       "sensor_1",
@@ -16,28 +19,7 @@
       "sensor_18",
       "sensor_19"
     ],
-    "scaler": "StandardScaler fit on final training split only",
-    "representation": "temporal_w30",
-    "window_size": 30,
-    "base_feature_columns": [
-      "setting_1",
-      "setting_2",
-      "sensor_2",
-      "sensor_3",
-      "sensor_4",
-      "sensor_6",
-      "sensor_7",
-      "sensor_8",
-      "sensor_9",
-      "sensor_11",
-      "sensor_12",
-      "sensor_13",
-      "sensor_14",
-      "sensor_15",
-      "sensor_17",
-      "sensor_20",
-      "sensor_21"
-    ],
+    "n_features": 119,
     "feature_columns": [
       "setting_1_last",
       "setting_1_mean",
@@ -158,71 +140,71 @@
       "sensor_21_max",
       "sensor_21_delta",
       "sensor_21_slope"
-    ],
-    "n_features": 119
+    ]
   },
   "validation": {
-    "split_policy": "complete engine units, never individual rows",
-    "cut_ruls": [
-      20,
-      50,
-      80,
-      110,
-      140
+    "protocol": "artificial cutoffs by held-out units, multi-split robustness",
+    "robustness_random_states": [
+      0,
+      1,
+      2,
+      3,
+      4
     ],
-    "cutoff_rule": "cut_cycle = max_cycle - cut_rul; skip if cut_cycle < 1",
-    "n_validation_examples": 99
-  },
-  "final_model": {
-    "model_name": "RandomForestRegressor",
-    "model_params": {
-      "bootstrap": true,
-      "ccp_alpha": 0.0,
-      "criterion": "squared_error",
-      "max_depth": 14,
-      "max_features": 1.0,
-      "max_leaf_nodes": null,
-      "max_samples": null,
-      "min_impurity_decrease": 0.0,
-      "min_samples_leaf": 3,
-      "min_samples_split": 2,
-      "min_weight_fraction_leaf": 0.0,
-      "monotonic_cst": null,
-      "n_estimators": 250,
-      "n_jobs": 1,
-      "oob_score": false,
-      "random_state": 42,
-      "verbose": 0,
-      "warm_start": false
+    "validation_summary": {
+      "mean_mae": 11.656847998281162,
+      "std_mae": 1.148116996616057,
+      "mean_rmse": 15.087995229800743,
+      "std_rmse": 1.3838418203582843,
+      "mean_r2": 0.8718855301519601,
+      "std_r2": 0.0231726189253742,
+      "mean_cmapss_score": 307.4446483164472,
+      "std_cmapss_score": 86.61261567426524,
+      "mean_dangerous_error_pct": 5.044691816120388,
+      "std_dangerous_error_pct": 3.64932216206836,
+      "mean_conservative_error_pct": 14.861018346732632,
+      "std_conservative_error_pct": 4.469461810915721,
+      "mean_bias_mean": -3.1276901278131044,
+      "std_bias_mean": 2.003855115188568,
+      "worst_rmse": 16.92537924715522,
+      "worst_cmapss_score": 398.125027515584,
+      "worst_dangerous_error_pct": 10.1010101010101
     }
   },
-  "validation_metrics": {
-    "representation": "temporal_w30",
-    "model_name": "RandomForestRegressor",
-    "n_features": 119,
-    "target_used_for_training": "RUL_capped",
-    "n_eval": 99,
-    "mae": 13.81734066424928,
-    "rmse": 17.912073206388644,
-    "r2": 0.8198982798071819,
-    "cmapss_score": 580.9338452585001,
-    "cmapss_score_mean": 5.868018638974749,
-    "dangerous_error_pct": 14.14141414141414
+  "final_model": {
+    "model_name": "candidate_03_B_quantile_a040_search_14",
+    "model_family": "LightGBM",
+    "objective": "quantile",
+    "alpha": 0.4,
+    "sample_weight_scheme": "none",
+    "hyperparameters": {
+      "colsample_bytree": 0.8,
+      "learning_rate": 0.03,
+      "max_depth": -1,
+      "min_child_samples": 10,
+      "n_estimators": 1300,
+      "num_leaves": 15,
+      "reg_alpha": 0.5,
+      "reg_lambda": 10.0,
+      "subsample": 0.9
+    }
   },
   "official_test_metrics": {
-    "representation": "temporal_w30",
-    "model_name": "RandomForestRegressor",
-    "n_test": 100,
-    "mae": 12.853522094254442,
-    "rmse": 17.793268932800302,
-    "r2": 0.8166622312912588,
-    "cmapss_score": 750.2827015224317,
-    "cmapss_score_mean": 7.502827015224317,
-    "dangerous_error_pct": 16.0
+    "dataset": "FD001",
+    "representation": "temporal_w50",
+    "model_name": "candidate_03_B_quantile_a040_search_14",
+    "mae": 10.673098571038599,
+    "rmse": 13.94871384763963,
+    "r2": 0.8873298725026293,
+    "cmapss_score": 283.89783207257466,
+    "cmapss_score_mean": 2.8389783207257464,
+    "dangerous_error_pct": 8.0,
+    "n_test": 100
   },
   "artifacts": {
     "predictions": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\predictions\\fd001_best_model_predictions.csv",
-    "official_test_metrics": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\results\\fd001_official_test_metrics.csv",
-    "combined_validation_metrics": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\results\\fd001_combined_validation_metrics.csv"
+    "explicit_final_predictions": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\predictions\\fd001_final_quantile_best_model_predictions.csv",
+    "official_test_metrics": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\results\\FD001\\fd001_official_test_metrics.csv",
+    "explicit_final_metrics": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\results\\FD001\\fd001_final_quantile_official_test_metrics.csv"
   }
 }

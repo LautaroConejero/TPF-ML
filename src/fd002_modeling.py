@@ -4,6 +4,11 @@ from itertools import product
 import json
 import os
 from pathlib import Path
+import sys
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
 
 os.environ.setdefault("LOKY_MAX_CPU_COUNT", "4")
 os.environ.setdefault("MPLBACKEND", "Agg")
@@ -38,12 +43,10 @@ from src.fd001_modeling import (
     metrics_by_rul_bin,
     plot_validation_diagnostics,
     prediction_frame,
-    regression_metrics,
 )
 from src.preprocessed_FD001 import make_fd001_artificial_cutoffs
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_RUL_CAP = 125
 DEFAULT_CUT_RULS = (20, 50, 80, 110, 140)
 DEFAULT_WINDOW_SIZE = 50
@@ -1591,8 +1594,14 @@ def run_fd002_modeling_workflow(
             },
             paths["checkpoints"] / "fd002_best_model.joblib",
         )
-    except Exception:
-        pass
+    except Exception as exc:
+        import warnings
+
+        warnings.warn(
+            f"Could not save FD002 checkpoint: {exc}",
+            RuntimeWarning,
+            stacklevel=2,
+        )
 
     config_payload = build_best_model_config(
         best_row=best_row,
