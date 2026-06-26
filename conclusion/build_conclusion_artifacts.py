@@ -488,6 +488,15 @@ def write_readme(model_summary: pd.DataFrame, metric_summary: pd.DataFrame, deci
             f"- {row['dataset']}: RMSE {row['rmse']:.3f}, C-MAPSS {row['cmapss_score']:.3f}, "
             f"dangerous {row['dangerous_error_pct']:.2f}%."
         )
+    lines.extend(
+        [
+            "",
+            "Lectura por rangos de RUL:",
+            "- Los modelos son mas precisos cerca de falla (0-30 ciclos), donde el costo operativo de sobreestimar RUL es mayor.",
+            "- La zona 60-90 concentra varios dangerous errors y conviene discutirla explicitamente en el informe.",
+            "- En 90+ los errores suben por el RUL cap y por la menor prioridad operativa de distinguir vidas remanentes largas.",
+        ]
+    )
     lines.extend(["", "Resumen de decision:"])
     for _, row in decision_summary.iterrows():
         lines.append(

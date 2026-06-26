@@ -715,7 +715,23 @@
   "validation": {
     "split_policy": "complete engine units, never individual rows",
     "cutoff_rule": "cut_cycle = max_cycle - cut_rul; skip if cut_cycle < 1",
-    "random_state": 42
+    "random_state": 42,
+    "robustness_probe": {
+      "protocol": "multiple complete-engine splits with artificial cutoffs, run after the main candidate selection",
+      "artifacts": [
+        "results/FD002/fd002_robustness_probe_summary.csv",
+        "results/FD002/fd002_robustness_probe_detail.csv"
+      ],
+      "selected_candidate_summary": {
+        "candidate_label": "xgb_condition_fault_sensitive_mid_guard",
+        "mean_cmapss": 1208.0060385511918,
+        "std_cmapss": 152.52751030558153,
+        "worst_cmapss": 1443.075655623314,
+        "mean_rmse": 17.639090104444797,
+        "mean_dangerous_error_pct": 7.028855075366704
+      },
+      "interpretation": "The selected candidate keeps the best mean C-MAPSS in the robustness probe and a lower mean dangerous-error rate than the closest XGBoost condition-normalized baseline, although that baseline has slightly lower mean RMSE and better worst C-MAPSS."
+    }
   },
   "final_model": {
     "candidate_label": "xgb_condition_fault_sensitive_mid_guard",

@@ -52,7 +52,7 @@ Modelo final FD002:
 - RUL cap: 125.
 - Sample weights: mid_rul_guard.
 
-Se hizo una prueba final de robustez posterior y no aparecio una mejora suficientemente clara para reemplazar este modelo.
+Se hizo una prueba final de robustez posterior con multiples splits de motores completos. El modelo final mantuvo el mejor C-MAPSS medio de esa prueba, con dangerous error medio menor que el baseline XGBoost condition-normalized mas cercano, aunque ese baseline tuvo RMSE medio algo menor. Por eso no aparecio una mejora suficientemente clara para reemplazar este modelo.
 
 Metricas oficiales FD002:
 - MAE 16.619.
@@ -115,6 +115,18 @@ Los modelos finales reflejan la estructura de cada subset:
 - FD003 y FD004 se benefician de features fault-sensitive inspiradas en patrones latentes de degradacion.
 
 FD001 y FD003 obtienen errores oficiales mas bajos y C-MAPSS medio bajo. FD002 y FD004 tienen mayor dificultad por multiples regimenes operativos, y sus C-MAPSS oficiales son mas altos aunque los dangerous error finales quedan relativamente contenidos.
+
+Lectura por rangos de RUL:
+- En 0-30 ciclos los modelos son mas confiables y casi no generan sobreestimaciones peligrosas.
+- En 60-90 ciclos aparecen los mayores dangerous errors relativos, por lo que esa banda debe discutirse como zona de riesgo.
+- En 90+ ciclos los errores y R2 por bin empeoran, especialmente en FD002 y FD004. Esto es coherente con entrenar con RUL capped: el modelo aprende a priorizar cercania a falla y comprime la vida remanente alta.
+
+Guion recomendado para informe:
+- No narrar todos los notebooks; contar la evolucion metodologica.
+- FD001 sirve como baseline controlado.
+- FD002 muestra por que hay que controlar condicion operativa.
+- FD003 muestra por que las features fault-sensitive aportan mas que usar clusters como etiqueta.
+- FD004 integra ambas dificultades.
 
 Implementaciones finales
 ------------------------

@@ -1,8 +1,12 @@
 Estado del modelado FD001 hasta notebooks 09 y 11
 ==================================================
 
-Objetivo actual
----------------
+Nota de estado historica
+------------------------
+Esta nota describe una etapa intermedia del trabajo sobre FD001. No representa la decision final del TP. La decision final quedo documentada en notas/hallazgos/FD001/resumen_fd001_validacion_final.txt y en configs/FD001/fd001_best_model_config.json: LightGBM quantile alpha=0.40, temporal_w50, rul_cap=125 y sin sample weights.
+
+Objetivo de esa etapa
+---------------------
 Continuar el modelado de FD001 con modelos no secuenciales:
 - No usar CNN, Conv1D, TCN, LSTM, GRU, Transformers ni ventanas crudas como secuencia.
 - Usar modelos tabulares y features temporales resumidas.
@@ -112,8 +116,8 @@ Notebooks nuevos creados
 - Solo si se cambia manualmente a True, reentrena el candidato final con todo FD001 train y evalua una sola vez en test oficial.
 
 
-Resultados actuales del notebook 09
------------------------------------
+Resultados del notebook 09 en esa etapa
+---------------------------------------
 Archivo: results/FD001/fd001_boosting_metrics.csv
 
 Modelos presentes en la ultima corrida guardada:
@@ -156,8 +160,8 @@ Lectura:
 - Esto confirma que RF era buena baseline, pero boosting externo mejora partes importantes del problema.
 
 
-Resultados actuales del notebook 11
------------------------------------
+Resultados del notebook 11 en esa etapa
+---------------------------------------
 Archivo: results/FD001/fd001_mlp_metrics.csv
 
 Modelos comparados:
@@ -220,11 +224,11 @@ Cosas que fueron cambiando
    - especialmente RUL 0-30
 
 
-Estado actual sintetico
------------------------
+Estado sintetico de esa etapa
+-----------------------------
 - FD001 tiene baseline fuerte con RandomForest temporal_w30.
 - Boosting externo ya muestra mejoras importantes.
-- LightGBM es el mejor global actual por RMSE/MAE/R2/C-MAPSS.
+- LightGBM era el mejor global de esa etapa por RMSE/MAE/R2/C-MAPSS.
 - XGBoost es muy competitivo y reduce mas el dangerous_error_pct global.
 - MLP tabular mejora a RF en varias metricas, pero no supera claramente a LightGBM globalmente.
 - RandomForest conserva ventaja cerca de falla en RUL 0-30.
@@ -236,6 +240,6 @@ Estado actual sintetico
   - El notebook 12 fue reorganizado y corrido solo para LGBM con sample weights usando temporal_w50 y rul_cap=125.
     Mejor por C-MAPSS: bin_weights. El esquema sin pesos conserva menor dangerous_error_pct.
   - El notebook 13 fue reorganizado y corrido como ranking final de validacion.
-    Candidato recomendado por criterio automatico: LGBMRegressor, temporal_w50, rul_cap=125, sample_weight_scheme=bin_weights.
-  - El notebook 14 queda bloqueado con RUN_OFFICIAL_TEST = False.
-    El test oficial todavia no fue re-ejecutado en esta etapa final.
+    Candidato recomendado por criterio automatico en esa etapa intermedia: LGBMRegressor, temporal_w50, rul_cap=125, sample_weight_scheme=bin_weights.
+  - El notebook 14 queda bloqueado con RUN_OFFICIAL_TEST = False en esta etapa historica.
+    En el cierre final, el test oficial se uso solo para reporte del candidato ya seleccionado.

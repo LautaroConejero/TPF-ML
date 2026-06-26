@@ -1,4 +1,4 @@
-FD004 - modelo final interno
+FD004 - modelo final
 
 Lectura previa:
 - FD004 mezcla la dificultad de FD002 (seis condiciones operativas que cambian dentro del motor) con la de FD003 (dos patrones de degradacion sin etiqueta por unidad).

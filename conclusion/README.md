@@ -19,6 +19,11 @@ Metricas oficiales finales:
 - FD003: RMSE 14.555, C-MAPSS 394.763, dangerous 9.00%.
 - FD004: RMSE 26.071, C-MAPSS 4600.217, dangerous 6.45%.
 
+Lectura por rangos de RUL:
+- Los modelos son mas precisos cerca de falla (0-30 ciclos), donde el costo operativo de sobreestimar RUL es mayor.
+- La zona 60-90 concentra varios dangerous errors y conviene discutirla explicitamente en el informe.
+- En 90+ los errores suben por el RUL cap y por la menor prioridad operativa de distinguir vidas remanentes largas.
+
 Resumen de decision:
 - FD001: 22 urgentes, 16 programar pronto, 13 monitoreo cercano.
 - FD002: 61 urgentes, 37 programar pronto, 47 monitoreo cercano.

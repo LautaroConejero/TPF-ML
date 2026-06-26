@@ -1,7 +1,7 @@
 FD003 - Refinamiento acotado de hiperparametros LightGBM
 
 Se mantuvo fijo el enfoque del candidato actual: LightGBM, feature_set fault_sensitive, window_size=50, rul_cap=125, objective quantile, alpha=0.4 y sin sample weights.
-No se usaron clusters, cluster probabilities, mixture of experts ni test oficial.
+En esta etapa no se usaron clusters, cluster probabilities, mixture of experts ni test oficial.
 La validacion fue la misma de los notebooks anteriores: train_FD003, motores completos held-out, cortes artificiales y random states [0, 1, 2, 3, 4].
 
 Se evaluaron 24 combinaciones de hiperparametros internos de LightGBM, incluyendo siempre la configuracion actual.

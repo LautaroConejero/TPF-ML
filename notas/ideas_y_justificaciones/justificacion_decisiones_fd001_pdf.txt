@@ -52,14 +52,14 @@ Fuente: Damage Propagation Modeling for Aircraft Engine Run-to-Failure Simulatio
 - El paper no prescribe un modelo especifico; plantea un problema data-driven.
 - Por eso es correcto comparar modelos simples/robustos contra candidatos mas fuertes como LGBM/XGB/MLP.
 
-12. Elegir LGBM w50 cap125 por validacion artificial
-- La eleccion final se basa en validacion artificial y metricas alineadas con el paper: C-MAPSS score, RMSE, dangerous_error_pct y MAE.
-- LGBM temporal_w50 cap125 con bin_weights fue el mejor por C-MAPSS score.
-- La alternativa conservadora sin pesos queda justificada porque tiene menor dangerous_error_pct.
+12. Etapa intermedia: LGBM w50 cap125 por validacion artificial
+- En una etapa intermedia, LGBM temporal_w50 cap125 con bin_weights fue el mejor por C-MAPSS score en una comparacion puntual.
+- Esa conclusion no fue la decision final del TP, porque despues se agrego robustez multi-split y objective quantile.
+- La alternativa sin pesos quedo justificada porque tenia menor dangerous_error_pct y una conducta mas prudente.
 
 Nota final
 ----------
-El test oficial todavia no fue usado para seleccionar modelos. Esto respeta la idea del paper de evitar sobreajuste al conjunto de test y separar seleccion de evaluacion final.
+Durante la seleccion de modelos, el test oficial no fue usado. Esto respeta la idea de evitar sobreajuste al conjunto de test y separar seleccion de evaluacion final.
 
 Actualizacion de cierre del TP
 ------------------------------

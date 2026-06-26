@@ -2,7 +2,7 @@ FD003 - Analisis de errores por clusters latentes
 
 Advertencia metodologica:
 Los clusters no son etiquetas reales de fault mode. Se interpretan como patrones latentes de degradacion y se usan solo para analisis de error.
-No se usaron como feature del modelo, no se uso test oficial y no se selecciono modelo con esta informacion.
+No se usaron como feature del modelo, no se uso test oficial en este analisis y no se selecciono modelo con esta informacion.
 
 Resumen de clusters:
 - Cluster 0: 44 motores, vida media 304.66, mediana 286.50, min 190, max 525.

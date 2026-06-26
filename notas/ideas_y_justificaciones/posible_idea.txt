@@ -1,11 +1,24 @@
-El objetivo principal del proyecto es desarrollar un modelo predictivo capaz de estimar la vida útil restante de motores turbofan a partir de mediciones históricas de sensores y condiciones operativas. Para ello se utilizará el dataset NASA C-MAPSS, que contiene series temporales simuladas del proceso de degradación de motores hasta alcanzar la falla. La tarea busca abordar un problema de mantenimiento predictivo: dado el estado actual de un motor y su comportamiento reciente, estimar cuántos ciclos operativos le quedan antes de fallar.
+Idea inicial y cierre final
+===========================
 
-El problema se plantea principalmente como una tarea supervisada de regresión, ya que la variable objetivo será el Remaining Useful Life (RUL), expresado como una cantidad numérica de ciclos restantes. Aunque el RUL toma valores enteros, estos valores poseen orden y distancia entre sí, por lo que resulta más adecuado tratarlos como una magnitud continua que como clases independientes.
+Idea inicial
+------------
+El objetivo principal del proyecto era desarrollar un modelo predictivo capaz de estimar la vida util restante de motores turbofan a partir de mediciones historicas de sensores y condiciones operativas. La tarea se planteo como mantenimiento predictivo: dado el estado actual de un motor y su comportamiento reciente, estimar cuantos ciclos operativos quedan antes de la falla.
 
-Antes de definir la configuración final de los modelos, se realizará un análisis exploratorio de los datos para estudiar la evolución de los sensores, detectar variables constantes o poco informativas, analizar posibles correlaciones entre mediciones y evaluar la influencia de las condiciones operativas. Este análisis permitirá decidir qué sensores conservar, qué transformaciones aplicar y qué variables temporales derivadas construir.
+El problema se formulo como regresion supervisada, porque el Remaining Useful Life (RUL) es una magnitud numerica con orden y distancia entre valores.
 
-Como arquitectura baseline se propone utilizar una Multilayer Perceptron (MLP) simple. Esta elección se justifica porque las variables de entrada son numéricas y porque una MLP permite modelar relaciones no lineales entre sensores, condiciones operativas y degradación del motor sin introducir una complejidad excesiva. El baseline utilizará principalmente las mediciones disponibles en cada ciclo, por lo que servirá como punto de comparación inicial para evaluar cuánto puede aprender el modelo a partir del estado puntual del motor.
+Evolucion del enfoque
+---------------------
+Inicialmente se considero una MLP como baseline no lineal, porque las entradas son numericas y una red densa puede modelar relaciones entre sensores, condiciones operativas y degradacion. Tambien se considero explorar una representacion latente tipo autoencoder.
 
-Luego se evaluará una MLP de mayor capacidad, incorporando regularización y variables derivadas mediante feature engineering temporal. Esta variante no se plantea como una garantía de mejora, sino como una forma de comprobar si agregar información sobre la evolución reciente de los sensores aporta valor predictivo. Para ello se construirán variables como promedios móviles, diferencias entre ciclos, tendencias o variabilidad en ventanas temporales. La justificación es que el deterioro de un motor no depende únicamente de una medición aislada, sino de cómo cambian sus señales a lo largo del tiempo.
+Luego, los experimentos mostraron que para la representacion finalmente usada, basada en features tabulares temporales, LightGBM y XGBoost fueron mas fuertes y mas estables que la MLP. Por eso las redes quedaron como comparacion experimental, no como decision final.
 
-Como arquitectura adicional experimental, se evaluará un autoencoder determinístico seguido de una MLP regresora. El autoencoder buscará aprender una representación comprimida del estado del motor a partir de los sensores, especialmente si se observa redundancia o correlación entre variables. Luego, esa representación latente se utilizará como entrada para predecir el RUL. Esta variante se incluirá como comparación acotada, no como reemplazo del modelo principal.
+Cierre final
+------------
+La decision final fue usar modelos de boosting tabular por subset:
+- FD001: LightGBM quantile con features temporales.
+- FD002: XGBoost condition_fault_sensitive.
+- FD003: LightGBM quantile con features fault_sensitive.
+- FD004: XGBoost condition_fault_sensitive.
+
+La mejora principal vino de representar mejor el problema: ventanas temporales, RUL cap, validacion por motores completos, normalizacion por condicion en FD002/FD004 y features sensibles a degradacion en FD003/FD004.

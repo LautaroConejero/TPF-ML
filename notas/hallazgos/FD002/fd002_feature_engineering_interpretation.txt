@@ -32,7 +32,7 @@ Lectura por bandas de RUL:
 - En 90+ el modelo nuevo empeora algo; esto explica que no baje RMSE tanto como baja C-MAPSS.
 
 Decision final:
-- El candidato final interno pasa a ser xgb_condition_fault_sensitive_mid_guard.
+- El candidato seleccionado por validacion pasa a ser xgb_condition_fault_sensitive_mid_guard.
 - No es el mismo modelo final que FD001/FD003: FD002 conserva XGBoost porque fue la familia mas fuerte cuando se modelan sus seis condiciones operativas.
 - Si cambia la representacion: ahora usa condition_fault_sensitive en vez de solo condition_normalized.
 - La mejora no viene de una busqueda enorme de hiperparametros, sino de representar mejor la degradacion despues de normalizar por condicion.
@@ -47,7 +47,9 @@ Artefactos actualizados:
 - checkpoints/fd002_best_model.joblib
 
 Cierre final del TP:
-- Se agrego una prueba de robustez posterior sobre FD002 para verificar si habia una mejora clara adicional.
+- Se agrego una prueba de robustez posterior sobre FD002 con multiples splits de motores completos para verificar si habia una mejora clara adicional.
+- En esa prueba, xgb_condition_fault_sensitive_mid_guard mantuvo el mejor C-MAPSS medio entre los candidatos revisados: 1208.006 +/- 152.528, RMSE medio 17.639 y dangerous error medio 7.03%.
+- El baseline xgb_squarederror_condition_normalized_weighted quedo muy cerca en C-MAPSS medio (1212.593) y tuvo RMSE medio algo menor (17.414), pero mostro dangerous error medio mayor (8.26%). Por eso no desplazo al candidato final bajo el criterio de C-MAPSS con errores peligrosos como criterio secundario.
 - No se encontro una mejora suficientemente interesante como para reemplazar el modelo final ya elegido.
 - Por eso se mantuvo xgb_condition_fault_sensitive_mid_guard como modelo final.
 - En el test oficial final obtuvo MAE 16.619, RMSE 25.280, R2 0.779, C-MAPSS total 5349.925, C-MAPSS medio 20.656 y dangerous error 5.02%.

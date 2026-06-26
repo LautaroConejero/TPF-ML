@@ -12,7 +12,7 @@ Decision de modelado:
 - Ademas se probo una representacion condition_fault_sensitive inspirada en FD003: pendientes, deltas, volatilidad y aceleracion sobre sensores normalizados por condition.
 - La aceptacion del modelo final sigue usando C-MAPSS de validacion artificial; el test oficial se reserva para reporte.
 
-Mejor candidato interno:
+Mejor candidato de validacion:
 - xgb_condition_fault_sensitive_mid_guard: C-MAPSS 982.893, RMSE 16.229, dangerous error 9.69%.
 - feature_set=condition_fault_sensitive, modelo=xgboost, pesos=mid_rul_guard.
 

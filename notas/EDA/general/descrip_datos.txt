@@ -1,7 +1,16 @@
-El conjunto de datos seleccionado es **NASA C-MAPSS Turbofan Engine Degradation Simulation Data Set**, provisto por la NASA para tareas de pronóstico de fallas y mantenimiento predictivo. Este dataset contiene series temporales multivariadas que simulan el funcionamiento de una flota de motores turbofan bajo distintas condiciones operativas y modos de degradación.
+Descripcion de datos - NASA C-MAPSS
+====================================
 
-Cada registro representa una medición tomada durante un ciclo operativo de un motor. Las variables incluyen el identificador del motor, el número de ciclo, tres configuraciones operativas y un conjunto de mediciones provenientes de sensores. A lo largo del tiempo, los motores comienzan funcionando normalmente y progresivamente desarrollan fallas hasta llegar al final de su vida útil.
+El conjunto de datos seleccionado es NASA C-MAPSS Turbofan Engine Degradation Simulation Data Set, provisto por NASA para tareas de pronostico de fallas y mantenimiento predictivo. El dataset contiene series temporales multivariadas que simulan el funcionamiento de motores turbofan bajo distintas condiciones operativas y modos de degradacion.
 
-El dataset se encuentra dividido en subconjuntos de entrenamiento y prueba. En los datos de entrenamiento, cada motor es observado hasta el momento de la falla, lo que permite calcular la vida útil restante o **Remaining Useful Life (RUL)** en cada ciclo. En los datos de prueba, las trayectorias se encuentran truncadas antes de la falla, y se proporciona un archivo adicional con el RUL real correspondiente a cada motor. Esto permite formular el problema como una tarea supervisada de regresión, donde el objetivo es predecir cuántos ciclos operativos le quedan a un motor antes de fallar.
+Cada registro representa una medicion tomada durante un ciclo operativo de un motor. Las variables incluyen el identificador del motor, el numero de ciclo, tres configuraciones operativas y mediciones de sensores. A lo largo del tiempo, los motores comienzan funcionando normalmente y progresivamente desarrollan fallas hasta llegar al final de su vida util.
 
-El conjunto incluye cuatro variantes principales: FD001, FD002, FD003 y FD004. Estas difieren en la cantidad de motores, condiciones operativas y tipos de falla considerados. Para el desarrollo inicial del proyecto se utilizará principalmente el subconjunto FD001, por ser el escenario más controlado: contiene una única condición operativa y un único modo de falla. Posteriormente, el análisis podría extenderse a los subconjuntos más complejos para evaluar la capacidad de generalización del modelo.
+El dataset se divide en subconjuntos de entrenamiento y prueba. En train, cada motor es observado hasta la falla, lo que permite calcular Remaining Useful Life (RUL) en cada ciclo. En test, las trayectorias estan truncadas antes de la falla y se proporciona un archivo RUL_FD00X.txt con el RUL real del ultimo ciclo observado de cada motor. Esto permite formular el problema como regresion supervisada: predecir cuantos ciclos operativos le quedan a un motor antes de fallar.
+
+El conjunto incluye cuatro variantes: FD001, FD002, FD003 y FD004. Difieren en cantidad de motores, condiciones operativas y modos de falla:
+- FD001: una condicion operativa y un modo de falla.
+- FD002: seis condiciones operativas y un modo de falla.
+- FD003: una condicion operativa y dos modos de falla.
+- FD004: seis condiciones operativas y dos modos de falla.
+
+En el proyecto se uso FD001 como caso base por ser el escenario mas controlado, y luego se extendio el analisis a FD002, FD003 y FD004. La decision final fue entrenar un modelo por subset, porque la estructura de condiciones y degradacion cambia entre escenarios.
