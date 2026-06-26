@@ -1,0 +1,29 @@
+{
+  "split_strategy": "complete engine units with artificial RUL cutoffs",
+  "metrics": [
+    "MAE",
+    "RMSE",
+    "R2",
+    "bias",
+    "CMAPSS_total",
+    "CMAPSS_mean",
+    "dangerous_any_pct",
+    "dangerous_10_pct",
+    "dangerous_20_pct",
+    "conservative_pct"
+  ],
+  "created_at": "2026-06-26T04:20:42",
+  "official_test_usage": "no se uso test final",
+  "dataset": "FD004",
+  "base_model": "fd004_xgb_fs_bin_weights_w70",
+  "condition_analysis": "dominant condition at artificial cutoff cycle",
+  "cluster_analysis": "not executed unless residual cluster labels are available",
+  "input_files": [
+    "results/FD004/fd004_finalist_multisplit_predictions.csv"
+  ],
+  "output_files": [
+    "results/FD004/fd004_condition_error_analysis_v01.csv",
+    "results/FD004/fd004_cluster_error_analysis_v01.csv"
+  ],
+  "seed": "existing FD004 finalist multisplit"
+}

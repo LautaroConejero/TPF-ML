@@ -1,0 +1,37 @@
+{
+  "split_strategy": "complete engine units with artificial RUL cutoffs",
+  "metrics": [
+    "MAE",
+    "RMSE",
+    "R2",
+    "bias",
+    "CMAPSS_total",
+    "CMAPSS_mean",
+    "dangerous_any_pct",
+    "dangerous_10_pct",
+    "dangerous_20_pct",
+    "conservative_pct"
+  ],
+  "created_at": "2026-06-26T04:20:42",
+  "official_test_usage": "no se uso test final",
+  "dataset": "FD002",
+  "base_models": [
+    "xgb_condition_fault_sensitive_mid_guard",
+    "xgb_squarederror_condition_normalized_weighted"
+  ],
+  "input_files": [
+    "results/FD002/fd002_best_validation_predictions.csv",
+    "results/FD002/fd002_lgbm_xgb_model_comparison_predictions.csv"
+  ],
+  "ensemble_weights": [
+    "(0.5, 0.5)",
+    "(0.6, 0.4)",
+    "(0.7, 0.3)",
+    "(0.4, 0.6)"
+  ],
+  "output_files": [
+    "results/FD002/fd002_ensemble_results_v01.csv"
+  ],
+  "selection_criterion": "ensemble can replace baseline only if CMAPSS_mean improves without RMSE or dangerous_20 degradation",
+  "seed": 42
+}

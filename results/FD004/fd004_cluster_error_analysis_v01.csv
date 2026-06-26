@@ -1,0 +1,2 @@
+dataset,candidate_name,cluster_id,n_motors,note
+FD004,fd004_high_rul_thr120_off2,not_available,0,No residual cluster label file was available in the repo; cluster calibration was not executed.

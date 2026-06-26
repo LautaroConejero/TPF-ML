@@ -1,0 +1,15 @@
+Cierre final v03 - NASA C-MAPSS RUL
+
+Modelos finales:
+- FD001: candidate_03_B_quantile_a040_search_14 | LightGBM quantile alpha 0.40 | congelado.
+- FD002: eol_mean | XGBoost condition/fault-sensitive + multi-prefix EOL smoothing.
+- FD003: fd003_lgbm_w50_cap125_quantile_a04_none_fault_sensitive | LightGBM quantile alpha 0.40 | offset 0.
+- FD004: eol_mean_guard_b60_only_if_lower_floor2 | XGBoost + multi-prefix EOL smoothing con late-stage guard.
+
+No se uso test final, no se reentreno un modelo grande, no se uso LSTM y no se generaron predicciones finales nuevas.Decisiones:
+- FD001 no se toca porque ya estaba congelado con un candidato robusto.
+- FD002 adopta eol_mean porque reduce claramente CMAPSS, RMSE y dangerous_20.
+- FD003 queda offset 0 porque offsets +1 a +4 bajaban algo RMSE pero empeoraban CMAPSS/dangerous.
+- FD004 adopta eol_mean_guard_b60_only_if_lower_floor2 porque mejora CMAPSS, RMSE, dangerous_20 y zona de RUL bajo.
+
+La mejora conceptual del cierre fue pasar de calibraciones por offset a smoothing temporal del ciclo estimado de falla.
