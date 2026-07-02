@@ -741,11 +741,11 @@
     "n_test": 248
   },
   "artifacts": {
-    "model_family_comparison": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\results\\FD004\\fd004_model_family_comparison.csv",
-    "hyperparameter_search": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\results\\FD004\\fd004_hyperparam_search.csv",
-    "finalist_summary": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\results\\FD004\\fd004_finalist_multisplit_summary.csv",
-    "validation_predictions": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\results\\FD004\\fd004_best_validation_predictions.csv",
-    "official_test_predictions": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\predictions\\fd004_best_model_predictions.csv",
-    "official_test_metrics": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\results\\FD004\\fd004_official_test_metrics.csv"
+    "model_family_comparison": "results/FD004/fd004_model_family_comparison.csv",
+    "hyperparameter_search": "results/FD004/fd004_hyperparam_search.csv",
+    "finalist_summary": "results/FD004/fd004_finalist_multisplit_summary.csv",
+    "validation_predictions": "results/FD004/fd004_best_validation_predictions.csv",
+    "official_test_predictions": "predictions/fd004_best_model_predictions.csv",
+    "official_test_metrics": "results/FD004/fd004_official_test_metrics.csv"
   }
 }

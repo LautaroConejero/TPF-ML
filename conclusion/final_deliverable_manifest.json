@@ -1,0 +1,508 @@
+{
+  "artifacts": [
+    {
+      "category": "figure",
+      "path": "conclusion/figures/physical_feature_importance_top_sensors.png",
+      "description": "Final conclusion figure: physical_feature_importance_top_sensors.png.",
+      "used_for": "Report/poster visual support.",
+      "reproducible_by": "python conclusion/build_physical_operational_artifacts.py or python conclusion/build_physical_area_summary.py",
+      "notes": ""
+    },
+    {
+      "category": "figure",
+      "path": "conclusion/figures/physical_importance_by_engine_area.png",
+      "description": "Final conclusion figure: physical_importance_by_engine_area.png.",
+      "used_for": "Report/poster visual support.",
+      "reproducible_by": "python conclusion/build_physical_operational_artifacts.py or python conclusion/build_physical_area_summary.py",
+      "notes": ""
+    },
+    {
+      "category": "figure",
+      "path": "conclusion/figures/physical_perturbation_sensitivity_top_sensors.png",
+      "description": "Final conclusion figure: physical_perturbation_sensitivity_top_sensors.png.",
+      "used_for": "Report/poster visual support.",
+      "reproducible_by": "python conclusion/build_physical_operational_artifacts.py or python conclusion/build_physical_area_summary.py",
+      "notes": ""
+    },
+    {
+      "category": "final_script",
+      "path": "conclusion/build_conclusion_artifacts.py",
+      "description": "Builds final conclusion artifacts.",
+      "used_for": "Regenerate model, metric, RUL-bin and maintenance summaries.",
+      "reproducible_by": "python conclusion/build_conclusion_artifacts.py",
+      "notes": ""
+    },
+    {
+      "category": "final_script",
+      "path": "conclusion/build_physical_area_summary.py",
+      "description": "Builds physical summaries by engine area.",
+      "used_for": "Aggregate physical importance and sensitivity by engine area.",
+      "reproducible_by": "python conclusion/build_physical_area_summary.py",
+      "notes": ""
+    },
+    {
+      "category": "final_script",
+      "path": "conclusion/build_physical_operational_artifacts.py",
+      "description": "Builds physical-operational interpretation artifacts.",
+      "used_for": "Regenerate sensor dictionary, grouped importance, perturbation sensitivity and physical links.",
+      "reproducible_by": "python conclusion/build_physical_operational_artifacts.py",
+      "notes": "Preserves existing note/notebook outputs."
+    },
+    {
+      "category": "final_script",
+      "path": "predict_final.py",
+      "description": "Executable final for all subset predictions.",
+      "used_for": "Generate final prediction CSVs.",
+      "reproducible_by": "python predict_final.py --subset all --output-dir predictions/final_executable --include-diagnostics",
+      "notes": ""
+    },
+    {
+      "category": "final_script",
+      "path": "scripts/smoke_test_final.py",
+      "description": "Lightweight final delivery smoke test.",
+      "used_for": "Check final files, imports, CSV readability and script compilation.",
+      "reproducible_by": "python scripts/smoke_test_final.py",
+      "notes": "Does not execute notebooks or model searches."
+    },
+    {
+      "category": "maintenance_artifact",
+      "path": "conclusion/maintenance_decision_summary.csv",
+      "description": "Conclusion CSV artifact: maintenance_decision_summary.csv.",
+      "used_for": "Final reporting and traceability.",
+      "reproducible_by": "See final scripts listed in this manifest.",
+      "notes": ""
+    },
+    {
+      "category": "maintenance_artifact",
+      "path": "conclusion/maintenance_priority_ranking.csv",
+      "description": "Conclusion CSV artifact: maintenance_priority_ranking.csv.",
+      "used_for": "Final reporting and traceability.",
+      "reproducible_by": "See final scripts listed in this manifest.",
+      "notes": ""
+    },
+    {
+      "category": "metric_artifact",
+      "path": "conclusion/final_conclusion_payload.json",
+      "description": "Conclusion JSON payload: final_conclusion_payload.json.",
+      "used_for": "Structured final reporting metadata.",
+      "reproducible_by": "See final scripts listed in this manifest.",
+      "notes": ""
+    },
+    {
+      "category": "metric_artifact",
+      "path": "conclusion/final_metric_summary.csv",
+      "description": "Conclusion CSV artifact: final_metric_summary.csv.",
+      "used_for": "Final reporting and traceability.",
+      "reproducible_by": "See final scripts listed in this manifest.",
+      "notes": ""
+    },
+    {
+      "category": "metric_artifact",
+      "path": "conclusion/final_model_summary.csv",
+      "description": "Conclusion CSV artifact: final_model_summary.csv.",
+      "used_for": "Final reporting and traceability.",
+      "reproducible_by": "See final scripts listed in this manifest.",
+      "notes": ""
+    },
+    {
+      "category": "metric_artifact",
+      "path": "conclusion/final_rul_bin_metrics.csv",
+      "description": "Conclusion CSV artifact: final_rul_bin_metrics.csv.",
+      "used_for": "Final reporting and traceability.",
+      "reproducible_by": "See final scripts listed in this manifest.",
+      "notes": ""
+    },
+    {
+      "category": "model_config",
+      "path": "configs/FD001/fd001_best_model_config.json",
+      "description": "FD001 final model config.",
+      "used_for": "Trace final preprocessing, model family and hyperparameters.",
+      "reproducible_by": "Generated by final modeling workflow or retained final config.",
+      "notes": "Do not change model selection or hyperparameters."
+    },
+    {
+      "category": "model_config",
+      "path": "configs/FD002/fd002_best_model_config.json",
+      "description": "FD002 final model config.",
+      "used_for": "Trace final preprocessing, model family and hyperparameters.",
+      "reproducible_by": "Generated by final modeling workflow or retained final config.",
+      "notes": "Do not change model selection or hyperparameters."
+    },
+    {
+      "category": "model_config",
+      "path": "configs/FD003/fd003_final_candidate_config.json",
+      "description": "FD003 final model config.",
+      "used_for": "Trace final preprocessing, model family and hyperparameters.",
+      "reproducible_by": "Generated by final modeling workflow or retained final config.",
+      "notes": "Do not change model selection or hyperparameters."
+    },
+    {
+      "category": "model_config",
+      "path": "configs/FD004/fd004_best_model_config.json",
+      "description": "FD004 final model config.",
+      "used_for": "Trace final preprocessing, model family and hyperparameters.",
+      "reproducible_by": "Generated by final modeling workflow or retained final config.",
+      "notes": "Do not change model selection or hyperparameters."
+    },
+    {
+      "category": "note",
+      "path": "notas/guia_informe_final.txt",
+      "description": "Final delivery supporting note or index.",
+      "used_for": "Report writing and traceability.",
+      "reproducible_by": "Maintained manually or generated by final scripts.",
+      "notes": ""
+    },
+    {
+      "category": "note",
+      "path": "notas/hallazgos/FD003/hallazgo_clusters_fd003.txt",
+      "description": "Final delivery supporting note or index.",
+      "used_for": "Report writing and traceability.",
+      "reproducible_by": "Maintained manually or generated by final scripts.",
+      "notes": ""
+    },
+    {
+      "category": "note",
+      "path": "notas/hallazgos/FD004/hallazgo_fd004_conditions_fault_patterns.txt",
+      "description": "Final delivery supporting note or index.",
+      "used_for": "Report writing and traceability.",
+      "reproducible_by": "Maintained manually or generated by final scripts.",
+      "notes": ""
+    },
+    {
+      "category": "note",
+      "path": "notas/indice_notas_final.txt",
+      "description": "Final delivery supporting note or index.",
+      "used_for": "Report writing and traceability.",
+      "reproducible_by": "Maintained manually or generated by final scripts.",
+      "notes": ""
+    },
+    {
+      "category": "note",
+      "path": "notas/interpretacion_fisica_operativa.txt",
+      "description": "Final delivery supporting note or index.",
+      "used_for": "Report writing and traceability.",
+      "reproducible_by": "Maintained manually or generated by final scripts.",
+      "notes": ""
+    },
+    {
+      "category": "note",
+      "path": "notas/resumen_final_tp.txt",
+      "description": "Final delivery supporting note or index.",
+      "used_for": "Report writing and traceability.",
+      "reproducible_by": "Maintained manually or generated by final scripts.",
+      "notes": ""
+    },
+    {
+      "category": "notebook_evidence",
+      "path": "notebooks/EDA/FD003/03_eda_fd003_patrones_degradacion.ipynb",
+      "description": "Notebook evidence for model development or final reporting.",
+      "used_for": "Experimental traceability.",
+      "reproducible_by": "Not executed for final smoke test.",
+      "notes": "Outputs intentionally preserved."
+    },
+    {
+      "category": "notebook_evidence",
+      "path": "notebooks/EDA/FD004/05_eda_fd004_conditions_fault_patterns.ipynb",
+      "description": "Notebook evidence for model development or final reporting.",
+      "used_for": "Experimental traceability.",
+      "reproducible_by": "Not executed for final smoke test.",
+      "notes": "Outputs intentionally preserved."
+    },
+    {
+      "category": "notebook_evidence",
+      "path": "notebooks/FD001/modeling/14_fd001_official_test_final_once.ipynb",
+      "description": "Notebook evidence for model development or final reporting.",
+      "used_for": "Experimental traceability.",
+      "reproducible_by": "Not executed for final smoke test.",
+      "notes": "Outputs intentionally preserved."
+    },
+    {
+      "category": "notebook_evidence",
+      "path": "notebooks/FD001/modeling/18_fd001_lgbm_final_search_and_robustness.ipynb",
+      "description": "Notebook evidence for model development or final reporting.",
+      "used_for": "Experimental traceability.",
+      "reproducible_by": "Not executed for final smoke test.",
+      "notes": "Outputs intentionally preserved."
+    },
+    {
+      "category": "notebook_evidence",
+      "path": "notebooks/FD002/modeling/01_fd002_model_selection_and_hyperparam_search.ipynb",
+      "description": "Notebook evidence for model development or final reporting.",
+      "used_for": "Experimental traceability.",
+      "reproducible_by": "Not executed for final smoke test.",
+      "notes": "Outputs intentionally preserved."
+    },
+    {
+      "category": "notebook_evidence",
+      "path": "notebooks/FD002/modeling/02_fd002_feature_engineering_improvement.ipynb",
+      "description": "Notebook evidence for model development or final reporting.",
+      "used_for": "Experimental traceability.",
+      "reproducible_by": "Not executed for final smoke test.",
+      "notes": "Outputs intentionally preserved."
+    },
+    {
+      "category": "notebook_evidence",
+      "path": "notebooks/FD002/modeling/03_fd002_robustness_probe.ipynb",
+      "description": "Notebook evidence for model development or final reporting.",
+      "used_for": "Experimental traceability.",
+      "reproducible_by": "Not executed for final smoke test.",
+      "notes": "Outputs intentionally preserved."
+    },
+    {
+      "category": "notebook_evidence",
+      "path": "notebooks/FD003/modeling/22_fd003_fault_sensitive_features.ipynb",
+      "description": "Notebook evidence for model development or final reporting.",
+      "used_for": "Experimental traceability.",
+      "reproducible_by": "Not executed for final smoke test.",
+      "notes": "Outputs intentionally preserved."
+    },
+    {
+      "category": "notebook_evidence",
+      "path": "notebooks/FD003/modeling/23_fd003_pseudo_cluster_experiments.ipynb",
+      "description": "Notebook evidence for model development or final reporting.",
+      "used_for": "Experimental traceability.",
+      "reproducible_by": "Not executed for final smoke test.",
+      "notes": "Outputs intentionally preserved."
+    },
+    {
+      "category": "notebook_evidence",
+      "path": "notebooks/FD003/modeling/25_fd003_internal_validation_evaluation_report.ipynb",
+      "description": "Notebook evidence for model development or final reporting.",
+      "used_for": "Experimental traceability.",
+      "reproducible_by": "Not executed for final smoke test.",
+      "notes": "Outputs intentionally preserved."
+    },
+    {
+      "category": "notebook_evidence",
+      "path": "notebooks/FD004/modeling/01_fd004_modeling_final.ipynb",
+      "description": "Notebook evidence for model development or final reporting.",
+      "used_for": "Experimental traceability.",
+      "reproducible_by": "Not executed for final smoke test.",
+      "notes": "Outputs intentionally preserved."
+    },
+    {
+      "category": "notebook_evidence",
+      "path": "notebooks/conclusion/01_conclusion_final.ipynb",
+      "description": "Notebook evidence for model development or final reporting.",
+      "used_for": "Experimental traceability.",
+      "reproducible_by": "Not executed for final smoke test.",
+      "notes": "Outputs intentionally preserved."
+    },
+    {
+      "category": "notebook_evidence",
+      "path": "notebooks/conclusion/02_interpretacion_fisica_operativa.ipynb",
+      "description": "Notebook evidence for model development or final reporting.",
+      "used_for": "Experimental traceability.",
+      "reproducible_by": "Not executed for final smoke test.",
+      "notes": "Outputs intentionally preserved."
+    },
+    {
+      "category": "notebook_evidence",
+      "path": "notebooks/conclusion/notebook_conclusion_final_v03.ipynb",
+      "description": "Notebook evidence for model development or final reporting.",
+      "used_for": "Experimental traceability.",
+      "reproducible_by": "Not executed for final smoke test.",
+      "notes": "Outputs intentionally preserved."
+    },
+    {
+      "category": "physical_operational_artifact",
+      "path": "conclusion/physical_feature_importance_by_dataset.csv",
+      "description": "Conclusion CSV artifact: physical_feature_importance_by_dataset.csv.",
+      "used_for": "Final reporting and traceability.",
+      "reproducible_by": "See final scripts listed in this manifest.",
+      "notes": ""
+    },
+    {
+      "category": "physical_operational_artifact",
+      "path": "conclusion/physical_feature_importance_overall.csv",
+      "description": "Conclusion CSV artifact: physical_feature_importance_overall.csv.",
+      "used_for": "Final reporting and traceability.",
+      "reproducible_by": "See final scripts listed in this manifest.",
+      "notes": ""
+    },
+    {
+      "category": "physical_operational_artifact",
+      "path": "conclusion/physical_importance_by_engine_area.csv",
+      "description": "Conclusion CSV artifact: physical_importance_by_engine_area.csv.",
+      "used_for": "Final reporting and traceability.",
+      "reproducible_by": "See final scripts listed in this manifest.",
+      "notes": ""
+    },
+    {
+      "category": "physical_operational_artifact",
+      "path": "conclusion/physical_operational_payload.json",
+      "description": "Conclusion JSON payload: physical_operational_payload.json.",
+      "used_for": "Structured final reporting metadata.",
+      "reproducible_by": "See final scripts listed in this manifest.",
+      "notes": ""
+    },
+    {
+      "category": "physical_operational_artifact",
+      "path": "conclusion/physical_pattern_links.csv",
+      "description": "Conclusion CSV artifact: physical_pattern_links.csv.",
+      "used_for": "Final reporting and traceability.",
+      "reproducible_by": "See final scripts listed in this manifest.",
+      "notes": ""
+    },
+    {
+      "category": "physical_operational_artifact",
+      "path": "conclusion/physical_perturbation_sensitivity.csv",
+      "description": "Conclusion CSV artifact: physical_perturbation_sensitivity.csv.",
+      "used_for": "Final reporting and traceability.",
+      "reproducible_by": "See final scripts listed in this manifest.",
+      "notes": ""
+    },
+    {
+      "category": "physical_operational_artifact",
+      "path": "conclusion/physical_sensitivity_by_engine_area.csv",
+      "description": "Conclusion CSV artifact: physical_sensitivity_by_engine_area.csv.",
+      "used_for": "Final reporting and traceability.",
+      "reproducible_by": "See final scripts listed in this manifest.",
+      "notes": ""
+    },
+    {
+      "category": "physical_operational_artifact",
+      "path": "conclusion/physical_sensor_dictionary.csv",
+      "description": "Conclusion CSV artifact: physical_sensor_dictionary.csv.",
+      "used_for": "Final reporting and traceability.",
+      "reproducible_by": "See final scripts listed in this manifest.",
+      "notes": ""
+    },
+    {
+      "category": "prediction_output",
+      "path": "predictions/final_executable/all_final_metrics.csv",
+      "description": "Final executable prediction artifact: all_final_metrics.csv.",
+      "used_for": "Final predictions and optional diagnostics.",
+      "reproducible_by": "python predict_final.py --subset all --output-dir predictions/final_executable --include-diagnostics",
+      "notes": ""
+    },
+    {
+      "category": "prediction_output",
+      "path": "predictions/final_executable/all_final_predictions.csv",
+      "description": "Final executable prediction artifact: all_final_predictions.csv.",
+      "used_for": "Final predictions and optional diagnostics.",
+      "reproducible_by": "python predict_final.py --subset all --output-dir predictions/final_executable --include-diagnostics",
+      "notes": ""
+    },
+    {
+      "category": "prediction_output",
+      "path": "predictions/final_executable/fd001_final_metrics.csv",
+      "description": "Final executable prediction artifact: fd001_final_metrics.csv.",
+      "used_for": "Final predictions and optional diagnostics.",
+      "reproducible_by": "python predict_final.py --subset all --output-dir predictions/final_executable --include-diagnostics",
+      "notes": ""
+    },
+    {
+      "category": "prediction_output",
+      "path": "predictions/final_executable/fd001_final_predictions.csv",
+      "description": "Final executable prediction artifact: fd001_final_predictions.csv.",
+      "used_for": "Final predictions and optional diagnostics.",
+      "reproducible_by": "python predict_final.py --subset all --output-dir predictions/final_executable --include-diagnostics",
+      "notes": ""
+    },
+    {
+      "category": "prediction_output",
+      "path": "predictions/final_executable/fd001_final_predictions_with_diagnostics.csv",
+      "description": "Final executable prediction artifact: fd001_final_predictions_with_diagnostics.csv.",
+      "used_for": "Final predictions and optional diagnostics.",
+      "reproducible_by": "python predict_final.py --subset all --output-dir predictions/final_executable --include-diagnostics",
+      "notes": ""
+    },
+    {
+      "category": "prediction_output",
+      "path": "predictions/final_executable/fd002_final_metrics.csv",
+      "description": "Final executable prediction artifact: fd002_final_metrics.csv.",
+      "used_for": "Final predictions and optional diagnostics.",
+      "reproducible_by": "python predict_final.py --subset all --output-dir predictions/final_executable --include-diagnostics",
+      "notes": ""
+    },
+    {
+      "category": "prediction_output",
+      "path": "predictions/final_executable/fd002_final_predictions.csv",
+      "description": "Final executable prediction artifact: fd002_final_predictions.csv.",
+      "used_for": "Final predictions and optional diagnostics.",
+      "reproducible_by": "python predict_final.py --subset all --output-dir predictions/final_executable --include-diagnostics",
+      "notes": ""
+    },
+    {
+      "category": "prediction_output",
+      "path": "predictions/final_executable/fd002_final_predictions_with_diagnostics.csv",
+      "description": "Final executable prediction artifact: fd002_final_predictions_with_diagnostics.csv.",
+      "used_for": "Final predictions and optional diagnostics.",
+      "reproducible_by": "python predict_final.py --subset all --output-dir predictions/final_executable --include-diagnostics",
+      "notes": ""
+    },
+    {
+      "category": "prediction_output",
+      "path": "predictions/final_executable/fd003_final_metrics.csv",
+      "description": "Final executable prediction artifact: fd003_final_metrics.csv.",
+      "used_for": "Final predictions and optional diagnostics.",
+      "reproducible_by": "python predict_final.py --subset all --output-dir predictions/final_executable --include-diagnostics",
+      "notes": ""
+    },
+    {
+      "category": "prediction_output",
+      "path": "predictions/final_executable/fd003_final_predictions.csv",
+      "description": "Final executable prediction artifact: fd003_final_predictions.csv.",
+      "used_for": "Final predictions and optional diagnostics.",
+      "reproducible_by": "python predict_final.py --subset all --output-dir predictions/final_executable --include-diagnostics",
+      "notes": ""
+    },
+    {
+      "category": "prediction_output",
+      "path": "predictions/final_executable/fd003_final_predictions_with_diagnostics.csv",
+      "description": "Final executable prediction artifact: fd003_final_predictions_with_diagnostics.csv.",
+      "used_for": "Final predictions and optional diagnostics.",
+      "reproducible_by": "python predict_final.py --subset all --output-dir predictions/final_executable --include-diagnostics",
+      "notes": ""
+    },
+    {
+      "category": "prediction_output",
+      "path": "predictions/final_executable/fd004_final_metrics.csv",
+      "description": "Final executable prediction artifact: fd004_final_metrics.csv.",
+      "used_for": "Final predictions and optional diagnostics.",
+      "reproducible_by": "python predict_final.py --subset all --output-dir predictions/final_executable --include-diagnostics",
+      "notes": ""
+    },
+    {
+      "category": "prediction_output",
+      "path": "predictions/final_executable/fd004_final_predictions.csv",
+      "description": "Final executable prediction artifact: fd004_final_predictions.csv.",
+      "used_for": "Final predictions and optional diagnostics.",
+      "reproducible_by": "python predict_final.py --subset all --output-dir predictions/final_executable --include-diagnostics",
+      "notes": ""
+    },
+    {
+      "category": "prediction_output",
+      "path": "predictions/final_executable/fd004_final_predictions_with_diagnostics.csv",
+      "description": "Final executable prediction artifact: fd004_final_predictions_with_diagnostics.csv.",
+      "used_for": "Final predictions and optional diagnostics.",
+      "reproducible_by": "python predict_final.py --subset all --output-dir predictions/final_executable --include-diagnostics",
+      "notes": ""
+    },
+    {
+      "category": "report_material",
+      "path": "conclusion/final_deliverable_manifest.csv",
+      "description": "Conclusion CSV artifact: final_deliverable_manifest.csv.",
+      "used_for": "Final reporting and traceability.",
+      "reproducible_by": "See final scripts listed in this manifest.",
+      "notes": ""
+    },
+    {
+      "category": "report_material",
+      "path": "conclusion/final_deliverable_manifest.json",
+      "description": "Conclusion JSON payload: final_deliverable_manifest.json.",
+      "used_for": "Structured final reporting metadata.",
+      "reproducible_by": "See final scripts listed in this manifest.",
+      "notes": ""
+    },
+    {
+      "category": "report_material",
+      "path": "notebooks/README_final_results.md",
+      "description": "Final delivery supporting note or index.",
+      "used_for": "Report writing and traceability.",
+      "reproducible_by": "Maintained manually or generated by final scripts.",
+      "notes": ""
+    }
+  ]
+}

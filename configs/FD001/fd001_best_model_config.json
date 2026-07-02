@@ -202,9 +202,9 @@
     "n_test": 100
   },
   "artifacts": {
-    "predictions": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\predictions\\fd001_best_model_predictions.csv",
-    "explicit_final_predictions": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\predictions\\fd001_final_quantile_best_model_predictions.csv",
-    "official_test_metrics": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\results\\FD001\\fd001_official_test_metrics.csv",
-    "explicit_final_metrics": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\results\\FD001\\fd001_final_quantile_official_test_metrics.csv"
+    "predictions": "predictions/fd001_best_model_predictions.csv",
+    "explicit_final_predictions": "predictions/fd001_final_quantile_best_model_predictions.csv",
+    "official_test_metrics": "results/FD001/fd001_official_test_metrics.csv",
+    "explicit_final_metrics": "results/FD001/fd001_final_quantile_official_test_metrics.csv"
   }
 }

@@ -37,6 +37,15 @@ Archivos:
 - maintenance_priority_ranking.csv
 - maintenance_decision_summary.csv
 - final_conclusion_payload.json
+- final_deliverable_manifest.csv
+- final_deliverable_manifest.json
+
+Lectura final:
+- Los modelos finales quedan cerrados por subset y mantienen validacion por motores completos antes del reporte oficial.
+- Las metricas oficiales se consolidan en `final_metric_summary.csv` y los rangos de RUL en `final_rul_bin_metrics.csv`.
+- La priorizacion de mantenimiento queda materializada en `maintenance_priority_ranking.csv` y `maintenance_decision_summary.csv`.
+- La interpretacion fisico-operativa agrega trazabilidad entre sensores, areas del motor, importancia agrupada y sensibilidad por permutacion.
+- El manifiesto final registra scripts, configs, predicciones, notebooks de evidencia y materiales de reporte sin mover ni reescribir notebooks.
 
 Interpretacion fisico-operativa:
 - Se agrego una auditoria fisico-operativa que no cambia los modelos finales, sino que interpreta sus senales por sensor base.
@@ -52,5 +61,8 @@ Archivos fisico-operativos:
 - physical_perturbation_sensitivity.csv
 - physical_pattern_links.csv
 - physical_operational_payload.json
+- physical_importance_by_engine_area.csv
+- physical_sensitivity_by_engine_area.csv
 - figures/physical_feature_importance_top_sensors.png
 - figures/physical_perturbation_sensitivity_top_sensors.png
+- figures/physical_importance_by_engine_area.png

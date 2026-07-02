@@ -1364,14 +1364,14 @@ def build_best_model_config(best_row, validation_metrics, official_metrics, prep
         "validation_metrics": validation_metrics,
         "official_test_metrics": official_metrics,
         "artifacts": {
-            "model_comparison": str(paths["results"] / "fd002_model_family_comparison.csv"),
-            "external_model_comparison": str(paths["results"] / "fd002_lgbm_xgb_model_comparison.csv"),
-            "hyperparameter_search": str(paths["results"] / "fd002_lgbm_xgb_hyperparam_search.csv"),
-            "feature_engineering_search": str(paths["results"] / "fd002_feature_engineering_search.csv"),
-            "final_candidate_ranking": str(paths["results"] / "fd002_final_candidate_ranking.csv"),
-            "validation_predictions": str(paths["results"] / "fd002_best_validation_predictions.csv"),
-            "official_test_predictions": str(paths["predictions"] / "fd002_best_model_predictions.csv"),
-            "official_test_metrics": str(paths["results"] / "fd002_official_test_metrics.csv"),
+            "model_comparison": "results/FD002/fd002_model_family_comparison.csv",
+            "external_model_comparison": "results/FD002/fd002_lgbm_xgb_model_comparison.csv",
+            "hyperparameter_search": "results/FD002/fd002_lgbm_xgb_hyperparam_search.csv",
+            "feature_engineering_search": "results/FD002/fd002_feature_engineering_search.csv",
+            "final_candidate_ranking": "results/FD002/fd002_final_candidate_ranking.csv",
+            "validation_predictions": "results/FD002/fd002_best_validation_predictions.csv",
+            "official_test_predictions": "predictions/fd002_best_model_predictions.csv",
+            "official_test_metrics": "results/FD002/fd002_official_test_metrics.csv",
         },
     }
 

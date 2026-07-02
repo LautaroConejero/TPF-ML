@@ -736,12 +736,12 @@ def build_best_model_config(
         "validation_single_split_metrics": validation_single_split_metrics,
         "official_test_metrics": official_metrics,
         "artifacts": {
-            "model_family_comparison": str(paths["results"] / "fd004_model_family_comparison.csv"),
-            "hyperparameter_search": str(paths["results"] / "fd004_hyperparam_search.csv"),
-            "finalist_summary": str(paths["results"] / "fd004_finalist_multisplit_summary.csv"),
-            "validation_predictions": str(paths["results"] / "fd004_best_validation_predictions.csv"),
-            "official_test_predictions": str(paths["predictions"] / "fd004_best_model_predictions.csv"),
-            "official_test_metrics": str(paths["results"] / "fd004_official_test_metrics.csv"),
+            "model_family_comparison": "results/FD004/fd004_model_family_comparison.csv",
+            "hyperparameter_search": "results/FD004/fd004_hyperparam_search.csv",
+            "finalist_summary": "results/FD004/fd004_finalist_multisplit_summary.csv",
+            "validation_predictions": "results/FD004/fd004_best_validation_predictions.csv",
+            "official_test_predictions": "predictions/fd004_best_model_predictions.csv",
+            "official_test_metrics": "results/FD004/fd004_official_test_metrics.csv",
         },
     }
 

@@ -772,14 +772,14 @@
     "n_test": 259
   },
   "artifacts": {
-    "model_comparison": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\results\\FD002\\fd002_model_family_comparison.csv",
-    "external_model_comparison": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\results\\FD002\\fd002_lgbm_xgb_model_comparison.csv",
-    "hyperparameter_search": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\results\\FD002\\fd002_lgbm_xgb_hyperparam_search.csv",
-    "feature_engineering_search": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\results\\FD002\\fd002_feature_engineering_search.csv",
-    "final_candidate_ranking": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\results\\FD002\\fd002_final_candidate_ranking.csv",
-    "validation_predictions": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\results\\FD002\\fd002_best_validation_predictions.csv",
-    "official_test_predictions": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\predictions\\fd002_best_model_predictions.csv",
-    "official_test_metrics": "C:\\Users\\frane\\udesa\\ML\\vs\\TPF-ML\\results\\FD002\\fd002_official_test_metrics.csv"
+    "model_comparison": "results/FD002/fd002_model_family_comparison.csv",
+    "external_model_comparison": "results/FD002/fd002_lgbm_xgb_model_comparison.csv",
+    "hyperparameter_search": "results/FD002/fd002_lgbm_xgb_hyperparam_search.csv",
+    "feature_engineering_search": "results/FD002/fd002_feature_engineering_search.csv",
+    "final_candidate_ranking": "results/FD002/fd002_final_candidate_ranking.csv",
+    "validation_predictions": "results/FD002/fd002_best_validation_predictions.csv",
+    "official_test_predictions": "predictions/fd002_best_model_predictions.csv",
+    "official_test_metrics": "results/FD002/fd002_official_test_metrics.csv"
   },
   "cross_dataset_decision": {
     "fd001_final": "LightGBM temporal_w50, RUL cap 125, quantile alpha=0.4, no sample weights.",

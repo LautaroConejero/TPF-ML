@@ -707,6 +707,8 @@ def build_pattern_links(dictionary: pd.DataFrame) -> pd.DataFrame:
 
 
 def write_interpretation_note() -> None:
+    if NOTE_PATH.exists():
+        return
     NOTES_DIR.mkdir(parents=True, exist_ok=True)
     lines = [
         "Interpretacion fisico-operativa complementaria",
@@ -847,6 +849,8 @@ def update_readme(overall: pd.DataFrame, sensitivity: pd.DataFrame) -> None:
 
 
 def write_notebook() -> None:
+    if NOTEBOOK_PATH.exists():
+        return
     NOTEBOOK_PATH.parent.mkdir(parents=True, exist_ok=True)
     cells = [
         {
@@ -1002,7 +1006,7 @@ def main(argv: list[str] | None = None) -> None:
     update_readme(overall, sensitivity)
     write_notebook()
 
-    print("Wrote physical-operational artifacts:")
+    print("Physical-operational artifacts available:")
     for path in [
         "conclusion/physical_sensor_dictionary.csv",
         "conclusion/physical_feature_importance_by_dataset.csv",
