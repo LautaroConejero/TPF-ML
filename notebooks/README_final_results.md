@@ -7,10 +7,15 @@ La entrega reproducible se concentra en los scripts finales (`predict_final.py`,
 ## Notebooks de conclusion
 
 - `notebooks/conclusion/01_conclusion_final.ipynb`: cierre principal, lectura de metricas finales y comparacion por subset.
-- `notebooks/conclusion/notebook_conclusion_final_v03.ipynb`: version historica del cierre final v03.
 - `notebooks/conclusion/02_interpretacion_fisica_operativa.ipynb`: reporte compacto del analisis fisico-operativo generado desde CSV finales.
-- `notebooks/conclusion/01_conclusion_final_backup_before_calibration_v01.ipynb`: respaldo historico previo a calibraciones finales.
-- `notebooks/conclusion/notebook_conclusion_final_actualizado_backup_pre_v03.ipynb`: respaldo historico anterior al cierre v03.
+
+## Archivo historico de conclusion
+
+Estos notebooks fueron movidos a `notebooks/conclusion/archive/` para no confundir versiones historicas con el cierre vigente. No son fuente vigente de metricas finales y pueden contener resultados previos; se preservan solo por trazabilidad.
+
+- `notebooks/conclusion/archive/notebook_conclusion_final_v03.ipynb`: version historica del cierre final v03.
+- `notebooks/conclusion/archive/notebook_conclusion_final_actualizado_backup_pre_v03.ipynb`: respaldo historico anterior al cierre v03.
+- `notebooks/conclusion/archive/01_conclusion_final_backup_before_calibration_v01.ipynb`: respaldo historico previo a calibraciones finales.
 
 ## FD001
 
@@ -48,4 +53,3 @@ La entrega reproducible se concentra en los scripts finales (`predict_final.py`,
 - `notebooks/EDA/general/02_eda_subsets_comparison.ipynb`: comparacion general FD001-FD004.
 - `notebooks/EDA/FD002/04_eda_fd002_conditions.ipynb`: conditions en FD002.
 - `notebooks/EDA/FD003/03_eda_fd003_patrones_degradacion.ipynb`: patrones de degradacion FD003.
-

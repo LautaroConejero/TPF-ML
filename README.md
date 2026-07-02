@@ -82,6 +82,8 @@ La entrega ejecutable final esta concentrada en `predict_final.py`, `conclusion/
 
 Indice de notebooks relevantes para entrega: `notebooks/README_final_results.md`.
 
+Los notebooks historicos de conclusion se conservan en `notebooks/conclusion/archive/` y no son fuente de metricas finales.
+
 ## Smoke Test
 
 ```powershell

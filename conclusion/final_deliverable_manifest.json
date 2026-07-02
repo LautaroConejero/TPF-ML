@@ -1,6 +1,30 @@
 {
   "artifacts": [
     {
+      "category": "archive_notebook",
+      "path": "notebooks/conclusion/archive/01_conclusion_final_backup_before_calibration_v01.ipynb",
+      "description": "Historical conclusion notebook backup.",
+      "used_for": "Historical traceability only.",
+      "reproducible_by": "Not used for final reproduction.",
+      "notes": "Historical backup; outputs preserved; not a source of final metrics."
+    },
+    {
+      "category": "archive_notebook",
+      "path": "notebooks/conclusion/archive/notebook_conclusion_final_actualizado_backup_pre_v03.ipynb",
+      "description": "Historical conclusion notebook backup.",
+      "used_for": "Historical traceability only.",
+      "reproducible_by": "Not used for final reproduction.",
+      "notes": "Historical backup; outputs preserved; not a source of final metrics."
+    },
+    {
+      "category": "archive_notebook",
+      "path": "notebooks/conclusion/archive/notebook_conclusion_final_v03.ipynb",
+      "description": "Notebook evidence for model development or final reporting.",
+      "used_for": "Historical traceability only.",
+      "reproducible_by": "Not used for final reproduction.",
+      "notes": "Historical backup; outputs preserved; not a source of final metrics."
+    },
+    {
       "category": "figure",
       "path": "conclusion/figures/physical_feature_importance_top_sensors.png",
       "description": "Final conclusion figure: physical_feature_importance_top_sensors.png.",
@@ -291,14 +315,6 @@
     {
       "category": "notebook_evidence",
       "path": "notebooks/conclusion/02_interpretacion_fisica_operativa.ipynb",
-      "description": "Notebook evidence for model development or final reporting.",
-      "used_for": "Experimental traceability.",
-      "reproducible_by": "Not executed for final smoke test.",
-      "notes": "Outputs intentionally preserved."
-    },
-    {
-      "category": "notebook_evidence",
-      "path": "notebooks/conclusion/notebook_conclusion_final_v03.ipynb",
       "description": "Notebook evidence for model development or final reporting.",
       "used_for": "Experimental traceability.",
       "reproducible_by": "Not executed for final smoke test.",
