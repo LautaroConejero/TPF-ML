@@ -1,0 +1,106 @@
+\documentclass[conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+%Template version as of 6/27/2024
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\begin{document}
+
+\title{Predicción de vida útil remanente y priorización de mantenimiento en motores turbofan}
+
+\author{\IEEEauthorblockN{Autor 1}
+\IEEEauthorblockA{\textit{Universidad / Departamento} \\
+Ciudad, Pais \\
+email u ORCID}
+\and
+\IEEEauthorblockN{Autor 2}
+\IEEEauthorblockA{\textit{Universidad / Departamento} \\
+Ciudad, Pais \\
+email u ORCID}
+\and
+\IEEEauthorblockN{Autor 3}
+\IEEEauthorblockA{\textit{Universidad / Departamento} \\
+Ciudad, Pais \\
+email u ORCID}
+}
+
+\maketitle
+
+\begin{abstract}
+Este trabajo aborda la predicción de Remaining Useful Life (RUL) en motores turbofan a partir del conjunto NASA C-MAPSS. Se entrenan modelos supervisados separados para los subconjuntos FD001, FD002, FD003 y FD004, respetando sus diferencias en condiciones operativas y modos de falla. La representación principal se basa en características temporales calculadas sobre ventanas de sensores y settings, con modelos finales de LightGBM y XGBoost según el subset. Para evitar leakage, la selección se realiza con validación por motores completos y cortes artificiales, reservando el test oficial para el reporte final. Además de la predicción de RUL, el proyecto incorpora una extensión operativa para priorización de mantenimiento y una lectura físico-operativa post-hoc que vincula sensores relevantes con variables físicas del motor y evalúa sensibilidad por perturbación.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Remaining Useful Life, C-MAPSS, mantenimiento predictivo, turbofan, LightGBM, XGBoost.
+\end{IEEEkeywords}
+
+\section{Introducción}
+La estimación de vida útil remanente, o Remaining Useful Life (RUL), es una tarea central en mantenimiento predictivo porque permite anticipar fallas, planificar intervenciones y reducir tanto riesgos operativos como costos asociados a mantenimiento correctivo. En sistemas industriales complejos, como motores turbofan, el deterioro no suele observarse directamente: debe inferirse a partir de señales de sensores, condiciones de operación y patrones temporales de degradación.
+
+El conjunto NASA C-MAPSS es un benchmark ampliamente utilizado para estudiar pronóstico de fallas en motores aeronáuticos simulados \cite{nasa_pcoe_cmapss,saxena2008damage}. Sus datos combinan trayectorias \textit{run-to-failure} de entrenamiento, donde se conoce el ciclo final de cada motor, con trayectorias de test truncadas, donde el objetivo es predecir el RUL en el último ciclo observado. Esta diferencia obliga a construir una evaluación cuidadosa: durante el entrenamiento puede derivarse el RUL a partir de la vida completa, mientras que en test solo se dispone de la historia parcial del motor.
+
+El problema no es homogéneo entre subsets. FD001 y FD003 tienen una única condición operativa, mientras que FD002 y FD004 incorporan múltiples regímenes de operación. Además, FD003 y FD004 incluyen más de un modo de falla. Por este motivo, el trabajo adopta modelos finales separados por subset en lugar de un único modelo global. La estrategia combina features temporales, control de condiciones operativas cuando corresponde, RUL cap para entrenamiento y modelos de boosting basados en LightGBM \cite{ke2017lightgbm} y XGBoost \cite{chen2016xgboost}.
+
+La contribución operativa del proyecto va más allá de reportar métricas agregadas. Las predicciones finales se traducen en rankings de prioridad de mantenimiento y reglas simples de decisión, orientadas a distinguir motores que requieren intervención urgente de aquellos que pueden continuar bajo monitoreo. Como complemento, se agrega una interpretación físico-operativa que agrupa importancias por sensor base, vincula sensores con variables físicas del turbofan y evalúa la sensibilidad del modelo frente a perturbaciones de señales relevantes.
+
+\section{Conjunto de datos y características}
+El conjunto C-MAPSS (\textit{Commercial Modular Aero-Propulsion System Simulation}) contiene simulaciones de degradación de motores turbofan bajo distintos escenarios operativos y de falla \cite{nasa_pcoe_cmapss,saxena2008damage}. Cada fila representa el estado de una unidad en un ciclo de operación e incluye el identificador del motor, el ciclo, tres variables de configuración operativa (\textit{settings}) y 21 sensores. Los datos de entrenamiento son trayectorias \textit{run-to-failure}: para cada motor se observa la vida completa hasta la falla. En cambio, los datos de test están truncados y solo muestran la historia disponible hasta un ciclo final observado; el RUL real de ese último ciclo se entrega por separado para evaluación. En entrenamiento, el RUL se define como la diferencia entre el ciclo final del motor y el ciclo actual.
+
+\begin{table}[!h]
+\caption{Estructura de los subconjuntos C-MAPSS}
+\label{tab:cmapss_subsets}
+\centering
+\begin{tabular}{lcccc}
+\hline
+Subset & Train & Test & Cond. & Modos de falla \\
+\hline
+FD001 & 100 & 100 & 1 & 1 \\
+FD002 & 260 & 259 & 6 & 1 \\
+FD003 & 100 & 100 & 1 & 2 \\
+FD004 & 248 & 249 & 6 & 2 \\
+\hline
+\end{tabular}
+\end{table}
+
+La Tabla~\ref{tab:cmapss_subsets} resume las diferencias principales entre subconjuntos. FD002 y FD004 son más complejos que FD001 porque combinan múltiples condiciones operativas: cambios en los \textit{settings} pueden modificar las lecturas de sensores aun cuando no haya degradación adicional. Por eso, las correlaciones globales sensor--RUL pueden quedar mezcladas con efectos de régimen. A su vez, FD003 y FD004 incorporan dos modos de falla, lo que introduce patrones de degradación latentes que no están etiquetados explícitamente por motor.
+
+Para representar la evolución temporal se construyen ventanas retrospectivas por motor. En cada ciclo observado, las características se calculan usando solo la historia pasada disponible hasta ese punto, evitando leakage temporal. Para cada sensor o variable base se consideran estadísticos simples de ventana: último valor, media, desviación estándar, mínimo, máximo, delta respecto del inicio de la ventana y pendiente. Además, el objetivo de entrenamiento se limita con un RUL cap de 125 ciclos, de modo que el modelo priorice la zona cercana a falla y no sobreajuste diferencias poco informativas entre vidas remanentes largas.
+
+En los subconjuntos con múltiples condiciones, FD002 y FD004, se agregan características de condición operativa y normalización por condición para separar cambios de régimen de señales de deterioro. En FD003 y FD004 también se usan características sensibles a degradación, como pendientes, deltas, volatilidad e interacciones entre sensores, con el objetivo de capturar dinámicas distintas de falla sin utilizar etiquetas supervisadas de modo de falla.
+
+\section{Metodología}
+El problema se formula como una regresión supervisada de RUL. En entrenamiento, para cada motor se calcula el objetivo como la diferencia entre el ciclo final observado de la unidad y el ciclo actual. En test, en cambio, se predice el RUL correspondiente al último ciclo disponible de cada motor, que representa una trayectoria truncada respecto de la vida completa.
+
+Para evitar leakage, la selección de modelos se realiza con validación por motores completos y no por filas individuales. De este modo, las unidades usadas para validación no aparecen en entrenamiento. Sobre esos motores de validación se generan cortes artificiales que simulan trayectorias truncadas, reproduciendo la condición del test oficial. Además, todas las ventanas temporales se calculan solo con ciclos pasados hasta el punto observado, y el test oficial queda reservado para la evaluación final una vez congelados modelos e hiperparámetros.
+
+La representación temporal se construye mediante ventanas retrospectivas por motor y punto de corte. Para cada sensor y \textit{setting} se calculan último valor, media, desviación estándar, mínimo, máximo, delta y pendiente. El entrenamiento usa un RUL cap de 125 ciclos para reducir el peso de diferencias lejanas a la falla, mientras que las métricas finales se calculan contra el RUL real sin cap.
+
+Los modelos finales se definen por subset: FD001 utiliza LightGBM con features temporales; FD002 utiliza XGBoost con features sensibles a condición y falla; FD003 utiliza LightGBM con features sensibles a falla; y FD004 utiliza XGBoost con features sensibles a condición y falla. No se emplea un único modelo global porque los subconjuntos no comparten la misma complejidad: FD001 y FD003 tienen una sola condición operativa, FD002 y FD004 incluyen múltiples condiciones, y FD003 y FD004 incorporan múltiples modos de falla.
+
+La evaluación considera MAE, RMSE, $R^2$ y el score C-MAPSS, que penaliza de manera asimétrica los errores de pronóstico. Además, se reporta el indicador de error peligroso, definido como una sobreestimación del RUL real por más de 20 ciclos. Este último criterio es relevante porque una predicción demasiado optimista puede retrasar una intervención de mantenimiento necesaria.
+
+Como extensión operativa, las predicciones se traducen en bandas de decisión: intervención urgente, mantenimiento preventivo programado, monitoreo cercano y operación con monitoreo normal. También se agrega una interpretación físico-operativa post-hoc basada en importancia agrupada por sensor base, sensibilidad por perturbación y agrupación por área del motor. Esta interpretación no modifica la selección de modelos ni sus hiperparámetros; se usa únicamente para discutir el comportamiento de las predicciones desde una perspectiva operacional.
+
+\section{Experimentos, resultados y discusión}
+% TODO: agregar tabla de métricas finales desde conclusion/final_metric_summary.csv.
+% TODO: discutir resultados por subset.
+% TODO: agregar análisis por rangos de RUL desde conclusion/final_rul_bin_metrics.csv.
+% TODO: agregar priorización de mantenimiento desde conclusion/maintenance_decision_summary.csv.
+% TODO: agregar interpretación físico-operativa desde conclusion/physical_importance_by_engine_area.csv y conclusion/physical_sensitivity_by_engine_area.csv.
+
+\section{Conclusiones y trabajo futuro}
+% TODO: resumir aprendizajes por subset y decisiones finales.
+% TODO: discutir limitaciones: simulación, ausencia de etiquetas de fault mode por motor y dependencia del RUL cap.
+% TODO: proponer extensiones: modelos secuenciales, calibración de incertidumbre, validación operacional y explicabilidad adicional.
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}
