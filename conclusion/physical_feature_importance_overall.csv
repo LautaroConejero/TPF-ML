@@ -1,0 +1,26 @@
+base_variable,physical_symbol,physical_description,engine_area,mean_importance_normalized,max_importance_normalized,datasets_where_present,overall_rank
+sensor_11,Ps30,Static pressure at HPC outlet.,HPC,0.23667115340945802,0.4947720059821311,"FD001,FD002,FD003,FD004",1
+sensor_4,T50,Total temperature at LPT outlet.,turbine/LPT,0.0917086478860012,0.13271907803203367,"FD001,FD002,FD003,FD004",2
+sensor_13,NRf,Corrected fan speed.,fan/spool,0.08468386948150719,0.16171855508174562,"FD001,FD002,FD003,FD004",3
+sensor_8,Nf,Physical fan speed.,fan/spool,0.06446237745303729,0.1188098097924184,"FD001,FD002,FD003,FD004",4
+sensor_14,NRc,Corrected core speed.,core spool,0.06249476041853112,0.0848901098901099,"FD001,FD002,FD003,FD004",5
+sensor_9,Nc,Physical core speed.,core spool,0.06005758999853673,0.09206043956043956,"FD001,FD002,FD003,FD004",6
+sensor_15,BPR,Bypass ratio.,bypass/fan,0.05742792382775031,0.09951524558902057,"FD001,FD002,FD003,FD004",7
+sensor_3,T30,Total temperature at HPC outlet.,HPC,0.044468349501845354,0.06972527472527472,"FD001,FD002,FD003,FD004",8
+sensor_12,phi,Ratio of fuel flow to Ps30.,fuel/HPC interaction,0.04444530093468549,0.0889010989010989,"FD001,FD002,FD003,FD004",9
+sensor_2,T24,Total temperature at LPC outlet.,LPC,0.04419490466517511,0.06197802197802198,"FD001,FD002,FD003,FD004",10
+sensor_17,htBleed,Bleed enthalpy.,bleed system,0.04070200380945172,0.05620756778314946,"FD001,FD002,FD003,FD004",11
+sensor_7,P30,Total pressure at HPC outlet.,HPC,0.03974318497569073,0.0746978021978022,"FD001,FD002,FD003,FD004",12
+sensor_21,W32,LPT coolant bleed.,LPT cooling/bleed,0.029544780917035583,0.05818681318681319,"FD001,FD002,FD003,FD004",13
+setting_1,setting_1,Operational setting associated with flight regime.,operating condition,0.02822281556715221,0.06142857142857143,"FD001,FD002,FD003,FD004",14
+sensor_20,W31,HPT coolant bleed.,HPT cooling/bleed,0.02441287010100383,0.05554945054945055,"FD001,FD002,FD003,FD004",15
+sensor_6,P15,Total pressure in bypass duct.,bypass,0.01892718539127314,0.04516483516483517,"FD001,FD002,FD003,FD004",16
+setting_2,setting_2,Operational setting associated with flight regime.,operating condition,0.01640585367604364,0.038626373626373625,"FD001,FD002,FD003,FD004",17
+condition,condition,Inferred operating condition from settings.,operating condition,0.006172339025807987,0.007930462350808541,"FD002,FD004",18
+sensor_10,epr,Engine pressure ratio.,global engine pressure,0.004713673584122202,0.008296703296703296,"FD002,FD003,FD004",19
+sensor_16,farB,Burner fuel-air ratio.,combustor,0.003184083599348566,0.005169528270697669,"FD002,FD003,FD004",20
+sensor_18,Nf_dmd,Demanded fan speed.,control system,0.00202693814607114,0.0032518953354103313,"FD002,FD004",21
+sensor_1,T2,Total temperature at fan inlet.,inlet/fan,0.0016265513651605129,0.0028136590400168067,"FD002,FD004",22
+setting_3,setting_3,Operational setting associated with flight regime.,operating condition,0.000485277894824697,0.000777133241473151,"FD002,FD004",23
+sensor_5,P2,Pressure at fan inlet.,inlet/fan,0.0004634091763814491,0.000989010989010989,"FD002,FD003,FD004",24
+sensor_19,PCNfR_dmd,Demanded corrected fan speed.,control system,0.0,0.0,"FD002,FD004",25

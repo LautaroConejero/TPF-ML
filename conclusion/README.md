@@ -37,3 +37,20 @@ Archivos:
 - maintenance_priority_ranking.csv
 - maintenance_decision_summary.csv
 - final_conclusion_payload.json
+
+Interpretacion fisico-operativa:
+- Se agrego una auditoria fisico-operativa que no cambia los modelos finales, sino que interpreta sus senales por sensor base.
+- Top sensores globales por importancia agrupada: Ps30 (sensor_11), T50 (sensor_4), NRf (sensor_13).
+- Sensores con mayor sensibilidad por permutacion: FD004:Ps30 (sensor_11), FD002:Ps30 (sensor_11), FD002:BPR (sensor_15).
+- FD003 se conecta con patrones latentes en core speed y presion HPC; FD004 agrega la complejidad de condiciones operativas y senales fuel/HPC/bypass.
+- Las permutaciones agrupan todas las columnas derivadas de cada sensor para evitar interpretar estadisticos temporales aislados.
+
+Archivos fisico-operativos:
+- physical_sensor_dictionary.csv
+- physical_feature_importance_by_dataset.csv
+- physical_feature_importance_overall.csv
+- physical_perturbation_sensitivity.csv
+- physical_pattern_links.csv
+- physical_operational_payload.json
+- figures/physical_feature_importance_top_sensors.png
+- figures/physical_perturbation_sensitivity_top_sensors.png

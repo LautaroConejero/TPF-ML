@@ -1,0 +1,432 @@
+{
+  "artifacts": {
+    "physical_sensor_dictionary": "conclusion/physical_sensor_dictionary.csv",
+    "physical_feature_importance_by_dataset": "conclusion/physical_feature_importance_by_dataset.csv",
+    "physical_feature_importance_overall": "conclusion/physical_feature_importance_overall.csv",
+    "physical_perturbation_sensitivity": "conclusion/physical_perturbation_sensitivity.csv",
+    "physical_pattern_links": "conclusion/physical_pattern_links.csv",
+    "physical_operational_payload": "conclusion/physical_operational_payload.json",
+    "feature_importance_figure": "conclusion/figures/physical_feature_importance_top_sensors.png",
+    "perturbation_sensitivity_figure": "conclusion/figures/physical_perturbation_sensitivity_top_sensors.png",
+    "report_note": "notas/interpretacion_fisica_operativa.txt",
+    "notebook": "notebooks/conclusion/02_interpretacion_fisica_operativa.ipynb"
+  },
+  "physical_sensors_considered": [
+    {
+      "raw_variable": "sensor_1",
+      "physical_symbol": "T2",
+      "engine_area": "inlet/fan"
+    },
+    {
+      "raw_variable": "sensor_2",
+      "physical_symbol": "T24",
+      "engine_area": "LPC"
+    },
+    {
+      "raw_variable": "sensor_3",
+      "physical_symbol": "T30",
+      "engine_area": "HPC"
+    },
+    {
+      "raw_variable": "sensor_4",
+      "physical_symbol": "T50",
+      "engine_area": "turbine/LPT"
+    },
+    {
+      "raw_variable": "sensor_5",
+      "physical_symbol": "P2",
+      "engine_area": "inlet/fan"
+    },
+    {
+      "raw_variable": "sensor_6",
+      "physical_symbol": "P15",
+      "engine_area": "bypass"
+    },
+    {
+      "raw_variable": "sensor_7",
+      "physical_symbol": "P30",
+      "engine_area": "HPC"
+    },
+    {
+      "raw_variable": "sensor_8",
+      "physical_symbol": "Nf",
+      "engine_area": "fan/spool"
+    },
+    {
+      "raw_variable": "sensor_9",
+      "physical_symbol": "Nc",
+      "engine_area": "core spool"
+    },
+    {
+      "raw_variable": "sensor_10",
+      "physical_symbol": "epr",
+      "engine_area": "global engine pressure"
+    },
+    {
+      "raw_variable": "sensor_11",
+      "physical_symbol": "Ps30",
+      "engine_area": "HPC"
+    },
+    {
+      "raw_variable": "sensor_12",
+      "physical_symbol": "phi",
+      "engine_area": "fuel/HPC interaction"
+    },
+    {
+      "raw_variable": "sensor_13",
+      "physical_symbol": "NRf",
+      "engine_area": "fan/spool"
+    },
+    {
+      "raw_variable": "sensor_14",
+      "physical_symbol": "NRc",
+      "engine_area": "core spool"
+    },
+    {
+      "raw_variable": "sensor_15",
+      "physical_symbol": "BPR",
+      "engine_area": "bypass/fan"
+    },
+    {
+      "raw_variable": "sensor_16",
+      "physical_symbol": "farB",
+      "engine_area": "combustor"
+    },
+    {
+      "raw_variable": "sensor_17",
+      "physical_symbol": "htBleed",
+      "engine_area": "bleed system"
+    },
+    {
+      "raw_variable": "sensor_18",
+      "physical_symbol": "Nf_dmd",
+      "engine_area": "control system"
+    },
+    {
+      "raw_variable": "sensor_19",
+      "physical_symbol": "PCNfR_dmd",
+      "engine_area": "control system"
+    },
+    {
+      "raw_variable": "sensor_20",
+      "physical_symbol": "W31",
+      "engine_area": "HPT cooling/bleed"
+    },
+    {
+      "raw_variable": "sensor_21",
+      "physical_symbol": "W32",
+      "engine_area": "LPT cooling/bleed"
+    }
+  ],
+  "top_global_importance_sensors": [
+    {
+      "base_variable": "sensor_11",
+      "physical_symbol": "Ps30",
+      "physical_description": "Static pressure at HPC outlet.",
+      "engine_area": "HPC",
+      "mean_importance_normalized": 0.23667115340945802,
+      "max_importance_normalized": 0.4947720059821311,
+      "datasets_where_present": "FD001,FD002,FD003,FD004",
+      "overall_rank": 1
+    },
+    {
+      "base_variable": "sensor_4",
+      "physical_symbol": "T50",
+      "physical_description": "Total temperature at LPT outlet.",
+      "engine_area": "turbine/LPT",
+      "mean_importance_normalized": 0.0917086478860012,
+      "max_importance_normalized": 0.13271907803203367,
+      "datasets_where_present": "FD001,FD002,FD003,FD004",
+      "overall_rank": 2
+    },
+    {
+      "base_variable": "sensor_13",
+      "physical_symbol": "NRf",
+      "physical_description": "Corrected fan speed.",
+      "engine_area": "fan/spool",
+      "mean_importance_normalized": 0.08468386948150719,
+      "max_importance_normalized": 0.16171855508174562,
+      "datasets_where_present": "FD001,FD002,FD003,FD004",
+      "overall_rank": 3
+    },
+    {
+      "base_variable": "sensor_8",
+      "physical_symbol": "Nf",
+      "physical_description": "Physical fan speed.",
+      "engine_area": "fan/spool",
+      "mean_importance_normalized": 0.06446237745303729,
+      "max_importance_normalized": 0.1188098097924184,
+      "datasets_where_present": "FD001,FD002,FD003,FD004",
+      "overall_rank": 4
+    },
+    {
+      "base_variable": "sensor_14",
+      "physical_symbol": "NRc",
+      "physical_description": "Corrected core speed.",
+      "engine_area": "core spool",
+      "mean_importance_normalized": 0.06249476041853112,
+      "max_importance_normalized": 0.0848901098901099,
+      "datasets_where_present": "FD001,FD002,FD003,FD004",
+      "overall_rank": 5
+    },
+    {
+      "base_variable": "sensor_9",
+      "physical_symbol": "Nc",
+      "physical_description": "Physical core speed.",
+      "engine_area": "core spool",
+      "mean_importance_normalized": 0.06005758999853673,
+      "max_importance_normalized": 0.09206043956043956,
+      "datasets_where_present": "FD001,FD002,FD003,FD004",
+      "overall_rank": 6
+    },
+    {
+      "base_variable": "sensor_15",
+      "physical_symbol": "BPR",
+      "physical_description": "Bypass ratio.",
+      "engine_area": "bypass/fan",
+      "mean_importance_normalized": 0.05742792382775031,
+      "max_importance_normalized": 0.09951524558902057,
+      "datasets_where_present": "FD001,FD002,FD003,FD004",
+      "overall_rank": 7
+    },
+    {
+      "base_variable": "sensor_3",
+      "physical_symbol": "T30",
+      "physical_description": "Total temperature at HPC outlet.",
+      "engine_area": "HPC",
+      "mean_importance_normalized": 0.044468349501845354,
+      "max_importance_normalized": 0.06972527472527472,
+      "datasets_where_present": "FD001,FD002,FD003,FD004",
+      "overall_rank": 8
+    },
+    {
+      "base_variable": "sensor_12",
+      "physical_symbol": "phi",
+      "physical_description": "Ratio of fuel flow to Ps30.",
+      "engine_area": "fuel/HPC interaction",
+      "mean_importance_normalized": 0.04444530093468549,
+      "max_importance_normalized": 0.0889010989010989,
+      "datasets_where_present": "FD001,FD002,FD003,FD004",
+      "overall_rank": 9
+    },
+    {
+      "base_variable": "sensor_2",
+      "physical_symbol": "T24",
+      "physical_description": "Total temperature at LPC outlet.",
+      "engine_area": "LPC",
+      "mean_importance_normalized": 0.04419490466517511,
+      "max_importance_normalized": 0.06197802197802198,
+      "datasets_where_present": "FD001,FD002,FD003,FD004",
+      "overall_rank": 10
+    }
+  ],
+  "top_sensitivity_sensors": [
+    {
+      "dataset": "FD004",
+      "base_variable": "sensor_11",
+      "physical_symbol": "Ps30",
+      "delta_cmapss_score": 13830.236400225745,
+      "mean_abs_prediction_shift": 15.452605247497559,
+      "sensitivity_score": 14602.866662600623
+    },
+    {
+      "dataset": "FD002",
+      "base_variable": "sensor_11",
+      "physical_symbol": "Ps30",
+      "delta_cmapss_score": 10070.937547012667,
+      "mean_abs_prediction_shift": 12.95455551147461,
+      "sensitivity_score": 10718.665322586397
+    },
+    {
+      "dataset": "FD002",
+      "base_variable": "sensor_15",
+      "physical_symbol": "BPR",
+      "delta_cmapss_score": 2813.634835432352,
+      "mean_abs_prediction_shift": 8.792223930358887,
+      "sensitivity_score": 3253.246031950296
+    },
+    {
+      "dataset": "FD004",
+      "base_variable": "sensor_14",
+      "physical_symbol": "NRc",
+      "delta_cmapss_score": 2785.5531905610233,
+      "mean_abs_prediction_shift": 4.7195563316345215,
+      "sensitivity_score": 3021.5310071427493
+    },
+    {
+      "dataset": "FD004",
+      "base_variable": "sensor_4",
+      "physical_symbol": "T50",
+      "delta_cmapss_score": 2528.6242531513963,
+      "mean_abs_prediction_shift": 7.78033971786499,
+      "sensitivity_score": 2917.6412390446458
+    },
+    {
+      "dataset": "FD002",
+      "base_variable": "sensor_4",
+      "physical_symbol": "T50",
+      "delta_cmapss_score": 2180.947648849049,
+      "mean_abs_prediction_shift": 6.481019020080566,
+      "sensitivity_score": 2504.9985998530774
+    },
+    {
+      "dataset": "FD002",
+      "base_variable": "sensor_8",
+      "physical_symbol": "Nf",
+      "delta_cmapss_score": 2077.46661477866,
+      "mean_abs_prediction_shift": 4.675154209136963,
+      "sensitivity_score": 2311.2243252355083
+    },
+    {
+      "dataset": "FD004",
+      "base_variable": "sensor_9",
+      "physical_symbol": "Nc",
+      "delta_cmapss_score": 1529.5057187087823,
+      "mean_abs_prediction_shift": 4.877596855163574,
+      "sensitivity_score": 1773.385561466961
+    },
+    {
+      "dataset": "FD002",
+      "base_variable": "sensor_14",
+      "physical_symbol": "NRc",
+      "delta_cmapss_score": 1424.224928506117,
+      "mean_abs_prediction_shift": 3.7491681575775146,
+      "sensitivity_score": 1611.6833363849928
+    },
+    {
+      "dataset": "FD004",
+      "base_variable": "sensor_13",
+      "physical_symbol": "NRf",
+      "delta_cmapss_score": 1223.0105499062474,
+      "mean_abs_prediction_shift": 5.1306891441345215,
+      "sensitivity_score": 1479.5450071129735
+    }
+  ],
+  "subset_summary": [
+    {
+      "dataset": "FD001",
+      "model_name": "candidate_03_B_quantile_a040_search_14",
+      "representation": "temporal_w50",
+      "feature_set": "temporal",
+      "window_size": 50,
+      "rul_cap": 125,
+      "official_metrics": {
+        "mae": 10.673098571038599,
+        "rmse": 13.94871384763963,
+        "r2": 0.8873298725026293,
+        "cmapss_score": 283.89783207257466,
+        "cmapss_score_mean": 2.8389783207257464,
+        "dangerous_error_pct": 8.0
+      },
+      "top_sensitivity_sensors": [
+        {
+          "base_variable": "sensor_11",
+          "physical_symbol": "Ps30"
+        },
+        {
+          "base_variable": "sensor_14",
+          "physical_symbol": "NRc"
+        },
+        {
+          "base_variable": "sensor_9",
+          "physical_symbol": "Nc"
+        }
+      ]
+    },
+    {
+      "dataset": "FD002",
+      "model_name": "xgb_condition_fault_sensitive_mid_guard",
+      "representation": "temporal_w50_condition_fault_sensitive_mid_guard",
+      "feature_set": "condition_fault_sensitive",
+      "window_size": 50,
+      "rul_cap": 125,
+      "official_metrics": {
+        "mae": 16.61884540940804,
+        "rmse": 25.280092935385433,
+        "r2": 0.7790290352968239,
+        "cmapss_score": 5349.925447634689,
+        "cmapss_score_mean": 20.656082809400342,
+        "dangerous_error_pct": 5.019305019305019
+      },
+      "top_sensitivity_sensors": [
+        {
+          "base_variable": "sensor_11",
+          "physical_symbol": "Ps30"
+        },
+        {
+          "base_variable": "sensor_15",
+          "physical_symbol": "BPR"
+        },
+        {
+          "base_variable": "sensor_4",
+          "physical_symbol": "T50"
+        }
+      ]
+    },
+    {
+      "dataset": "FD003",
+      "model_name": "fd003_lgbm_w50_cap125_quantile_a04_none_fault_sensitive",
+      "representation": "temporal_w50_fault_sensitive",
+      "feature_set": "fault_sensitive",
+      "window_size": 50,
+      "rul_cap": 125,
+      "official_metrics": {
+        "mae": 10.820275273623713,
+        "rmse": 14.555132153165431,
+        "r2": 0.8763701163002854,
+        "cmapss_score": 394.76291534675,
+        "cmapss_score_mean": 3.9476291534675,
+        "dangerous_error_pct": 9.0
+      },
+      "top_sensitivity_sensors": [
+        {
+          "base_variable": "sensor_11",
+          "physical_symbol": "Ps30"
+        },
+        {
+          "base_variable": "sensor_12",
+          "physical_symbol": "phi"
+        },
+        {
+          "base_variable": "sensor_4",
+          "physical_symbol": "T50"
+        }
+      ]
+    },
+    {
+      "dataset": "FD004",
+      "model_name": "fd004_xgb_fs_bin_weights_w70",
+      "representation": "temporal_w70_condition_fault_sensitive",
+      "feature_set": "condition_fault_sensitive",
+      "window_size": 70,
+      "rul_cap": 125,
+      "official_metrics": {
+        "mae": 17.909395215972776,
+        "rmse": 26.071138098834716,
+        "r2": 0.7713622928981874,
+        "cmapss_score": 4600.217416811195,
+        "cmapss_score_mean": 18.549263777464496,
+        "dangerous_error_pct": 6.451612903225806
+      },
+      "top_sensitivity_sensors": [
+        {
+          "base_variable": "sensor_11",
+          "physical_symbol": "Ps30"
+        },
+        {
+          "base_variable": "sensor_14",
+          "physical_symbol": "NRc"
+        },
+        {
+          "base_variable": "sensor_4",
+          "physical_symbol": "T50"
+        }
+      ]
+    }
+  ],
+  "methodology": {
+    "importance_grouping": "Feature importances are split across detected raw sensors and then normalized within each dataset.",
+    "perturbation": "All derived columns for a sensor are permuted together with random_state=42 on official test last-cycle features.",
+    "selection_policy": "The final model selection is not changed by this script."
+  }
+}
