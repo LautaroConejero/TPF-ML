@@ -42,17 +42,19 @@ Archivos:
 
 Lectura final:
 - Los modelos finales quedan cerrados por subset y mantienen validacion por motores completos antes del reporte oficial.
-- Las metricas oficiales se consolidan en `final_metric_summary.csv` y los rangos de RUL en `final_rul_bin_metrics.csv`.
+- Las metricas finales oficiales estan en `final_metric_summary.csv`.
+- Las predicciones ejecutables finales estan en `predictions/final_executable/`.
+- Las metricas por rango de RUL estan en `final_rul_bin_metrics.csv`.
 - La priorizacion de mantenimiento queda materializada en `maintenance_priority_ranking.csv` y `maintenance_decision_summary.csv`.
-- La interpretacion fisico-operativa agrega trazabilidad entre sensores, areas del motor, importancia agrupada y sensibilidad por permutacion.
+- Los notebooks historicos de conclusion estan en `notebooks/conclusion/archive/` y no son fuente de metricas finales.
 - El manifiesto final registra scripts, configs, predicciones, notebooks de evidencia y materiales de reporte sin mover ni reescribir notebooks.
 
 Interpretacion fisico-operativa:
-- Se agrego una auditoria fisico-operativa que no cambia los modelos finales, sino que interpreta sus senales por sensor base.
-- Top sensores globales por importancia agrupada: Ps30 (sensor_11), T50 (sensor_4), NRf (sensor_13).
-- Sensores con mayor sensibilidad por permutacion: FD004:Ps30 (sensor_11), FD002:Ps30 (sensor_11), FD002:BPR (sensor_15).
-- FD003 se conecta con patrones latentes en core speed y presion HPC; FD004 agrega la complejidad de condiciones operativas y senales fuel/HPC/bypass.
-- Las permutaciones agrupan todas las columnas derivadas de cada sensor para evitar interpretar estadisticos temporales aislados.
+- Se agrega una auditoria post-hoc que no cambia los modelos finales ni sus metricas oficiales.
+- El analisis interpreta senales por sensor base y por area fisica del motor.
+- Las importancias se agrupan por variable base para no interpretar cada estadistico temporal por separado.
+- Las permutaciones agrupan todas las columnas derivadas del mismo sensor para medir sensibilidad fisica de forma consistente.
+- Los artefactos se regeneran con `python conclusion/build_physical_operational_artifacts.py` y `python conclusion/build_physical_area_summary.py`.
 
 Archivos fisico-operativos:
 - physical_sensor_dictionary.csv
