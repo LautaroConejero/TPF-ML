@@ -34,7 +34,7 @@ email u ORCID}
 \maketitle
 
 \begin{abstract}
-Este trabajo aborda la predicción de Remaining Useful Life (RUL) en motores turbofan a partir del conjunto NASA C-MAPSS. Se entrenan modelos supervisados separados para los subconjuntos FD001, FD002, FD003 y FD004, respetando sus diferencias en condiciones operativas y modos de falla. La representación principal se basa en características temporales calculadas sobre ventanas de sensores y settings, con modelos finales de LightGBM y XGBoost según el subset. Para evitar leakage, la selección se realiza con validación por motores completos y cortes artificiales, reservando el test oficial para el reporte final. Además de la predicción de RUL, el proyecto incorpora una extensión operativa para priorización de mantenimiento y una lectura físico-operativa post-hoc que vincula sensores relevantes con variables físicas del motor y evalúa sensibilidad por perturbación.
+Este trabajo aborda la predicción de Remaining Useful Life (RUL) en motores turbofan a partir del conjunto NASA C-MAPSS. Se entrenan modelos supervisados separados para los subconjuntos FD001, FD002, FD003 y FD004, respetando sus diferencias en condiciones operativas y modos de falla. La representación principal se basa en características temporales calculadas sobre ventanas de sensores y settings, con modelos finales de LightGBM y XGBoost según el subset. Para evitar leakage, la selección se realiza con validación por motores completos y cortes artificiales, reservando el test oficial para el reporte final. Los resultados finales se reportan mediante métricas de regresión, score C-MAPSS y análisis operativo de errores peligrosos por rango de RUL. Además de la predicción de RUL, el proyecto incorpora una extensión operativa para priorización de mantenimiento y una lectura físico-operativa post-hoc que vincula sensores relevantes con variables físicas del motor y evalúa sensibilidad por perturbación.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -42,7 +42,7 @@ Remaining Useful Life, C-MAPSS, mantenimiento predictivo, turbofan, LightGBM, XG
 \end{IEEEkeywords}
 
 \section{Introducción}
-La estimación de vida útil remanente, o Remaining Useful Life (RUL), es una tarea central en mantenimiento predictivo porque permite anticipar fallas, planificar intervenciones y reducir tanto riesgos operativos como costos asociados a mantenimiento correctivo. En sistemas industriales complejos, como motores turbofan, el deterioro no suele observarse directamente: debe inferirse a partir de señales de sensores, condiciones de operación y patrones temporales de degradación.
+La estimación de vida útil remanente, o Remaining Useful Life (RUL), es una tarea central en mantenimiento predictivo porque permite anticipar fallas, planificar intervenciones y reducir tanto riesgos operativos como costos asociados a mantenimiento correctivo. En sistemas industriales complejos, como motores turbofan, el deterioro no suele observarse directamente: debe inferirse a partir de señales de sensores, condiciones de operación y patrones temporales de degradación. La entrada del sistema es la historia parcial de sensores y condiciones operativas de un motor hasta un ciclo observado, y la salida es una predicción numérica del RUL en ciclos restantes.
 
 El conjunto NASA C-MAPSS es un benchmark ampliamente utilizado para estudiar pronóstico de fallas en motores aeronáuticos simulados \cite{nasa_pcoe_cmapss,saxena2008damage}. Sus datos combinan trayectorias \textit{run-to-failure} de entrenamiento, donde se conoce el ciclo final de cada motor, con trayectorias de test truncadas, donde el objetivo es predecir el RUL en el último ciclo observado. Esta diferencia obliga a construir una evaluación cuidadosa: durante el entrenamiento puede derivarse el RUL a partir de la vida completa, mientras que en test solo se dispone de la historia parcial del motor.
 
@@ -54,7 +54,7 @@ La contribución operativa del proyecto va más allá de reportar métricas agre
 El conjunto C-MAPSS (\textit{Commercial Modular Aero-Propulsion System Simulation}) contiene simulaciones de degradación de motores turbofan bajo distintos escenarios operativos y de falla \cite{nasa_pcoe_cmapss,saxena2008damage}. Cada fila representa el estado de una unidad en un ciclo de operación e incluye el identificador del motor, el ciclo, tres variables de configuración operativa (\textit{settings}) y 21 sensores. Los datos de entrenamiento son trayectorias \textit{run-to-failure}: para cada motor se observa la vida completa hasta la falla. En cambio, los datos de test están truncados y solo muestran la historia disponible hasta un ciclo final observado; el RUL real de ese último ciclo se entrega por separado para evaluación. En entrenamiento, el RUL se define como la diferencia entre el ciclo final del motor y el ciclo actual.
 
 \begin{table}[!h]
-\caption{Estructura de los subconjuntos C-MAPSS}
+\caption{Tamaño, condiciones operativas y modos de falla de los subconjuntos C-MAPSS}
 \label{tab:cmapss_subsets}
 \centering
 \begin{tabular}{lcccc}
@@ -73,20 +73,47 @@ La Tabla~\ref{tab:cmapss_subsets} resume las diferencias principales entre subco
 
 Para representar la evolución temporal se construyen ventanas retrospectivas por motor. En cada ciclo observado, las características se calculan usando solo la historia pasada disponible hasta ese punto, evitando leakage temporal. Para cada sensor o variable base se consideran estadísticos simples de ventana: último valor, media, desviación estándar, mínimo, máximo, delta respecto del inicio de la ventana y pendiente. Además, el objetivo de entrenamiento se limita con un RUL cap de 125 ciclos, de modo que el modelo priorice la zona cercana a falla y no sobreajuste diferencias poco informativas entre vidas remanentes largas.
 
-En los subconjuntos con múltiples condiciones, FD002 y FD004, se agregan características de condición operativa y normalización por condición para separar cambios de régimen de señales de deterioro. En FD003 y FD004 también se usan características sensibles a degradación, como pendientes, deltas, volatilidad e interacciones entre sensores, con el objetivo de capturar dinámicas distintas de falla sin utilizar etiquetas supervisadas de modo de falla.
+Como el dataset no provee un conjunto de validación separado, la validación interna se construye separando motores completos del entrenamiento. No se aplicó aumento de datos clásico; los cortes artificiales se utilizaron para simular escenarios truncados de validación, análogos al test oficial.
+
+En los subconjuntos con múltiples condiciones, FD002 y FD004, se agregan características de condición operativa y normalización por condición para separar cambios de régimen de señales de deterioro. En FD002, FD003 y FD004 también se usan características sensibles a degradación, como pendientes, deltas, volatilidad e interacciones entre sensores, con el objetivo de capturar dinámicas distintas de falla sin utilizar etiquetas supervisadas de modo de falla.
 
 \section{Metodología}
-El problema se formula como una regresión supervisada de RUL. En entrenamiento, para cada motor se calcula el objetivo como la diferencia entre el ciclo final observado de la unidad y el ciclo actual. En test, en cambio, se predice el RUL correspondiente al último ciclo disponible de cada motor, que representa una trayectoria truncada respecto de la vida completa.
+El pipeline final se formula como un problema de regresión supervisada de RUL. Sea $x_{i,t}$ el vector de sensores y \textit{settings} del motor $i$ en el ciclo $t$, y sea $T_i$ el ciclo final de falla observado para ese motor en entrenamiento. El objetivo real se define como
+\begin{equation}
+RUL_{i,t}=T_i-t,
+\end{equation}
+mientras que el objetivo usado para entrenar se limita superiormente mediante
+\begin{equation}
+RUL^{\mathrm{cap}}_{i,t} = \min(RUL_{i,t}, 125).
+\end{equation}
+Las métricas finales se calculan contra el RUL real sin cap. En test, el modelo predice el RUL del último ciclo observado de cada motor, que representa una trayectoria truncada.
 
-Para evitar leakage, la selección de modelos se realiza con validación por motores completos y no por filas individuales. De este modo, las unidades usadas para validación no aparecen en entrenamiento. Sobre esos motores de validación se generan cortes artificiales que simulan trayectorias truncadas, reproduciendo la condición del test oficial. Además, todas las ventanas temporales se calculan solo con ciclos pasados hasta el punto observado, y el test oficial queda reservado para la evaluación final una vez congelados modelos e hiperparámetros.
+La ejecución final sigue una secuencia fija: lectura de datos, cálculo de RUL, construcción de ventanas temporales, separación por motores, entrenamiento y selección, predicción final del último ciclo de cada motor, evaluación y capa operativa. Para evitar leakage, la validación se realiza por motores completos y no por filas individuales; las unidades usadas para validación no aparecen en entrenamiento. Sobre esos motores se generan cortes artificiales que simulan trayectorias truncadas, y todas las ventanas usan solo ciclos pasados hasta el punto observado. El test oficial se reserva para la evaluación final una vez congelados modelos e hiperparámetros.
 
-La representación temporal se construye mediante ventanas retrospectivas por motor y punto de corte. Para cada sensor y \textit{setting} se calculan último valor, media, desviación estándar, mínimo, máximo, delta y pendiente. El entrenamiento usa un RUL cap de 125 ciclos para reducir el peso de diferencias lejanas a la falla, mientras que las métricas finales se calculan contra el RUL real sin cap.
+La representación temporal se construye con ventanas retrospectivas por motor y punto de corte. Para cada sensor y \textit{setting} se calculan último valor, media, desviación estándar, mínimo, máximo, delta y pendiente. La ventana indica cuántos ciclos recientes se usan para calcular esos estadísticos; el cap es el límite superior aplicado al objetivo de entrenamiento. Temporal refiere a estadísticos en ventana. Condición incorpora el régimen operativo estimado a partir de los \textit{settings}, variables indicadoras y normalización de sensores por condición. Degradación, o \textit{fault-sensitive}, agrega pendientes, deltas, volatilidad, aceleraciones e interacciones entre sensores relevantes. Las variables de condición y la normalización por condición se emplean en FD002 y FD004, donde existen múltiples regímenes operativos; en FD003, al haber una única condición operativa, la representación se concentra en características sensibles a degradación.
 
-Los modelos finales se definen por subset: FD001 utiliza LightGBM con features temporales; FD002 utiliza XGBoost con features sensibles a condición y falla; FD003 utiliza LightGBM con features sensibles a falla; y FD004 utiliza XGBoost con features sensibles a condición y falla. No se emplea un único modelo global porque los subconjuntos no comparten la misma complejidad: FD001 y FD003 tienen una sola condición operativa, FD002 y FD004 incluyen múltiples condiciones, y FD003 y FD004 incorporan múltiples modos de falla.
+\begin{table}[!h]
+\caption{Configuración final utilizada para generar predicciones oficiales por subconjunto}
+\label{tab:final_model_config}
+\centering
+\footnotesize
+\begin{tabular}{lllll}
+\hline
+Subset & Modelo & Ventana & Cap & Representación \\
+\hline
+FD001 & LightGBM & 50 & 125 & Temporal \\
+FD002 & XGBoost & 50 & 125 & Condición + degradación \\
+FD003 & LightGBM & 50 & 125 & Degradación \\
+FD004 & XGBoost & 70 & 125 & Condición + degradación \\
+\hline
+\end{tabular}
+\end{table}
 
-La evaluación considera MAE, RMSE, $R^2$ y el score C-MAPSS, que penaliza de manera asimétrica los errores de pronóstico. Además, se reporta el indicador de error peligroso, definido como una sobreestimación del RUL real por más de 20 ciclos. Este último criterio es relevante porque una predicción demasiado optimista puede retrasar una intervención de mantenimiento necesaria.
+La Tabla~\ref{tab:final_model_config} resume únicamente las configuraciones finales utilizadas para generar las predicciones oficiales. FD001 y FD003 usan LightGBM con objetivo quantile $\alpha=0.4$, que estima un cuantil de la distribución objetivo en lugar de solo la media condicional, sin pesos de muestra. FD002 y FD004 usan XGBoost con objetivo de error cuadrático y pesos de muestra para ponderar rangos de RUL relevantes durante el ajuste. No se emplea un único modelo global porque los subconjuntos no comparten la misma complejidad: FD001 y FD003 tienen una sola condición operativa, FD002 y FD004 incluyen múltiples condiciones, y FD003 y FD004 incorporan múltiples modos de falla.
 
-Como extensión operativa, las predicciones se traducen en bandas de decisión: intervención urgente, mantenimiento preventivo programado, monitoreo cercano y operación con monitoreo normal. También se agrega una interpretación físico-operativa post-hoc basada en importancia agrupada por sensor base, sensibilidad por perturbación y agrupación por área del motor. Esta interpretación no modifica la selección de modelos ni sus hiperparámetros; se usa únicamente para discutir el comportamiento de las predicciones desde una perspectiva operacional.
+LightGBM y XGBoost son modelos de \textit{gradient boosting} basados en árboles de decisión. Construyen un ensamble secuencial en el que cada nuevo árbol busca corregir errores residuales de los árboles anteriores. Son adecuados para este problema porque trabajan bien con datos tabulares, relaciones no lineales e interacciones entre sensores, \textit{settings} y RUL, sin requerir una especificación manual de todas las formas funcionales posibles.
+
+La evaluación considera MAE, RMSE, $R^2$ y el score C-MAPSS, una métrica asimétrica relevante en \textit{prognostics}. Además, se reporta el indicador de error peligroso, definido como una sobreestimación del RUL real por más de 20 ciclos. Como extensión operativa, las predicciones se traducen en bandas de decisión de mantenimiento: intervención urgente, mantenimiento preventivo programado, monitoreo cercano y operación con monitoreo normal. También se agrega una interpretación físico-operativa post-hoc basada en importancia agrupada por sensor base, sensibilidad por perturbación y agrupación por área del motor; esta interpretación no modifica la selección de modelos ni sus hiperparámetros.
 
 \section{Experimentos, resultados y discusión}
 % TODO: agregar tabla de métricas finales desde conclusion/final_metric_summary.csv.
