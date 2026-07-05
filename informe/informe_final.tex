@@ -64,7 +64,7 @@ Subset & Train & Test & Cond. & Modos de falla \\
 FD001 & 100 & 100 & 1 & 1 \\
 FD002 & 260 & 259 & 6 & 1 \\
 FD003 & 100 & 100 & 1 & 2 \\
-FD004 & 248 & 249 & 6 & 2 \\
+FD004 & 249 & 248 & 6 & 2 \\
 \hline
 \end{tabular}
 \end{table}
@@ -116,16 +116,103 @@ LightGBM y XGBoost son modelos de \textit{gradient boosting} basados en árboles
 La evaluación considera MAE, RMSE, $R^2$ y el score C-MAPSS, una métrica asimétrica relevante en \textit{prognostics}. Además, se reporta el indicador de error peligroso, definido como una sobreestimación del RUL real por más de 20 ciclos. Como extensión operativa, las predicciones se traducen en bandas de decisión de mantenimiento: intervención urgente, mantenimiento preventivo programado, monitoreo cercano y operación con monitoreo normal. También se agrega una interpretación físico-operativa post-hoc basada en importancia agrupada por sensor base, sensibilidad por perturbación y agrupación por área del motor; esta interpretación no modifica la selección de modelos ni sus hiperparámetros.
 
 \section{Experimentos, resultados y discusión}
-% TODO: agregar tabla de métricas finales desde conclusion/final_metric_summary.csv.
-% TODO: discutir resultados por subset.
-% TODO: agregar análisis por rangos de RUL desde conclusion/final_rul_bin_metrics.csv.
-% TODO: agregar priorización de mantenimiento desde conclusion/maintenance_decision_summary.csv.
-% TODO: agregar interpretación físico-operativa desde conclusion/physical_importance_by_engine_area.csv y conclusion/physical_sensitivity_by_engine_area.csv.
+El protocolo experimental evitó el split aleatorio por filas. La selección se hizo con validación por motores completos, generando cortes artificiales para simular trayectorias truncadas similares al test. El test oficial se usó solo después de cerrar modelos e hiperparámetros. En validación se priorizó el score C-MAPSS, usando RMSE y error peligroso como criterios secundarios.
+
+Antes de reportar resultados se consideran MAE, RMSE, $R^2$, score C-MAPSS y error peligroso. Para predicciones $\hat{y}_j$ y RUL real $y_j$:
+\begin{equation}
+MAE=\frac{1}{n}\sum_{j=1}^{n}|y_j-\hat{y}_j|,\quad
+RMSE=\sqrt{\frac{1}{n}\sum_{j=1}^{n}(y_j-\hat{y}_j)^2}.
+\end{equation}
+El score C-MAPSS penaliza asimétricamente los errores y es más relevante en \textit{prognostics} que mirar solo RMSE. Se define error peligroso como una sobreestimación del RUL real por más de 20 ciclos.
+
+\begin{table}[!t]
+\caption{Modelos finales e hiperparámetros clave}
+\label{tab:final_model_hyperparams}
+\centering
+\scriptsize
+\begin{tabular}{llllll}
+\hline
+Subset & Modelo & Rep. & W/Cap & Obj. & Clave \\
+\hline
+FD001 & LGBM & temp. & 50/125 & quant. .4 & lr .03; 1300; leaves 15 \\
+FD002 & XGB & cond.+deg. & 50/125 & sq. err. & lr .04; depth 3; 650 \\
+FD003 & LGBM & deg. & 50/125 & quant. .4 & lr .03; 1300; leaves 15 \\
+FD004 & XGB & cond.+deg. & 70/125 & sq. err. & lr .04; depth 3; 650 \\
+\hline
+\end{tabular}
+\end{table}
+
+La Tabla~\ref{tab:final_model_hyperparams} resume solo las configuraciones finales usadas para generar predicciones oficiales. ``cond.'' indica variables y normalización por condición operativa, y ``deg.'' agrupa las características sensibles a degradación. No se reportan todos los hiperparámetros internos porque quedan trazados en los archivos de configuración.
+
+\begin{table}[!t]
+\caption{Métricas oficiales en test final}
+\label{tab:official_metrics}
+\centering
+\scriptsize
+\begin{tabular}{lccccc}
+\hline
+Subset & MAE & RMSE & $R^2$ & C-M medio & Danger. \\
+\hline
+FD001 & 10.67 & 13.95 & 0.887 & 2.84 & 8.00\% \\
+FD002 & 16.62 & 25.28 & 0.779 & 20.66 & 5.02\% \\
+FD003 & 10.82 & 14.56 & 0.876 & 3.95 & 9.00\% \\
+FD004 & 17.91 & 26.07 & 0.771 & 18.55 & 6.45\% \\
+\hline
+\end{tabular}
+\end{table}
+
+La Tabla~\ref{tab:official_metrics} muestra que FD001 y FD003 alcanzan los errores más bajos, coherente con tener una sola condición operativa. FD002 y FD004 son más difíciles porque mezclan seis regímenes, y FD004 además combina esa variabilidad con dos modos de falla. Aun con mayor RMSE en FD002/FD004, la tasa de errores peligrosos queda contenida respecto de la dificultad de esos escenarios.
+
+\begin{table}[!t]
+\caption{Lectura resumida por rangos de RUL}
+\label{tab:rul_bins_summary}
+\centering
+\scriptsize
+\begin{tabular}{lcccc}
+\hline
+Indicador & FD001 & FD002 & FD003 & FD004 \\
+\hline
+MAE 0--30 & 3.73 & 2.82 & 2.51 & 3.89 \\
+Danger. 0--30 & 0.00\% & 0.00\% & 0.00\% & 0.00\% \\
+Danger. 60--90 & 38.46\% & 17.39\% & 31.82\% & 24.39\% \\
+MAE 90+ & 12.94 & 28.58 & 12.85 & 28.18 \\
+\hline
+\end{tabular}
+\end{table}
+
+La Tabla~\ref{tab:rul_bins_summary} muestra que los modelos son más confiables cerca de la falla, justamente la zona de mayor impacto operativo. El rango 60--90 es el más delicado por sobreestimaciones peligrosas. En RUL alto, especialmente en FD002 y FD004, el cap de 125 comprime predicciones y deteriora RMSE/$R^2$; esto es aceptable dentro del objetivo operativo, que prioriza detectar motores cercanos a falla.
+
+\begin{table}[!t]
+\caption{Bandas de decisión de mantenimiento}
+\label{tab:maintenance_decisions}
+\centering
+\scriptsize
+\begin{tabular}{lcccc}
+\hline
+Subset & Urgente & Prog. pronto & Monit. cercano & Continuar \\
+\hline
+FD001 & 22 & 16 & 13 & 49 \\
+FD002 & 61 & 37 & 47 & 114 \\
+FD003 & 21 & 17 & 16 & 46 \\
+FD004 & 55 & 30 & 39 & 124 \\
+\hline
+\end{tabular}
+\end{table}
+
+La capa operativa transforma la regresión de RUL en una regla de decisión: intervención urgente si $\hat{RUL}\leq30$, mantenimiento preventivo si $30<\hat{RUL}\leq60$, monitoreo cercano si $60<\hat{RUL}\leq90$ y operación con monitoreo normal si $\hat{RUL}>90$. La Tabla~\ref{tab:maintenance_decisions} permite pasar de métricas agregadas a una priorización accionable de motores.
+
+\begin{figure}[!t]
+\centering
+\includegraphics[width=\columnwidth]{conclusion/figures/physical_importance_by_engine_area.png}
+\caption{Importancia físico-operativa agregada por área del motor.}
+\label{fig:physical_area_importance}
+\end{figure}
+
+La interpretación físico-operativa se realizó como auditoría post-hoc: no participó en la selección de modelos ni de hiperparámetros. Las importancias se agruparon por sensor base y luego por área física; además, la sensibilidad por perturbación altera grupos de features asociadas a un sensor o área para medir el cambio de desempeño. La Fig.~\ref{fig:physical_area_importance} sugiere que HPC es el área más relevante, con sensores como Ps30, T30 y P30. La sensibilidad por perturbación también ubica a HPC como el área más sensible. Otras señales relevantes aparecen en fan/spool, core spool y turbine/LPT. Esta lectura es compatible con patrones físicos del turbofan, pero no prueba causalidad ni identifica directamente el modo de falla.
+
+En términos de sobreajuste y fallas, el principal riesgo de leakage se mitigó con separación por motores completos y cortes artificiales construidos solo sobre historia pasada. El riesgo de ajustar al test se redujo reservando el test oficial hasta el final. Las variantes globales o menos específicas no fueron adoptadas porque los subsets no son homogéneos; las MLP probadas fueron menos estables que los modelos de boosting tabular y los pseudo-clusters no mejoraron el cierre de FD003. La limitación central es que el RUL cap mejora la prioridad cerca de falla pero degrada la precisión en RUL alto. Además, al no existir etiquetas de modo de falla por motor, la lectura de patrones físicos o latentes debe entenderse como interpretativa y no supervisada.
 
 \section{Conclusiones y trabajo futuro}
-% TODO: resumir aprendizajes por subset y decisiones finales.
-% TODO: discutir limitaciones: simulación, ausencia de etiquetas de fault mode por motor y dependencia del RUL cap.
-% TODO: proponer extensiones: modelos secuenciales, calibración de incertidumbre, validación operacional y explicabilidad adicional.
 
 \bibliographystyle{IEEEtran}
 \bibliography{references}
