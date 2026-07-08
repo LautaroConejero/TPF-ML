@@ -1,3 +1,0 @@
-model_name,approach,mean_rmse,mean_cmapss_score,mean_dangerous_error_pct,mean_conservative_error_pct,mean_bias_mean,mean_rmse_delta_vs_transfer,mean_rmse_pct_delta_vs_transfer,mean_cmapss_score_delta_vs_transfer,mean_cmapss_score_pct_delta_vs_transfer,mean_dangerous_error_pct_delta_vs_transfer,mean_dangerous_error_pct_pct_delta_vs_transfer
-candidate_03_B_quantile_a040_search_14,FD001_transfer_baseline,16.448623669467118,424.4302138605029,5.6,13.4,-3.5930946973009306,0.0,0.0,0.0,0.0,0.0,0.0
-fd003_lgbm_w50_cap125_quantile_a04_none,FD003_short_tuning_best,16.448623669467118,424.43021386050293,5.6,13.4,-3.5930946973009306,0.0,0.0,5.684341886080802e-14,1.339287755783821e-14,0.0,0.0

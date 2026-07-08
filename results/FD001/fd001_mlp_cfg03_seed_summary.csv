@@ -1,7 +1,0 @@
-model_name,representation,window_size,rul_cap,metric,mean,std
-MLP_tabular_cfg_03,temporal_w30,30,125,mae,14.09404651564781,0.7667663818211636
-MLP_tabular_cfg_03,temporal_w30,30,125,rmse,18.600887696151084,0.8786948042114177
-MLP_tabular_cfg_03,temporal_w30,30,125,r2,0.8054334744169432,0.01885273906715145
-MLP_tabular_cfg_03,temporal_w30,30,125,cmapss_score,598.8972047584596,82.31690289942192
-MLP_tabular_cfg_03,temporal_w30,30,125,cmapss_score_mean,6.049466714731915,0.8314838676709286
-MLP_tabular_cfg_03,temporal_w30,30,125,dangerous_error_pct,11.313131313131315,1.806923618181649

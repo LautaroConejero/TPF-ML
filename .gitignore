@@ -7,3 +7,7 @@ venv/
 .mypy_cache/
 .DS_Store
 .ipynb_checkpoints/
+# Fuera de entrega final / archivos locales
+results/
+notas/
+notebooks/conclusion/archive/

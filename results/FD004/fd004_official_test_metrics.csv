@@ -1,2 +1,0 @@
-representation,model_name,mae,rmse,r2,cmapss_score,cmapss_score_mean,dangerous_error_pct,n_test
-temporal_w70_condition_fault_sensitive,fd004_xgb_fs_bin_weights_w70,17.909395215972776,26.071138098834716,0.7713622928981874,4600.217416811195,18.549263777464496,6.451612903225806,248

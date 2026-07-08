@@ -1,5 +1,0 @@
-dataset,selected_candidate,candidate_family,base_model,temporal_window,RUL_cap,quantile_alpha,condition_sensitive,fault_sensitive,calibration_or_inference_method,uses_final_test,no_future_prefixes_used
-FD001,candidate_03_B_quantile_a040_search_14,LightGBM quantile,candidate_03_B_quantile_a040_search_14,50,125,0.4,False,False,frozen previous LightGBM quantile candidate,False,
-FD002,eol_mean,XGBoost + multi-prefix inference,xgb_condition_fault_sensitive_mid_guard,50,125,,True,True,multi-prefix EOL smoothing using mean estimated failure cycle,False,True
-FD003,fd003_lgbm_w50_cap125_quantile_a04_none_fault_sensitive,LightGBM quantile,fd003_lgbm_w50_cap125_quantile_a04_none_fault_sensitive,50,125,0.4,False,True,offset 0 retained after offset calibration probe,False,
-FD004,eol_mean_guard_b60_only_if_lower_floor2,XGBoost + multi-prefix inference with late-stage guard,fd004_xgb_fs_bin_weights_w70,70,125,,True,True,multi-prefix eol_mean with b60 only-if-lower floor2 late-stage guard,False,True
