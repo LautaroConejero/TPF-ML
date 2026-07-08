@@ -1,8 +1,9 @@
-\documentclass[conference]{IEEEtran}
+\documentclass[conference, a4paper]{IEEEtran}
 \IEEEoverridecommandlockouts
 % The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
 %Template version as of 6/27/2024
 
+\usepackage{url}
 \usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
@@ -16,26 +17,20 @@
 
 \title{Predicción de vida útil remanente y priorización de mantenimiento en motores turbofan}
 
-\author{\IEEEauthorblockN{Autor 1}
-\IEEEauthorblockA{\textit{Universidad / Departamento} \\
-Ciudad, Pais \\
-email u ORCID}
-\and
-\IEEEauthorblockN{Autor 2}
-\IEEEauthorblockA{\textit{Universidad / Departamento} \\
-Ciudad, Pais \\
-email u ORCID}
-\and
-\IEEEauthorblockN{Autor 3}
-\IEEEauthorblockA{\textit{Universidad / Departamento} \\
-Ciudad, Pais \\
-email u ORCID}
-}
 
+\author{\IEEEauthorblockN{Lautaro García Conejero}
+\IEEEauthorblockA{\textit{Universidad de San Andrés} \\
+Buenos Aires, Argentina \\
+lgarciaconejero@udesa.edu.ar}
+\and
+\IEEEauthorblockN{Franco Needleman}
+\IEEEauthorblockA{\textit{Universidad de San Andrés} \\
+Buenos Aires, Argentina \\
+fneedleman@udesa.edu.ar}}
 \maketitle
 
 \begin{abstract}
-Este trabajo aborda la predicción de Remaining Useful Life (RUL) en motores turbofan a partir del conjunto NASA C-MAPSS. Se entrenan modelos supervisados separados para los subconjuntos FD001, FD002, FD003 y FD004, respetando sus diferencias en condiciones operativas y modos de falla. La representación principal se basa en características temporales calculadas sobre ventanas de sensores y settings, con modelos finales de LightGBM y XGBoost según el subset. Para evitar leakage, la selección se realiza con validación por motores completos y cortes artificiales, reservando el test oficial para el reporte final. Los resultados finales se reportan mediante métricas de regresión, score C-MAPSS y análisis operativo de errores peligrosos por rango de RUL. Además de la predicción de RUL, el proyecto incorpora una extensión operativa para priorización de mantenimiento y una lectura físico-operativa post-hoc que vincula sensores relevantes con variables físicas del motor y evalúa sensibilidad por perturbación.
+Este trabajo aborda la predicción de Remaining Useful Life (RUL) en motores turbofan a partir del conjunto NASA C-MAPSS. Se entrenan modelos supervisados separados para los subconjuntos FD001, FD002, FD003 y FD004, respetando sus diferencias en condiciones operativas y modos de falla. La representación principal se basa en características temporales calculadas sobre ventanas de sensores y settings, con modelos finales de LightGBM y XGBoost según el subset. Para evitar leakage, la selección se realiza con validación por motores completos y cortes artificiales, reservando el test oficial para el reporte final. En el test oficial, FD001 y FD003 alcanzaron RMSE cercanos a 14 ciclos, mientras que FD002 y FD004 obtuvieron RMSE cercanos a 25--26 ciclos debido a la mayor complejidad operativa. Además de la predicción de RUL, el proyecto incorpora una extensión operativa para priorización de mantenimiento y una lectura físico-operativa post-hoc que vincula sensores relevantes con variables físicas del motor y evalúa sensibilidad por perturbación.
 \end{abstract}
 
 \begin{IEEEkeywords}
@@ -45,14 +40,14 @@ Remaining Useful Life, C-MAPSS, mantenimiento predictivo, turbofan, LightGBM, XG
 \section{Introducción}
 La estimación de vida útil remanente, o Remaining Useful Life (RUL), es una tarea central en mantenimiento predictivo porque permite anticipar fallas, planificar intervenciones y reducir tanto riesgos operativos como costos asociados a mantenimiento correctivo. En sistemas industriales complejos, como motores turbofan, el deterioro no suele observarse directamente: debe inferirse a partir de señales de sensores, condiciones de operación y patrones temporales de degradación. La entrada del sistema es la historia parcial de sensores y condiciones operativas de un motor hasta un ciclo observado, y la salida es una predicción numérica del RUL en ciclos restantes.
 
-El conjunto NASA C-MAPSS es un benchmark ampliamente utilizado para estudiar pronóstico de fallas en motores aeronáuticos simulados \cite{nasa_pcoe_cmapss,saxena2008damage}. Sus datos combinan trayectorias \textit{run-to-failure} de entrenamiento, donde se conoce el ciclo final de cada motor, con trayectorias de test truncadas, donde el objetivo es predecir el RUL en el último ciclo observado. Esta diferencia obliga a construir una evaluación cuidadosa: durante el entrenamiento puede derivarse el RUL a partir de la vida completa, mientras que en test solo se dispone de la historia parcial del motor.
+El conjunto NASA C-MAPSS es un benchmark ampliamente utilizado para estudiar pronóstico de fallas en motores aeronáuticos simulados \cite{nasa_cmapss_dataset,saxena2008damage}. Sus datos combinan trayectorias \textit{run-to-failure} de entrenamiento, donde se conoce el ciclo final de cada motor, con trayectorias de test truncadas, donde el objetivo es predecir el RUL en el último ciclo observado. Esta diferencia obliga a construir una evaluación cuidadosa: durante el entrenamiento puede derivarse el RUL a partir de la vida completa, mientras que en test solo se dispone de la historia parcial del motor.
 
 El problema no es homogéneo entre subsets. FD001 y FD003 tienen una única condición operativa, mientras que FD002 y FD004 incorporan múltiples regímenes de operación. Además, FD003 y FD004 incluyen más de un modo de falla. Por este motivo, el trabajo adopta modelos finales separados por subset en lugar de un único modelo global. La estrategia combina features temporales, control de condiciones operativas cuando corresponde, RUL cap para entrenamiento y modelos de boosting basados en LightGBM \cite{ke2017lightgbm} y XGBoost \cite{chen2016xgboost}.
 
 La contribución operativa del proyecto va más allá de reportar métricas agregadas. Las predicciones finales se traducen en rankings de prioridad de mantenimiento y reglas simples de decisión, orientadas a distinguir motores que requieren intervención urgente de aquellos que pueden continuar bajo monitoreo. Como complemento, se agrega una interpretación físico-operativa que agrupa importancias por sensor base, vincula sensores con variables físicas del turbofan y evalúa la sensibilidad del modelo frente a perturbaciones de señales relevantes.
 
 \section{Conjunto de datos y características}
-El conjunto C-MAPSS (\textit{Commercial Modular Aero-Propulsion System Simulation}) contiene simulaciones de degradación de motores turbofan bajo distintos escenarios operativos y de falla \cite{nasa_pcoe_cmapss,saxena2008damage}. Cada fila representa el estado de una unidad en un ciclo de operación e incluye el identificador del motor, el ciclo, tres variables de configuración operativa (\textit{settings}) y 21 sensores. Los datos de entrenamiento son trayectorias \textit{run-to-failure}: para cada motor se observa la vida completa hasta la falla. En cambio, los datos de test están truncados y solo muestran la historia disponible hasta un ciclo final observado; el RUL real de ese último ciclo se entrega por separado para evaluación. En entrenamiento, el RUL se define como la diferencia entre el ciclo final del motor y el ciclo actual.
+El conjunto C-MAPSS (\textit{Commercial Modular Aero-Propulsion System Simulation}) contiene simulaciones de degradación de motores turbofan bajo distintos escenarios operativos y de falla \cite{nasa_cmapss_dataset,saxena2008damage}. Cada fila representa el estado de una unidad en un ciclo de operación e incluye el identificador del motor, el ciclo, tres variables de configuración operativa (\textit{settings}) y 21 sensores. Los datos de entrenamiento son trayectorias \textit{run-to-failure}: para cada motor se observa la vida completa hasta la falla. En cambio, los datos de test están truncados y solo muestran la historia disponible hasta un ciclo final observado; el RUL real de ese último ciclo se entrega por separado para evaluación. En entrenamiento, el RUL se define como la diferencia entre el ciclo final del motor y el ciclo actual.
 
 \begin{table}[!h]
 \caption{Tamaño, condiciones operativas y modos de falla de los subconjuntos C-MAPSS}
@@ -93,6 +88,8 @@ La ejecución final sigue una secuencia fija: lectura de datos, cálculo de RUL,
 
 La representación temporal se construye con ventanas retrospectivas por motor y punto de corte. Para cada sensor y \textit{setting} se calculan último valor, media, desviación estándar, mínimo, máximo, delta y pendiente. La ventana indica cuántos ciclos recientes se usan para calcular esos estadísticos; el cap es el límite superior aplicado al objetivo de entrenamiento. Temporal refiere a estadísticos en ventana. Condición incorpora el régimen operativo estimado a partir de los \textit{settings}, variables indicadoras y normalización de sensores por condición. Degradación, o \textit{fault-sensitive}, agrega pendientes, deltas, volatilidad, aceleraciones e interacciones entre sensores relevantes. Las variables de condición y la normalización por condición se emplean en FD002 y FD004, donde existen múltiples regímenes operativos; en FD003, al haber una única condición operativa, la representación se concentra en características sensibles a degradación.
 
+El preprocesamiento tabular y la estandarización de variables se implementaron con herramientas de scikit-learn \cite{pedregosa2011scikit}.
+
 \begin{table}[!h]
 \caption{Configuración final utilizada para generar predicciones oficiales por subconjunto}
 \label{tab:final_model_config}
@@ -127,14 +124,20 @@ Antes de reportar resultados se consideran MAE, RMSE, $R^2$, score C-MAPSS y err
 MAE=\frac{1}{n}\sum_{j=1}^{n}|y_j-\hat{y}_j|,\quad
 RMSE=\sqrt{\frac{1}{n}\sum_{j=1}^{n}(y_j-\hat{y}_j)^2}.
 \end{equation}
-El score C-MAPSS penaliza asimétricamente los errores y resulta central en \textit{prognostics}, donde no todas las equivocaciones tienen el mismo costo operativo. Se define error peligroso como una sobreestimación del RUL real por más de 20 ciclos; es decir, una predicción que podría postergar una intervención necesaria.
+El score C-MAPSS penaliza asimétricamente los errores y resulta central en \textit{prognostics}, donde no todas las equivocaciones tienen el mismo costo operativo. Definimos $d_j=\hat{y}_j-y_j$, de modo que $d_j>0$ indica una sobreestimación del RUL. El score por motor se calcula como
+\begin{equation}
+s_j =
+\begin{cases}
+\exp(-d_j/13)-1, & d_j < 0,\\
+\exp(d_j/10)-1, & d_j \geq 0.
+\end{cases}
+\end{equation}
+El score total es $S=\sum_j s_j$ y en las tablas reportamos también su promedio por motor. Se define error peligroso como una sobreestimación del RUL real por más de 20 ciclos; es decir, una predicción que podría postergar una intervención necesaria.
 
 \subsection{Selección final de modelos}
 La selección final no buscó un único modelo global, porque los subsets C-MAPSS no son homogéneos. FD001 y FD003 tienen una sola condición operativa y quedaron mejor representados por LightGBM con objetivo quantile, que ayuda a controlar predicciones demasiado optimistas. FD002 y FD004 combinan seis condiciones operativas, por lo que requieren variables de condición, normalización por condición y features sensibles a degradación; en esas representaciones, XGBoost dio el mejor compromiso final.
 
 La comparación metodológica mostró que las redes MLP y variantes menos específicas no fueron seleccionadas por menor estabilidad o peor balance entre C-MAPSS y error peligroso. En FD003 se exploraron patrones latentes, pero los pseudo-clusters no se usaron como features finales: no mejoraron el cierre y son difíciles de defender sin etiquetas reales de modo de falla por motor. La mejora más defendible fue enriquecer la representación temporal con pendientes, deltas, volatilidad e interacciones calculables solo con historia pasada.
-
-La Tabla~\ref{tab:final_model_hyperparams} resume los modelos e hiperparámetros clave de la configuración final.
 
 \begin{table}[!htbp]
 \caption{Modelos finales e hiperparámetros clave}
@@ -145,15 +148,17 @@ La Tabla~\ref{tab:final_model_hyperparams} resume los modelos e hiperparámetros
 \hline
 Subset & Modelo & Rep. & Obj. & Clave \\
 \hline
-FD001 & LGBM & temp. w50 c125 & q. .4 & lr .03; n 1300; leaves 15 \\
-FD002 & XGB & cond.+deg. w50 c125 & sq. & lr .04; depth 3; n 650 \\
-FD003 & LGBM & deg. w50 c125 & q. .4 & lr .03; n 1300; leaves 15 \\
-FD004 & XGB & cond.+deg. w70 c125 & sq. & lr .04; depth 3; n 650 \\
+FD001 & LGBM & temp. w50 c125 & q=0.4 & lr .03; n 1300; leaves 15 \\
+FD002 & XGB & cond.+deg. w50 c125 & MSE & lr .04; depth 3; n 650 \\
+FD003 & LGBM & deg. w50 c125 & q=0.4 & lr .03; n 1300; leaves 15 \\
+FD004 & XGB & cond.+deg. w70 c125 & MSE & lr .04; depth 3; n 650 \\
 \hline
 \end{tabular}
 \end{table}
 
-La tabla resume solo las configuraciones finales usadas para generar predicciones oficiales. ``cond.'' indica variables y normalización por condición operativa, y ``deg.'' agrupa las características sensibles a degradación. No se reportan todos los hiperparámetros internos porque quedan trazados en los archivos de configuración.
+En la columna ``Clave'', ``lr'' refiere a la tasa de aprendizaje, ``n'' al número de estimadores, ``leaves'' al número de hojas en LightGBM y ``depth'' a la profundidad máxima en XGBoost.
+
+La tabla resume las configuraciones finales usadas para generar predicciones oficiales. ``cond.'' indica variables y normalización por condición operativa, y ``deg.'' agrupa las características sensibles a degradación. Se reportan los hiperparámetros con mayor impacto en complejidad y ajuste: tasa de aprendizaje, número de estimadores, profundidad o número de hojas, objetivo y ventana temporal. Los restantes se mantuvieron según la configuración final reproducible, incluyendo regularización y muestreo de columnas o filas cuando correspondía.
 
 \subsection{Resultados oficiales}
 Las métricas oficiales se resumen en la Tabla~\ref{tab:official_metrics}.
@@ -211,7 +216,6 @@ MAE 90+ & 12.94 & 28.58 & 12.85 & 28.18 \\
 \end{figure}
 
 \FloatBarrier
-\newpage
 
 \subsection{Priorización de mantenimiento}
 La capa operativa transforma la regresión de RUL en una regla de decisión: intervención urgente si $\hat{RUL}\leq30$, mantenimiento preventivo si $30<\hat{RUL}\leq60$, monitoreo cercano si $60<\hat{RUL}\leq90$ y operación con monitoreo normal si $\hat{RUL}>90$. En el test oficial, FD002 y FD004 acumulan más motores en todas las bandas por su mayor tamaño, mientras que FD001 y FD003 mantienen distribuciones más compactas. La Fig.~\ref{fig:maintenance_bands} muestra cómo se convierte una salida numérica en una priorización práctica.
