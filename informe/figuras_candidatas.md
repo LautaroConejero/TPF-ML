@@ -28,12 +28,12 @@ Inventario inicial de graficos ya exportados. No implica que todos deban inserta
 | `figures/FD004/validation_best_model/error_vs_true_rul.png` | Error contra RUL real en FD004. | Analisis de errores por zona de RUL. | Alta | Prioritaria para discutir dificultad. |
 | `figures/FD004/validation_best_model/mae_by_rul_bin.png` | MAE por rango de RUL en FD004. | Comparacion de desempeno por bins. | Alta | Vincular con `final_rul_bin_metrics.csv`. |
 | `figures/FD004/validation_best_model/worst_cases_abs_error.png` | Peores casos por error absoluto en FD004. | Analisis de casos extremos. | Media | Usar solo si aporta una conclusion concreta. |
-| `outputs/figures/cmapss_subset_sizes.png` | Cantidad de motores por subset. | Contexto del conjunto de datos. | Media | Puede acompañar la seccion II si hay espacio. |
-| `outputs/figures/cmapss_cycles_by_subset.png` | Distribucion de ciclos por subset. | Contexto de longitudes de trayectoria. | Media | Util para explicar heterogeneidad. |
-| `outputs/figures/cmapss_rul_by_subset.png` | Distribucion de RUL por subset. | Contexto del objetivo. | Media | Verificar que no duplique texto de seccion II. |
-| `outputs/figures/cmapss_rul_cap_effect.png` | Efecto del RUL cap. | Metodologia o apendice. | Media | Puede justificar cap de 125 ciclos. |
-| `outputs/figures/cmapss_sensor_rul_corr_heatmap.png` | Correlaciones sensor-RUL. | Exploracion de senales relevantes. | Media | Usar con cautela por mezcla de condiciones. |
-| `outputs/figures/fd002_condition_distribution.png` | Distribucion de condiciones en FD002. | Explicar complejidad de multiples condiciones. | Media | Contexto para FD002. |
-| `outputs/figures/fd004_condition_distribution.png` | Distribucion de condiciones en FD004. | Explicar complejidad de multiples condiciones. | Media | Contexto para FD004. |
-| `outputs/figures/fd002_sensor_rul_corr_by_condition_heatmap.png` | Correlacion sensor-RUL por condicion en FD002. | Justificar normalizacion por condicion. | Media | Candidata tecnica, revisar legibilidad. |
-| `outputs/figures/fd004_sensor_rul_corr_by_condition_heatmap.png` | Correlacion sensor-RUL por condicion en FD004. | Justificar features condition-sensitive. | Media | Candidata tecnica, revisar legibilidad. |
+| `figures/EDA/cmapss_subset_sizes.png` | Cantidad de motores por subset. | Contexto del conjunto de datos. | Media | Puede acompañar la seccion II si hay espacio. |
+| `figures/EDA/cmapss_cycles_by_subset.png` | Distribucion de ciclos por subset. | Contexto de longitudes de trayectoria. | Media | Util para explicar heterogeneidad. |
+| `figures/EDA/cmapss_rul_by_subset.png` | Distribucion de RUL por subset. | Contexto del objetivo. | Media | Verificar que no duplique texto de seccion II. |
+| `figures/EDA/cmapss_rul_cap_effect.png` | Efecto del RUL cap. | Metodologia o apendice. | Media | Puede justificar cap de 125 ciclos. |
+| `figures/EDA/cmapss_sensor_rul_corr_heatmap.png` | Correlaciones sensor-RUL. | Exploracion de senales relevantes. | Media | Usar con cautela por mezcla de condiciones. |
+| `figures/EDA/fd002_condition_distribution.png` | Distribucion de condiciones en FD002. | Explicar complejidad de multiples condiciones. | Media | Contexto para FD002. |
+| `figures/EDA/fd004_condition_distribution.png` | Distribucion de condiciones en FD004. | Explicar complejidad de multiples condiciones. | Media | Contexto para FD004. |
+| `figures/EDA/fd002_sensor_rul_corr_by_condition_heatmap.png` | Correlacion sensor-RUL por condicion en FD002. | Justificar normalizacion por condicion. | Media | Candidata tecnica, revisar legibilidad. |
+| `figures/EDA/fd004_sensor_rul_corr_by_condition_heatmap.png` | Correlacion sensor-RUL por condicion en FD004. | Justificar features condition-sensitive. | Media | Candidata tecnica, revisar legibilidad. |
