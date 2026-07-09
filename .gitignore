@@ -8,7 +8,20 @@ venv/
 .DS_Store
 .ipynb_checkpoints/
 # Fuera de entrega final / archivos locales
-results/
 notas/
 notebooks/conclusion/archive/
 templates
+
+
+# Results viejos / no necesarios para entrega limpia
+results/*calibration*
+results/*after_calibration*
+results/*v01*
+results/*v02*
+results/**/predictions_calibrated*
+
+results/resumen_global_final_modelos_v03.csv
+results/seleccion_final_modelos_v03.csv
+results/model_registry_final_v03.csv
+results/metricas_por_bin_final_modelos_v03.csv
+results/diagnostics_final_modelos_v03.csv

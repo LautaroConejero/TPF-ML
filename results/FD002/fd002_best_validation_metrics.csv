@@ -1,0 +1,2 @@
+representation,model_name,n_eval,mae,rmse,r2,cmapss_score,cmapss_score_mean,dangerous_error_pct
+temporal_w50_condition_fault_sensitive_mid_guard,xgb_condition_fault_sensitive_mid_guard,258,12.700926396273827,16.22934653037001,0.8525102263487467,982.8928907080394,3.809662367085424,9.689922480620156
