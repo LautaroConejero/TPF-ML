@@ -1,0 +1,35 @@
+{
+  "dataset": "FD001",
+  "task": "RUL regression",
+  "selected_by": "artificial_validation",
+  "model_name": "LGBMRegressor",
+  "model_variant": "quantile_a040",
+  "lightgbm_objective": "quantile",
+  "quantile_alpha": 0.4,
+  "representation": "temporal",
+  "window_size": 50,
+  "rul_cap": 125,
+  "sample_weight_scheme": "none",
+  "dangerous_error_threshold": 20,
+  "validation_protocol": "artificial cutoffs by held-out units",
+  "use_official_test": false,
+  "feature_notes": "temporal features with last, mean, std, min, max, delta, slope",
+  "purpose": "alternative candidate to reduce dangerous overestimation errors",
+  "selection_criterion": {
+    "primary": "dangerous_error_pct trade-off",
+    "secondary": "cmapss_score",
+    "tertiary": "rmse",
+    "mae": "secondary/reporting only"
+  },
+  "validation_metrics": {
+    "mae": 11.063333,
+    "rmse": 14.366208,
+    "r2": 0.884146,
+    "cmapss_score": 254.947304,
+    "dangerous_error_pct": 4.040404,
+    "conservative_error_pct": 14.141414,
+    "mean_error": -3.697092
+  },
+  "comparison_note": "Compared with LGBM w50 cap125 bin_weights, quantile alpha=0.40 reduces dangerous error from 7.07% to 4.04% with a small RMSE/C-MAPSS cost.",
+  "status": "alternative validation candidate, not final replacement"
+}

@@ -1,0 +1,20 @@
+{
+  "methodology": {
+    "selection": "artificial validation by complete held-out units",
+    "official_test": "used only after model selection for final reporting",
+    "decision_thresholds": {
+      "urgent_replace": "predicted RUL <= 30",
+      "schedule_soon": "30 < predicted RUL <= 60",
+      "monitor_close": "60 < predicted RUL <= 90",
+      "continue_monitoring": "predicted RUL > 90",
+      "dangerous_error": "predicted RUL - true RUL > 20"
+    }
+  },
+  "artifacts": {
+    "final_model_summary": "conclusion/final_model_summary.csv",
+    "final_metric_summary": "conclusion/final_metric_summary.csv",
+    "final_rul_bin_metrics": "conclusion/final_rul_bin_metrics.csv",
+    "maintenance_priority_ranking": "conclusion/maintenance_priority_ranking.csv",
+    "maintenance_decision_summary": "conclusion/maintenance_decision_summary.csv"
+  }
+}

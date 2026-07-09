@@ -1,0 +1,2 @@
+representation,model_name,n_eval,mae,rmse,r2,cmapss_score,cmapss_score_mean,dangerous_error_pct
+temporal_w50_fault_sensitive,fd003_lgbm_w50_cap125_quantile_a04_none_fault_sensitive,100,10.820275273623713,14.555132153165431,0.8763701163002854,394.76291534675,3.9476291534675,9.0

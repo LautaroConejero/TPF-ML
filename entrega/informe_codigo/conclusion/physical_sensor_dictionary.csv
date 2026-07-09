@@ -1,0 +1,26 @@
+raw_variable,physical_symbol,physical_description,engine_area,interpretation_for_rul
+sensor_1,T2,Total temperature at fan inlet.,inlet/fan,Context signal for inlet thermodynamic state.
+sensor_2,T24,Total temperature at LPC outlet.,LPC,Temperature changes can reflect compression efficiency and degradation.
+sensor_3,T30,Total temperature at HPC outlet.,HPC,HPC outlet temperature is a degradation-sensitive thermodynamic signal.
+sensor_4,T50,Total temperature at LPT outlet.,turbine/LPT,Turbine outlet temperature can shift as efficiency and flow path health change.
+sensor_5,P2,Pressure at fan inlet.,inlet/fan,Context signal for inlet pressure and operating regime.
+sensor_6,P15,Total pressure in bypass duct.,bypass,Bypass pressure can reflect fan/bypass operating behavior.
+sensor_7,P30,Total pressure at HPC outlet.,HPC,HPC outlet pressure is directly tied to compressor health and loading.
+sensor_8,Nf,Physical fan speed.,fan/spool,Fan speed variation helps separate regime and degradation effects.
+sensor_9,Nc,Physical core speed.,core spool,Core speed dynamics are informative for degradation patterns.
+sensor_10,epr,Engine pressure ratio.,global engine pressure,Global pressure ratio summarizes engine pressure behavior.
+sensor_11,Ps30,Static pressure at HPC outlet.,HPC,Static HPC pressure is often informative for RUL and dangerous overestimation.
+sensor_12,phi,Ratio of fuel flow to Ps30.,fuel/HPC interaction,Fuel-to-pressure ratio links control demand with compressor state.
+sensor_13,NRf,Corrected fan speed.,fan/spool,Corrected fan speed helps compare operation across regimes.
+sensor_14,NRc,Corrected core speed.,core spool,Corrected core speed captures core-spool degradation signals.
+sensor_15,BPR,Bypass ratio.,bypass/fan,Bypass ratio can separate flow-path and fan/bypass degradation behavior.
+sensor_16,farB,Burner fuel-air ratio.,combustor,Combustor fuel-air ratio can reflect control and thermal state.
+sensor_17,htBleed,Bleed enthalpy.,bleed system,Bleed behavior is connected to thermal management and degradation.
+sensor_18,Nf_dmd,Demanded fan speed.,control system,Control demand signal for fan-speed command.
+sensor_19,PCNfR_dmd,Demanded corrected fan speed.,control system,Control demand signal for corrected fan-speed command.
+sensor_20,W31,HPT coolant bleed.,HPT cooling/bleed,Cooling bleed can indicate thermal protection and turbine health demands.
+sensor_21,W32,LPT coolant bleed.,LPT cooling/bleed,Cooling bleed can indicate turbine thermal-management behavior.
+setting_1,setting_1,Operational setting associated with flight regime.,operating condition,Separates operating regimes from degradation signal.
+setting_2,setting_2,Operational setting associated with flight regime.,operating condition,Separates operating regimes from degradation signal.
+setting_3,setting_3,Operational setting associated with flight regime.,operating condition,Separates operating regimes from degradation signal.
+condition,condition,Inferred operating condition from settings.,operating condition,Groups condition_id and one-hot features that control regime effects.

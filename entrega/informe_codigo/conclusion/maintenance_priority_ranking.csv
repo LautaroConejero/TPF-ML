@@ -1,0 +1,708 @@
+priority_rank,dataset,evaluation_scope,unit,cycle,y_true_rul_raw,y_pred_rul,error,abs_error,maintenance_band,decision_recommendation,risk_flag
+1,FD001,official_test,34,203,7.0,6.088517703046219,-0.911482296953781,0.911482296953781,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+2,FD001,official_test,76,205,10.0,7.586975373715431,-2.413024626284569,2.413024626284569,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+3,FD001,official_test,81,213,8.0,7.85675827639635,-0.1432417236036496,0.1432417236036496,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+4,FD001,official_test,82,162,9.0,8.861884654987705,-0.1381153450122951,0.1381153450122951,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+5,FD001,official_test,31,196,8.0,9.565298504817202,1.5652985048172017,1.5652985048172017,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+6,FD001,official_test,68,187,8.0,10.18915178930249,2.1891517893024908,2.1891517893024908,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+7,FD001,official_test,20,184,16.0,10.919202155799342,-5.080797844200658,5.080797844200658,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+8,FD001,official_test,49,303,21.0,12.626197335824596,-8.373802664175404,8.373802664175404,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+9,FD001,official_test,56,136,15.0,12.98998014048133,-2.0100198595186693,2.0100198595186693,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+10,FD001,official_test,42,156,10.0,13.253864922550076,3.2538649225500773,3.2538649225500773,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+11,FD001,official_test,35,198,11.0,16.909979649722022,5.909979649722022,5.909979649722022,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+12,FD001,official_test,66,147,14.0,18.185577604861923,4.185577604861923,4.185577604861923,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+13,FD001,official_test,92,150,20.0,19.840255501902757,-0.1597444980972469,0.1597444980972469,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+14,FD001,official_test,100,198,20.0,21.505374189377758,1.505374189377754,1.505374189377754,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+15,FD001,official_test,41,123,18.0,21.65608679277778,3.656086792777781,3.656086792777781,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+16,FD001,official_test,24,186,20.0,23.691900126646928,3.691900126646928,3.691900126646928,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+17,FD001,official_test,53,164,26.0,26.610640797351294,0.610640797351298,0.610640797351298,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+18,FD001,official_test,64,168,28.0,26.905441560415472,-1.094558439584528,1.094558439584528,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+19,FD001,official_test,61,159,21.0,27.26186682866033,6.261866828660335,6.261866828660335,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+20,FD001,official_test,90,146,28.0,27.783150032025475,-0.2168499679745252,0.2168499679745252,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+21,FD001,official_test,77,162,34.0,29.493714200431747,-4.5062857995682535,4.5062857995682535,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+22,FD001,official_test,36,126,19.0,29.902349182500338,10.902349182500338,10.902349182500338,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+23,FD001,official_test,18,133,28.0,32.547622628584364,4.547622628584364,4.547622628584364,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+24,FD001,official_test,91,234,38.0,32.69761082784564,-5.302389172154364,5.302389172154364,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+25,FD001,official_test,37,121,21.0,33.00838644597739,12.008386445977392,12.008386445977392,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+26,FD001,official_test,52,189,29.0,34.316875473156394,5.316875473156394,5.316875473156394,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+27,FD001,official_test,40,133,28.0,35.10126281599854,7.101262815998538,7.101262815998538,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+28,FD001,official_test,58,176,37.0,38.08166754833618,1.0816675483361775,1.0816675483361775,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+29,FD001,official_test,62,232,54.0,43.786039324163895,-10.213960675836104,10.213960675836104,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+30,FD001,official_test,84,172,58.0,44.99876184436351,-13.001238155636493,13.001238155636493,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+31,FD001,official_test,3,126,69.0,49.054774028774055,-19.945225971225945,19.945225971225945,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+32,FD001,official_test,46,146,47.0,52.14393361752142,5.143933617521419,5.143933617521419,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+33,FD001,official_test,43,172,59.0,52.92479928375575,-6.075200716244254,6.075200716244254,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+34,FD001,official_test,93,244,85.0,53.47490860633274,-31.52509139366726,31.52509139366726,schedule_soon,programar mantenimiento preventivo,conservative_underestimate
+35,FD001,official_test,32,145,48.0,54.54861682558828,6.548616825588283,6.548616825588283,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+36,FD001,official_test,17,165,50.0,54.77728552098955,4.777285520989551,4.777285520989551,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+37,FD001,official_test,72,131,50.0,58.01341193833571,8.013411938335707,8.013411938335707,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+38,FD001,official_test,38,125,50.0,58.2355237663365,8.235523766336499,8.235523766336499,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+39,FD001,official_test,94,133,55.0,64.99962440168565,9.99962440168565,9.99962440168565,monitor_close,monitorear de cerca,within_20_cycles
+40,FD001,official_test,21,148,57.0,65.7578740914254,8.757874091425407,8.757874091425407,monitor_close,monitorear de cerca,within_20_cycles
+41,FD001,official_test,27,140,66.0,69.07779180538941,3.0777918053894098,3.0777918053894098,monitor_close,monitorear de cerca,within_20_cycles
+42,FD001,official_test,63,155,72.0,70.5693260326666,-1.430673967333405,1.430673967333405,monitor_close,monitorear de cerca,within_20_cycles
+43,FD001,official_test,10,192,96.0,73.38533686778784,-22.61466313221216,22.61466313221216,monitor_close,monitorear de cerca,conservative_underestimate
+44,FD001,official_test,13,195,95.0,76.01885471240561,-18.981145287594387,18.981145287594387,monitor_close,monitorear de cerca,within_20_cycles
+45,FD001,official_test,98,121,59.0,80.72678192602531,21.72678192602531,21.72678192602531,monitor_close,monitorear de cerca,dangerous_overestimate
+46,FD001,official_test,80,133,90.0,80.7776278093449,-9.222372190655094,9.222372190655094,monitor_close,monitorear de cerca,within_20_cycles
+47,FD001,official_test,70,152,94.0,81.3600959784187,-12.639904021581302,12.639904021581302,monitor_close,monitorear de cerca,within_20_cycles
+48,FD001,official_test,19,135,87.0,81.51681704975671,-5.48318295024329,5.48318295024329,monitor_close,monitorear de cerca,within_20_cycles
+49,FD001,official_test,79,101,63.0,83.93993868583232,20.93993868583232,20.93993868583232,monitor_close,monitorear de cerca,dangerous_overestimate
+50,FD001,official_test,45,152,114.0,85.12220995096665,-28.87779004903335,28.87779004903335,monitor_close,monitorear de cerca,conservative_underestimate
+51,FD001,official_test,30,143,115.0,87.51160069648162,-27.488399303518374,27.488399303518374,monitor_close,monitorear de cerca,conservative_underestimate
+52,FD001,official_test,12,217,124.0,91.28409319745856,-32.715906802541426,32.715906802541426,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+53,FD001,official_test,60,147,100.0,95.67927159771494,-4.320728402285056,4.320728402285056,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+54,FD001,official_test,29,171,90.0,95.98422171260732,5.984221712607322,5.984221712607322,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+55,FD001,official_test,4,106,82.0,97.180795473365,15.18079547336501,15.18079547336501,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+56,FD001,official_test,75,88,113.0,97.60249840193092,-15.397501598069084,15.397501598069084,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+57,FD001,official_test,57,160,103.0,97.62947691838244,-5.370523081617549,5.370523081617549,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+58,FD001,official_test,28,158,97.0,98.3533582299649,1.353358229964897,1.353358229964897,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+59,FD001,official_test,8,166,95.0,98.46975085277565,3.469750852775647,3.469750852775647,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+60,FD001,official_test,16,113,84.0,98.48844157735168,14.488441577351663,14.488441577351663,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+61,FD001,official_test,5,98,91.0,100.11122773216866,9.111227732168658,9.111227732168658,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+62,FD001,official_test,50,74,79.0,102.21860319107812,23.21860319107812,23.21860319107812,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+63,FD001,official_test,97,134,82.0,103.03188844999367,21.031888449993687,21.031888449993687,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+64,FD001,official_test,99,97,117.0,103.28169224821384,-13.71830775178617,13.71830775178617,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+65,FD001,official_test,7,160,91.0,104.11251267036836,13.112512670368346,13.112512670368346,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+66,FD001,official_test,51,144,114.0,104.7891571840239,-9.210842815976092,9.210842815976092,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+67,FD001,official_test,86,110,89.0,104.94388753424474,15.943887534244736,15.943887534244736,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+68,FD001,official_test,89,177,136.0,105.36328331388964,-30.63671668611036,30.63671668611036,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+69,FD001,official_test,47,73,135.0,106.21766949193352,-28.78233050806648,28.78233050806648,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+70,FD001,official_test,11,83,97.0,107.18881022581982,10.188810225819822,10.188810225819822,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+71,FD001,official_test,33,50,106.0,107.25376224039375,1.253762240393769,1.253762240393769,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+72,FD001,official_test,59,94,114.0,107.91013545326626,-6.089864546733736,6.089864546733736,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+73,FD001,official_test,9,55,111.0,110.06230817304576,-0.93769182695425,0.93769182695425,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+74,FD001,official_test,15,76,83.0,110.65752765399812,27.65752765399812,27.65752765399812,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+75,FD001,official_test,14,46,107.0,110.72348630634464,3.7234863063446255,3.7234863063446255,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+76,FD001,official_test,6,105,93.0,112.02873159983712,19.02873159983712,19.02873159983712,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+77,FD001,official_test,54,121,97.0,112.37181968072969,15.371819680729672,15.371819680729672,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+78,FD001,official_test,74,137,126.0,112.53894449728168,-13.461055502718324,13.461055502718324,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+79,FD001,official_test,73,112,131.0,112.55625490705444,-18.44374509294556,18.44374509294556,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+80,FD001,official_test,88,68,115.0,112.65206434204734,-2.347935657952661,2.347935657952661,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+81,FD001,official_test,87,56,116.0,112.86414232391031,-3.135857676089685,3.135857676089685,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+82,FD001,official_test,65,71,128.0,112.9994525451969,-15.000547454803096,15.000547454803096,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+83,FD001,official_test,96,97,137.0,113.23199506667382,-23.768004933326186,23.768004933326186,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+84,FD001,official_test,48,78,92.0,115.94629439382012,23.946294393820125,23.946294393820125,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+85,FD001,official_test,67,71,77.0,116.58611618153364,39.58611618153364,39.58611618153364,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+86,FD001,official_test,55,113,137.0,116.81893164490472,-20.18106835509528,20.18106835509528,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+87,FD001,official_test,95,89,128.0,117.91649653390492,-10.08350346609508,10.08350346609508,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+88,FD001,official_test,2,49,98.0,118.58923969659917,20.589239696599165,20.589239696599165,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+89,FD001,official_test,71,68,118.0,119.0792647340568,1.079264734056807,1.079264734056807,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+90,FD001,official_test,44,54,109.0,119.2071700466043,10.207170046604304,10.207170046604304,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+91,FD001,official_test,69,54,121.0,119.51578190220226,-1.4842180977977364,1.4842180977977364,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+92,FD001,official_test,23,130,113.0,119.55949709511016,6.559497095110174,6.559497095110174,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+93,FD001,official_test,26,76,119.0,119.81218259233412,0.8121825923341106,0.8121825923341106,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+94,FD001,official_test,83,73,137.0,119.86409944373386,-17.135900556266137,17.135900556266137,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+95,FD001,official_test,78,72,107.0,121.5537524220442,14.553752422044212,14.553752422044212,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+96,FD001,official_test,85,34,118.0,123.13849566792176,5.13849566792176,5.13849566792176,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+97,FD001,official_test,25,48,145.0,123.62698408878954,-21.37301591121046,21.37301591121046,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+98,FD001,official_test,22,39,111.0,124.14793250971653,13.147932509716526,13.147932509716526,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+99,FD001,official_test,1,31,112.0,125.20118630573954,13.20118630573954,13.20118630573954,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+100,FD001,official_test,39,37,142.0,126.0832143287619,-15.916785671238102,15.916785671238102,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+1,FD002,official_test,116,171,7.0,4.051266193389893,-2.9487338066101074,2.9487338066101074,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+2,FD002,official_test,177,191,6.0,4.593525409698486,-1.4064745903015137,1.4064745903015137,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+3,FD002,official_test,138,200,7.0,5.4491472244262695,-1.5508527755737305,1.5508527755737305,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+4,FD002,official_test,210,182,8.0,5.95729398727417,-2.04270601272583,2.04270601272583,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+5,FD002,official_test,11,162,6.0,6.2473673820495605,0.2473673820495605,0.2473673820495605,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+6,FD002,official_test,211,155,6.0,6.497629642486572,0.4976296424865722,0.4976296424865722,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+7,FD002,official_test,252,249,12.0,6.67189359664917,-5.32810640335083,5.32810640335083,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+8,FD002,official_test,7,184,6.0,6.885422706604004,0.8854227066040039,0.8854227066040039,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+9,FD002,official_test,186,166,10.0,7.041839122772217,-2.958160877227783,2.958160877227783,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+10,FD002,official_test,14,160,11.0,7.244603157043457,-3.755396842956543,3.755396842956543,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+11,FD002,official_test,50,164,13.0,7.586508274078369,-5.413491725921631,5.413491725921631,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+12,FD002,official_test,227,180,14.0,7.667176723480225,-6.332823276519775,6.332823276519775,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+13,FD002,official_test,90,163,8.0,7.969776630401611,-0.0302233695983886,0.0302233695983886,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+14,FD002,official_test,124,149,7.0,8.068938255310059,1.0689382553100586,1.0689382553100586,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+15,FD002,official_test,231,187,8.0,8.332942962646484,0.3329429626464844,0.3329429626464844,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+16,FD002,official_test,44,164,6.0,8.342216491699219,2.3422164916992188,2.3422164916992188,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+17,FD002,official_test,134,186,9.0,8.431836128234863,-0.5681638717651367,0.5681638717651367,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+18,FD002,official_test,9,161,11.0,8.897807121276855,-2.1021928787231445,2.1021928787231445,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+19,FD002,official_test,91,278,9.0,9.236572265625,0.236572265625,0.236572265625,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+20,FD002,official_test,103,186,8.0,9.31736183166504,1.317361831665039,1.317361831665039,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+21,FD002,official_test,173,117,14.0,9.507208824157717,-4.492791175842285,4.492791175842285,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+22,FD002,official_test,185,254,19.0,10.02728271484375,-8.97271728515625,8.97271728515625,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+23,FD002,official_test,159,187,9.0,10.074021339416504,1.074021339416504,1.074021339416504,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+24,FD002,official_test,99,163,9.0,10.395647048950195,1.395647048950195,1.395647048950195,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+25,FD002,official_test,208,166,8.0,10.571906089782717,2.571906089782715,2.571906089782715,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+26,FD002,official_test,245,265,16.0,10.757604598999023,-5.242395401000977,5.242395401000977,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+27,FD002,official_test,148,157,11.0,11.030303001403809,0.0303030014038085,0.0303030014038085,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+28,FD002,official_test,80,278,15.0,11.27659511566162,-3.723404884338379,3.723404884338379,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+29,FD002,official_test,64,233,14.0,11.438436508178713,-2.561563491821289,2.561563491821289,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+30,FD002,official_test,190,158,12.0,11.737263679504396,-0.2627363204956054,0.2627363204956054,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+31,FD002,official_test,45,195,15.0,11.793904304504396,-3.206095695495605,3.206095695495605,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+32,FD002,official_test,111,131,9.0,11.865674018859863,2.8656740188598637,2.8656740188598637,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+33,FD002,official_test,32,170,11.0,12.640966415405272,1.6409664154052734,1.6409664154052734,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+34,FD002,official_test,164,199,14.0,13.015592575073242,-0.9844074249267578,0.9844074249267578,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+35,FD002,official_test,5,148,15.0,13.226484298706056,-1.773515701293945,1.773515701293945,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+36,FD002,official_test,70,264,17.0,13.403109550476074,-3.596890449523926,3.596890449523926,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+37,FD002,official_test,242,194,17.0,13.754191398620604,-3.2458086013793945,3.2458086013793945,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+38,FD002,official_test,146,144,10.0,14.057637214660645,4.0576372146606445,4.0576372146606445,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+39,FD002,official_test,65,367,11.0,14.371908187866213,3.371908187866211,3.371908187866211,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+40,FD002,official_test,120,160,15.0,15.136406898498535,0.1364068984985351,0.1364068984985351,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+41,FD002,official_test,192,161,13.0,15.218482971191406,2.2184829711914062,2.2184829711914062,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+42,FD002,official_test,48,132,13.0,15.31614112854004,2.316141128540039,2.316141128540039,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+43,FD002,official_test,22,159,10.0,15.318238258361816,5.318238258361816,5.318238258361816,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+44,FD002,official_test,102,122,8.0,15.486329078674316,7.486329078674316,7.486329078674316,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+45,FD002,official_test,100,149,14.0,15.554651260375977,1.5546512603759766,1.5546512603759766,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+46,FD002,official_test,225,166,11.0,15.980816841125488,4.980816841125488,4.980816841125488,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+47,FD002,official_test,182,134,14.0,16.06690788269043,2.0669078826904297,2.0669078826904297,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+48,FD002,official_test,84,204,17.0,16.87596321105957,-0.1240367889404296,0.1240367889404296,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+49,FD002,official_test,236,274,12.0,17.321046829223633,5.321046829223633,5.321046829223633,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+50,FD002,official_test,43,184,18.0,18.194026947021484,0.1940269470214843,0.1940269470214843,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+51,FD002,official_test,161,174,13.0,18.433568954467773,5.433568954467773,5.433568954467773,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+52,FD002,official_test,87,131,21.0,18.49786758422852,-2.5021324157714844,2.5021324157714844,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+53,FD002,official_test,1,258,18.0,18.99754524230957,0.9975452423095704,0.9975452423095704,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+54,FD002,official_test,176,200,23.0,19.599124908447266,-3.4008750915527344,3.4008750915527344,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+55,FD002,official_test,158,171,15.0,19.9851131439209,4.985113143920898,4.985113143920898,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+56,FD002,official_test,19,172,22.0,22.882238388061523,0.8822383880615234,0.8822383880615234,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+57,FD002,official_test,97,213,31.0,24.36292839050293,-6.63707160949707,6.63707160949707,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+58,FD002,official_test,250,234,23.0,24.65749740600586,1.6574974060058594,1.6574974060058594,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+59,FD002,official_test,42,137,27.0,24.943012237548828,-2.056987762451172,2.056987762451172,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+60,FD002,official_test,179,156,35.0,27.96093368530273,-7.039066314697266,7.039066314697266,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+61,FD002,official_test,150,196,34.0,28.50604057312012,-5.493959426879883,5.493959426879883,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+62,FD002,official_test,13,164,30.0,30.07278823852539,0.0727882385253906,0.0727882385253906,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+63,FD002,official_test,209,131,23.0,31.20694732666016,8.206947326660156,8.206947326660156,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+64,FD002,official_test,40,183,37.0,31.368179321289062,-5.6318206787109375,5.6318206787109375,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+65,FD002,official_test,62,205,39.0,33.503700256347656,-5.496299743652344,5.496299743652344,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+66,FD002,official_test,76,222,36.0,34.526405334472656,-1.4735946655273438,1.4735946655273438,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+67,FD002,official_test,109,144,35.0,35.21014404296875,0.21014404296875,0.21014404296875,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+68,FD002,official_test,41,210,44.0,36.06962203979492,-7.930377960205078,7.930377960205078,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+69,FD002,official_test,253,139,43.0,36.093711853027344,-6.906288146972656,6.906288146972656,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+70,FD002,official_test,63,174,39.0,36.48872375488281,-2.5112762451171875,2.5112762451171875,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+71,FD002,official_test,58,247,26.0,36.94918441772461,10.94918441772461,10.94918441772461,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+72,FD002,official_test,257,199,56.0,37.018341064453125,-18.981658935546875,18.981658935546875,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+73,FD002,official_test,171,243,36.0,37.48797225952149,1.4879722595214844,1.4879722595214844,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+74,FD002,official_test,160,124,42.0,40.32283782958984,-1.6771621704101562,1.6771621704101562,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+75,FD002,official_test,162,185,41.0,41.89242172241211,0.8924217224121094,0.8924217224121094,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+76,FD002,official_test,15,165,37.0,41.98527145385742,4.985271453857422,4.985271453857422,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+77,FD002,official_test,144,143,43.0,42.4507064819336,-0.5492935180664062,0.5492935180664062,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+78,FD002,official_test,193,245,37.0,42.971641540527344,5.971641540527344,5.971641540527344,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+79,FD002,official_test,254,131,48.0,43.95186614990234,-4.048133850097656,4.048133850097656,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+80,FD002,official_test,198,120,32.0,45.16633224487305,13.166332244873049,13.166332244873049,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+81,FD002,official_test,132,122,39.0,45.7830924987793,6.783092498779297,6.783092498779297,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+82,FD002,official_test,142,163,47.0,47.98567581176758,0.985675811767578,0.985675811767578,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+83,FD002,official_test,133,186,38.0,48.22338485717773,10.223384857177734,10.223384857177734,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+84,FD002,official_test,212,187,57.0,48.36943435668945,-8.630565643310547,8.630565643310547,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+85,FD002,official_test,53,149,52.0,49.2701416015625,-2.7298583984375,2.7298583984375,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+86,FD002,official_test,39,149,48.0,49.75983810424805,1.7598381042480469,1.7598381042480469,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+87,FD002,official_test,189,178,43.0,49.97603988647461,6.976039886474609,6.976039886474609,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+88,FD002,official_test,140,306,55.0,50.109561920166016,-4.890438079833984,4.890438079833984,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+89,FD002,official_test,78,128,52.0,51.92549514770508,-0.0745048522949218,0.0745048522949218,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+90,FD002,official_test,85,183,47.0,52.1556510925293,5.155651092529297,5.155651092529297,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+91,FD002,official_test,68,218,56.0,54.06657028198242,-1.933429718017578,1.933429718017578,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+92,FD002,official_test,237,235,62.0,55.58500671386719,-6.4149932861328125,6.4149932861328125,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+93,FD002,official_test,20,101,54.0,56.55117034912109,2.5511703491210938,2.5511703491210938,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+94,FD002,official_test,96,140,49.0,56.69293975830078,7.692939758300781,7.692939758300781,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+95,FD002,official_test,107,132,61.0,57.621543884277344,-3.378456115722656,3.378456115722656,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+96,FD002,official_test,195,262,80.0,58.919395446777344,-21.080604553222656,21.080604553222656,schedule_soon,programar mantenimiento preventivo,conservative_underestimate
+97,FD002,official_test,181,199,68.0,58.96123123168945,-9.038768768310549,9.038768768310549,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+98,FD002,official_test,115,210,91.0,59.38143539428711,-31.61856460571289,31.61856460571289,schedule_soon,programar mantenimiento preventivo,conservative_underestimate
+99,FD002,official_test,143,226,81.0,60.85504150390625,-20.14495849609375,20.14495849609375,monitor_close,monitorear de cerca,conservative_underestimate
+100,FD002,official_test,110,219,80.0,62.39695739746094,-17.603042602539062,17.603042602539062,monitor_close,monitorear de cerca,within_20_cycles
+101,FD002,official_test,137,226,88.0,62.40964889526367,-25.590351104736328,25.590351104736328,monitor_close,monitorear de cerca,conservative_underestimate
+102,FD002,official_test,206,162,48.0,63.57975769042969,15.579757690429688,15.579757690429688,monitor_close,monitorear de cerca,within_20_cycles
+103,FD002,official_test,139,116,51.0,63.67417526245117,12.674175262451172,12.674175262451172,monitor_close,monitorear de cerca,within_20_cycles
+104,FD002,official_test,73,151,78.0,63.940673828125,-14.059326171875,14.059326171875,monitor_close,monitorear de cerca,within_20_cycles
+105,FD002,official_test,226,165,108.0,65.75472259521484,-42.24527740478516,42.24527740478516,monitor_close,monitorear de cerca,conservative_underestimate
+106,FD002,official_test,52,165,53.0,65.81055450439453,12.810554504394531,12.810554504394531,monitor_close,monitorear de cerca,within_20_cycles
+107,FD002,official_test,17,264,68.0,67.10916900634766,-0.8908309936523438,0.8908309936523438,monitor_close,monitorear de cerca,within_20_cycles
+108,FD002,official_test,248,162,56.0,67.1476058959961,11.147605895996094,11.147605895996094,monitor_close,monitorear de cerca,within_20_cycles
+109,FD002,official_test,232,159,101.0,67.34886932373047,-33.65113067626953,33.65113067626953,monitor_close,monitorear de cerca,conservative_underestimate
+110,FD002,official_test,38,127,55.0,67.35717010498047,12.357170104980469,12.357170104980469,monitor_close,monitorear de cerca,within_20_cycles
+111,FD002,official_test,219,161,73.0,67.43868255615234,-5.561317443847656,5.561317443847656,monitor_close,monitorear de cerca,within_20_cycles
+112,FD002,official_test,30,184,78.0,67.72782135009766,-10.272178649902344,10.272178649902344,monitor_close,monitorear de cerca,within_20_cycles
+113,FD002,official_test,33,135,53.0,67.72853088378906,14.728530883789062,14.728530883789062,monitor_close,monitorear de cerca,within_20_cycles
+114,FD002,official_test,168,107,82.0,69.30134582519531,-12.698654174804688,12.698654174804688,monitor_close,monitorear de cerca,within_20_cycles
+115,FD002,official_test,24,210,77.0,69.8226089477539,-7.177391052246094,7.177391052246094,monitor_close,monitorear de cerca,within_20_cycles
+116,FD002,official_test,25,147,88.0,69.91276550292969,-18.087234497070312,18.087234497070312,monitor_close,monitorear de cerca,within_20_cycles
+117,FD002,official_test,35,77,63.0,71.6661376953125,8.6661376953125,8.6661376953125,monitor_close,monitorear de cerca,within_20_cycles
+118,FD002,official_test,129,218,79.0,73.02764892578125,-5.97235107421875,5.97235107421875,monitor_close,monitorear de cerca,within_20_cycles
+119,FD002,official_test,222,180,75.0,74.4649658203125,-0.5350341796875,0.5350341796875,monitor_close,monitorear de cerca,within_20_cycles
+120,FD002,official_test,16,88,67.0,74.4726791381836,7.472679138183594,7.472679138183594,monitor_close,monitorear de cerca,within_20_cycles
+121,FD002,official_test,67,146,86.0,74.77377319335938,-11.226226806640623,11.226226806640623,monitor_close,monitorear de cerca,within_20_cycles
+122,FD002,official_test,202,124,68.0,74.94242858886719,6.942428588867188,6.942428588867188,monitor_close,monitorear de cerca,within_20_cycles
+123,FD002,official_test,92,123,73.0,75.00521850585938,2.005218505859375,2.005218505859375,monitor_close,monitorear de cerca,within_20_cycles
+124,FD002,official_test,82,96,74.0,75.84453582763672,1.8445358276367188,1.8445358276367188,monitor_close,monitorear de cerca,within_20_cycles
+125,FD002,official_test,112,109,50.0,76.32498931884766,26.324989318847656,26.324989318847656,monitor_close,monitorear de cerca,dangerous_overestimate
+126,FD002,official_test,127,126,82.0,76.4072265625,-5.5927734375,5.5927734375,monitor_close,monitorear de cerca,within_20_cycles
+127,FD002,official_test,88,166,79.0,76.86011505126953,-2.1398849487304688,2.1398849487304688,monitor_close,monitorear de cerca,within_20_cycles
+128,FD002,official_test,259,123,51.0,77.06210327148438,26.06210327148437,26.06210327148437,monitor_close,monitorear de cerca,dangerous_overestimate
+129,FD002,official_test,151,141,115.0,78.266357421875,-36.733642578125,36.733642578125,monitor_close,monitorear de cerca,conservative_underestimate
+130,FD002,official_test,152,90,59.0,78.89771270751953,19.89771270751953,19.89771270751953,monitor_close,monitorear de cerca,within_20_cycles
+131,FD002,official_test,183,150,67.0,79.01546478271484,12.015464782714844,12.015464782714844,monitor_close,monitorear de cerca,within_20_cycles
+132,FD002,official_test,60,144,73.0,79.2113265991211,6.211326599121094,6.211326599121094,monitor_close,monitorear de cerca,within_20_cycles
+133,FD002,official_test,36,163,100.0,81.83614349365234,-18.163856506347656,18.163856506347656,monitor_close,monitorear de cerca,within_20_cycles
+134,FD002,official_test,75,192,98.0,82.19740295410156,-15.802597045898438,15.802597045898438,monitor_close,monitorear de cerca,within_20_cycles
+135,FD002,official_test,205,31,134.0,82.41090393066406,-51.58909606933594,51.58909606933594,monitor_close,monitorear de cerca,conservative_underestimate
+136,FD002,official_test,216,100,81.0,82.87864685058594,1.8786468505859373,1.8786468505859373,monitor_close,monitorear de cerca,within_20_cycles
+137,FD002,official_test,98,113,97.0,83.85372924804688,-13.146270751953123,13.146270751953123,monitor_close,monitorear de cerca,within_20_cycles
+138,FD002,official_test,136,77,87.0,84.06587219238281,-2.9341278076171875,2.9341278076171875,monitor_close,monitorear de cerca,within_20_cycles
+139,FD002,official_test,8,173,90.0,86.0074234008789,-3.9925765991210938,3.9925765991210938,monitor_close,monitorear de cerca,within_20_cycles
+140,FD002,official_test,79,113,91.0,86.1444091796875,-4.8555908203125,4.8555908203125,monitor_close,monitorear de cerca,within_20_cycles
+141,FD002,official_test,119,202,106.0,86.1946029663086,-19.805397033691406,19.805397033691406,monitor_close,monitorear de cerca,within_20_cycles
+142,FD002,official_test,213,159,83.0,87.61628723144531,4.6162872314453125,4.6162872314453125,monitor_close,monitorear de cerca,within_20_cycles
+143,FD002,official_test,4,86,110.0,87.8607406616211,-22.139259338378903,22.139259338378903,monitor_close,monitorear de cerca,conservative_underestimate
+144,FD002,official_test,21,128,97.0,88.38885498046875,-8.61114501953125,8.61114501953125,monitor_close,monitorear de cerca,within_20_cycles
+145,FD002,official_test,31,123,75.0,89.73595428466797,14.735954284667969,14.735954284667969,monitor_close,monitorear de cerca,within_20_cycles
+146,FD002,official_test,95,78,73.0,90.5390396118164,17.539039611816406,17.539039611816406,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+147,FD002,official_test,229,109,61.0,91.94415283203124,30.94415283203125,30.94415283203125,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+148,FD002,official_test,145,142,98.0,92.19171142578124,-5.80828857421875,5.80828857421875,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+149,FD002,official_test,106,72,120.0,92.72713470458984,-27.27286529541016,27.27286529541016,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+150,FD002,official_test,49,65,122.0,93.21785736083984,-28.78214263916016,28.78214263916016,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+151,FD002,official_test,167,78,96.0,93.4182357788086,-2.5817642211914062,2.5817642211914062,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+152,FD002,official_test,128,110,108.0,93.65487670898438,-14.345123291015623,14.345123291015623,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+153,FD002,official_test,10,84,79.0,93.9974136352539,14.997413635253906,14.997413635253906,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+154,FD002,official_test,234,147,89.0,95.61721801757812,6.617218017578125,6.617218017578125,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+155,FD002,official_test,12,74,73.0,96.5261688232422,23.526168823242188,23.526168823242188,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+156,FD002,official_test,153,146,99.0,96.53799438476562,-2.462005615234375,2.462005615234375,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+157,FD002,official_test,72,143,104.0,97.31727600097656,-6.6827239990234375,6.6827239990234375,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+158,FD002,official_test,61,70,169.0,97.40128326416016,-71.59871673583984,71.59871673583984,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+159,FD002,official_test,104,141,106.0,97.7323760986328,-8.267623901367188,8.267623901367188,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+160,FD002,official_test,29,101,83.0,97.89566802978516,14.895668029785156,14.895668029785156,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+161,FD002,official_test,2,55,79.0,98.65638732910156,19.65638732910156,19.65638732910156,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+162,FD002,official_test,121,59,67.0,98.7597885131836,31.759788513183597,31.759788513183597,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+163,FD002,official_test,94,117,97.0,99.0590362548828,2.0590362548828125,2.0590362548828125,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+164,FD002,official_test,207,141,85.0,99.52635955810548,14.526359558105469,14.526359558105469,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+165,FD002,official_test,77,67,94.0,99.8735580444336,5.873558044433594,5.873558044433594,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+166,FD002,official_test,89,59,97.0,100.58635711669922,3.5863571166992188,3.5863571166992188,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+167,FD002,official_test,118,97,150.0,100.7055206298828,-49.29447937011719,49.29447937011719,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+168,FD002,official_test,3,165,106.0,101.09668731689452,-4.903312683105469,4.903312683105469,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+169,FD002,official_test,180,154,97.0,101.12830352783205,4.128303527832031,4.128303527832031,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+170,FD002,official_test,178,54,144.0,101.6885223388672,-42.31147766113281,42.31147766113281,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+171,FD002,official_test,47,81,131.0,102.3358383178711,-28.664161682128903,28.664161682128903,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+172,FD002,official_test,172,128,107.0,102.65882110595705,-4.341178894042969,4.341178894042969,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+173,FD002,official_test,169,80,135.0,102.99874114990234,-32.001258850097656,32.001258850097656,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+174,FD002,official_test,126,99,124.0,103.4358901977539,-20.564109802246094,20.564109802246094,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+175,FD002,official_test,163,144,88.0,103.87362670898438,15.873626708984377,15.873626708984377,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+176,FD002,official_test,199,117,103.0,105.03278350830078,2.032783508300781,2.032783508300781,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+177,FD002,official_test,74,103,86.0,105.51666259765624,19.51666259765625,19.51666259765625,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+178,FD002,official_test,240,50,121.0,105.70225524902344,-15.297744750976562,15.297744750976562,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+179,FD002,official_test,69,158,115.0,105.70933532714844,-9.290664672851562,9.290664672851562,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+180,FD002,official_test,238,94,134.0,105.74737548828124,-28.25262451171875,28.25262451171875,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+181,FD002,official_test,214,75,172.0,105.9346694946289,-66.0653305053711,66.0653305053711,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+182,FD002,official_test,157,161,171.0,106.0545654296875,-64.9454345703125,64.9454345703125,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+183,FD002,official_test,170,85,182.0,107.0193862915039,-74.9806137084961,74.9806137084961,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+184,FD002,official_test,66,63,121.0,107.5750961303711,-13.424903869628906,13.424903869628906,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+185,FD002,official_test,26,76,163.0,107.6333999633789,-55.36660003662109,55.36660003662109,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+186,FD002,official_test,108,174,168.0,107.83541107177734,-60.164588928222656,60.164588928222656,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+187,FD002,official_test,86,83,194.0,107.8495864868164,-86.1504135131836,86.1504135131836,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+188,FD002,official_test,141,69,155.0,107.90695190429688,-47.093048095703125,47.093048095703125,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+189,FD002,official_test,174,51,95.0,108.0627899169922,13.062789916992188,13.062789916992188,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+190,FD002,official_test,46,132,112.0,108.1505355834961,-3.849464416503906,3.849464416503906,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+191,FD002,official_test,246,80,152.0,108.42739868164062,-43.572601318359375,43.572601318359375,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+192,FD002,official_test,117,55,181.0,108.50494384765624,-72.49505615234375,72.49505615234375,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+193,FD002,official_test,188,86,183.0,108.54209899902344,-74.45790100097656,74.45790100097656,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+194,FD002,official_test,55,123,103.0,108.73909759521484,5.739097595214844,5.739097595214844,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+195,FD002,official_test,239,106,101.0,108.775634765625,7.775634765625,7.775634765625,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+196,FD002,official_test,228,44,126.0,109.54352569580078,-16.45647430419922,16.45647430419922,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+197,FD002,official_test,114,153,78.0,110.24561309814452,32.24561309814453,32.24561309814453,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+198,FD002,official_test,191,95,148.0,110.29984283447266,-37.700157165527344,37.700157165527344,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+199,FD002,official_test,54,74,106.0,110.48585510253906,4.485855102539063,4.485855102539063,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+200,FD002,official_test,101,38,106.0,111.0852279663086,5.085227966308594,5.085227966308594,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+201,FD002,official_test,123,61,180.0,111.11102294921876,-68.88897705078125,68.88897705078125,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+202,FD002,official_test,81,76,141.0,111.31858825683594,-29.681411743164062,29.681411743164062,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+203,FD002,official_test,221,55,139.0,111.89508819580078,-27.10491180419922,27.10491180419922,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+204,FD002,official_test,256,59,191.0,111.94769287109376,-79.05230712890625,79.05230712890625,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+205,FD002,official_test,233,40,153.0,112.18158721923828,-40.81841278076172,40.81841278076172,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+206,FD002,official_test,251,64,84.0,112.51323699951172,28.51323699951172,28.51323699951172,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+207,FD002,official_test,156,75,83.0,113.15018463134766,30.150184631347656,30.150184631347656,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+208,FD002,official_test,224,43,145.0,113.18415069580078,-31.81584930419922,31.81584930419922,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+209,FD002,official_test,18,40,99.0,113.46276092529295,14.462760925292969,14.462760925292969,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+210,FD002,official_test,125,79,179.0,113.51194763183594,-65.48805236816406,65.48805236816406,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+211,FD002,official_test,93,76,183.0,113.66097259521484,-69.33902740478516,69.33902740478516,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+212,FD002,official_test,215,71,101.0,114.60509490966795,13.605094909667969,13.605094909667969,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+213,FD002,official_test,59,22,178.0,114.69182586669922,-63.30817413330078,63.30817413330078,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+214,FD002,official_test,258,98,131.0,114.85467529296876,-16.14532470703125,16.14532470703125,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+215,FD002,official_test,130,141,121.0,115.33796691894533,-5.662033081054688,5.662033081054688,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+216,FD002,official_test,197,59,132.0,115.3421630859375,-16.6578369140625,16.6578369140625,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+217,FD002,official_test,220,54,121.0,115.63653564453124,-5.36346435546875,5.36346435546875,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+218,FD002,official_test,105,61,116.0,116.00941467285156,0.0094146728515625,0.0094146728515625,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+219,FD002,official_test,200,60,174.0,116.3440933227539,-57.655906677246094,57.655906677246094,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+220,FD002,official_test,175,83,142.0,116.80162811279295,-25.19837188720703,25.19837188720703,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+221,FD002,official_test,27,68,126.0,117.19165802001952,-8.808341979980469,8.808341979980469,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+222,FD002,official_test,196,109,93.0,117.24958038330078,24.24958038330078,24.24958038330078,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+223,FD002,official_test,204,41,121.0,117.67787170410156,-3.322128295898437,3.322128295898437,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+224,FD002,official_test,166,97,188.0,118.09575653076172,-69.90424346923828,69.90424346923828,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+225,FD002,official_test,201,25,111.0,118.3029556274414,7.302955627441406,7.302955627441406,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+226,FD002,official_test,147,78,92.0,118.45348358154295,26.45348358154297,26.45348358154297,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+227,FD002,official_test,243,40,161.0,118.97476196289062,-42.025238037109375,42.025238037109375,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+228,FD002,official_test,154,58,103.0,119.03852081298828,16.03852081298828,16.03852081298828,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+229,FD002,official_test,28,23,138.0,119.08709716796876,-18.91290283203125,18.91290283203125,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+230,FD002,official_test,122,29,145.0,119.10980987548828,-25.89019012451172,25.89019012451172,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+231,FD002,official_test,187,84,158.0,119.28368377685548,-38.71631622314453,38.71631622314453,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+232,FD002,official_test,244,49,181.0,119.58963012695312,-61.41036987304688,61.41036987304688,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+233,FD002,official_test,57,76,123.0,119.91411590576172,-3.085884094238281,3.085884094238281,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+234,FD002,official_test,255,150,122.0,119.98553466796876,-2.01446533203125,2.01446533203125,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+235,FD002,official_test,23,49,142.0,119.99859619140624,-22.00140380859375,22.00140380859375,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+236,FD002,official_test,165,35,155.0,120.63390350341795,-34.36609649658203,34.36609649658203,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+237,FD002,official_test,51,37,98.0,121.58250427246094,23.582504272460938,23.582504272460938,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+238,FD002,official_test,135,120,167.0,121.6793212890625,-45.3206787109375,45.3206787109375,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+239,FD002,official_test,149,70,165.0,121.69091033935548,-43.30908966064453,43.30908966064453,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+240,FD002,official_test,71,65,148.0,121.96092224121094,-26.039077758789062,26.039077758789062,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+241,FD002,official_test,6,63,155.0,122.1531753540039,-32.846824645996094,32.846824645996094,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+242,FD002,official_test,194,50,122.0,122.2229461669922,0.2229461669921875,0.2229461669921875,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+243,FD002,official_test,83,21,146.0,122.46197509765624,-23.53802490234375,23.53802490234375,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+244,FD002,official_test,247,87,148.0,122.67269897460938,-25.327301025390625,25.327301025390625,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+245,FD002,official_test,223,29,151.0,122.71788024902344,-28.28211975097656,28.28211975097656,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+246,FD002,official_test,131,73,120.0,123.0016098022461,3.0016098022460938,3.0016098022460938,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+247,FD002,official_test,230,125,85.0,123.2702178955078,38.27021789550781,38.27021789550781,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+248,FD002,official_test,113,45,151.0,123.3271255493164,-27.672874450683597,27.672874450683597,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+249,FD002,official_test,155,72,108.0,124.12350463867188,16.123504638671875,16.123504638671875,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+250,FD002,official_test,56,73,152.0,124.4234848022461,-27.576515197753903,27.576515197753903,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+251,FD002,official_test,34,52,173.0,126.32160186767578,-46.67839813232422,46.67839813232422,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+252,FD002,official_test,37,49,151.0,128.08497619628906,-22.915023803710938,22.915023803710938,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+253,FD002,official_test,235,102,190.0,128.70687866210938,-61.29312133789063,61.29312133789063,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+254,FD002,official_test,249,36,111.0,128.86106872558594,17.861068725585938,17.861068725585938,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+255,FD002,official_test,184,64,191.0,129.13412475585938,-61.86587524414063,61.86587524414063,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+256,FD002,official_test,217,49,86.0,129.9161834716797,43.91618347167969,43.91618347167969,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+257,FD002,official_test,203,115,192.0,130.43515014648438,-61.564849853515625,61.564849853515625,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+258,FD002,official_test,218,33,165.0,131.9506072998047,-33.04939270019531,33.04939270019531,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+259,FD002,official_test,241,44,167.0,133.2694091796875,-33.7305908203125,33.7305908203125,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+1,FD003,official_test,94,333,10.0,5.3898456167640685,-4.610154383235932,4.610154383235932,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+2,FD003,official_test,46,180,7.0,5.767253835676241,-1.2327461643237587,1.2327461643237587,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+3,FD003,official_test,82,194,6.0,6.167598438096984,0.1675984380969843,0.1675984380969843,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+4,FD003,official_test,99,289,8.0,7.447922449879374,-0.5520775501206261,0.5520775501206261,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+5,FD003,official_test,39,310,8.0,7.66896291501777,-0.3310370849822295,0.3310370849822295,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+6,FD003,official_test,24,475,9.0,10.60331595727389,1.6033159572738906,1.6033159572738906,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+7,FD003,official_test,26,130,11.0,11.651045827065058,0.6510458270650581,0.6510458270650581,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+8,FD003,official_test,92,266,14.0,12.08145414145956,-1.9185458585404405,1.9185458585404405,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+9,FD003,official_test,50,147,11.0,15.197383203270896,4.197383203270896,4.197383203270896,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+10,FD003,official_test,21,263,18.0,15.318731741861674,-2.681268258138326,2.681268258138326,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+11,FD003,official_test,79,170,18.0,15.79228075810808,-2.2077192418919207,2.2077192418919207,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+12,FD003,official_test,81,155,15.0,16.002575162238497,1.0025751622384966,1.0025751622384966,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+13,FD003,official_test,98,182,17.0,17.53131480276693,0.5313148027669286,0.5313148027669286,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+14,FD003,official_test,100,247,28.0,21.57294096222236,-6.427059037777642,6.427059037777642,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+15,FD003,official_test,64,271,28.0,22.611773413690663,-5.388226586309337,5.388226586309337,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+16,FD003,official_test,78,279,20.0,23.10902412746481,3.10902412746481,3.10902412746481,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+17,FD003,official_test,71,367,35.0,24.27050084498443,-10.72949915501557,10.72949915501557,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+18,FD003,official_test,38,133,22.0,25.719121850951243,3.719121850951243,3.719121850951243,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+19,FD003,official_test,14,169,31.0,26.13028724129428,-4.869712758705724,4.869712758705724,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+20,FD003,official_test,86,174,25.0,27.23422329745102,2.2342232974510203,2.2342232974510203,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+21,FD003,official_test,76,180,27.0,27.43829962984264,0.4382996298426391,0.4382996298426391,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+22,FD003,official_test,3,234,27.0,34.27891395314462,7.278913953144617,7.278913953144617,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+23,FD003,official_test,55,203,55.0,37.281035317990046,-17.718964682009954,17.718964682009954,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+24,FD003,official_test,25,169,58.0,38.140171207947645,-19.859828792052355,19.859828792052355,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+25,FD003,official_test,40,313,41.0,40.68349722709959,-0.3165027729004066,0.3165027729004066,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+26,FD003,official_test,9,238,55.0,42.469131472832736,-12.530868527167264,12.530868527167264,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+27,FD003,official_test,59,149,49.0,45.50993437601331,-3.490065623986688,3.490065623986688,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+28,FD003,official_test,90,206,51.0,46.162211488732304,-4.837788511267696,4.837788511267696,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+29,FD003,official_test,8,192,55.0,49.12759411077232,-5.872405889227686,5.872405889227686,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+30,FD003,official_test,48,179,55.0,49.57395352732649,-5.426046472673512,5.426046472673512,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+31,FD003,official_test,72,232,45.0,49.71968984723768,4.7196898472376745,4.7196898472376745,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+32,FD003,official_test,20,207,56.0,50.39523685924762,-5.604763140752382,5.604763140752382,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+33,FD003,official_test,2,124,51.0,51.14287778785755,0.1428777878575502,0.1428777878575502,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+34,FD003,official_test,1,233,44.0,52.31481595806564,8.314815958065637,8.314815958065637,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+35,FD003,official_test,75,191,45.0,53.66304607090191,8.663046070901913,8.663046070901913,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+36,FD003,official_test,58,119,40.0,55.62190124835897,15.621901248358968,15.621901248358968,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+37,FD003,official_test,62,224,58.0,56.5255749248726,-1.4744250751273995,1.4744250751273995,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+38,FD003,official_test,89,120,41.0,58.08834336005765,17.08834336005765,17.08834336005765,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+39,FD003,official_test,7,158,71.0,61.49323628640623,-9.50676371359377,9.50676371359377,monitor_close,monitorear de cerca,within_20_cycles
+40,FD003,official_test,87,218,68.0,64.61911493137028,-3.380885068629724,3.380885068629724,monitor_close,monitorear de cerca,within_20_cycles
+41,FD003,official_test,93,158,67.0,68.06924905219941,1.0692490521994102,1.0692490521994102,monitor_close,monitorear de cerca,within_20_cycles
+42,FD003,official_test,77,381,86.0,69.33289007153385,-16.667109928466147,16.667109928466147,monitor_close,monitorear de cerca,within_20_cycles
+43,FD003,official_test,33,180,71.0,69.65113577000922,-1.348864229990781,1.348864229990781,monitor_close,monitorear de cerca,within_20_cycles
+44,FD003,official_test,23,405,78.0,70.50884911975776,-7.491150880242245,7.491150880242245,monitor_close,monitorear de cerca,within_20_cycles
+45,FD003,official_test,44,146,69.0,71.5397094008309,2.539709400830901,2.539709400830901,monitor_close,monitorear de cerca,within_20_cycles
+46,FD003,official_test,57,158,88.0,72.14967836398446,-15.850321636015536,15.850321636015536,monitor_close,monitorear de cerca,within_20_cycles
+47,FD003,official_test,30,333,89.0,72.60738842087247,-16.392611579127532,16.392611579127532,monitor_close,monitorear de cerca,within_20_cycles
+48,FD003,official_test,32,120,55.0,74.07901203126443,19.079012031264423,19.079012031264423,monitor_close,monitorear de cerca,within_20_cycles
+49,FD003,official_test,56,162,93.0,74.4715757956349,-18.52842420436509,18.52842420436509,monitor_close,monitorear de cerca,within_20_cycles
+50,FD003,official_test,51,118,78.0,76.74537605396594,-1.2546239460340587,1.2546239460340587,monitor_close,monitorear de cerca,within_20_cycles
+51,FD003,official_test,10,131,66.0,79.54838830629282,13.54838830629282,13.54838830629282,monitor_close,monitorear de cerca,within_20_cycles
+52,FD003,official_test,31,152,79.0,82.55564855955984,3.5556485595598417,3.5556485595598417,monitor_close,monitorear de cerca,within_20_cycles
+53,FD003,official_test,85,118,56.0,84.9026878103048,28.9026878103048,28.9026878103048,monitor_close,monitorear de cerca,dangerous_overestimate
+54,FD003,official_test,70,84,63.0,86.62775008711165,23.62775008711165,23.62775008711165,monitor_close,monitorear de cerca,dangerous_overestimate
+55,FD003,official_test,66,122,87.0,90.3700537732708,3.370053773270812,3.370053773270812,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+56,FD003,official_test,96,358,113.0,90.56579011229,-22.43420988771001,22.43420988771001,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+57,FD003,official_test,34,105,65.0,91.74276340235436,26.74276340235436,26.74276340235436,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+58,FD003,official_test,11,103,77.0,92.82914634378996,15.829146343789972,15.829146343789972,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+59,FD003,official_test,68,188,103.0,93.6582214822974,-9.341778517702608,9.341778517702608,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+60,FD003,official_test,83,168,145.0,97.84129700296856,-47.15870299703143,47.15870299703143,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+61,FD003,official_test,53,108,87.0,102.0544868231506,15.054486823150611,15.054486823150611,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+62,FD003,official_test,16,126,56.0,102.49445437794104,46.494454377941054,46.494454377941054,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+63,FD003,official_test,42,87,115.0,102.71964381908252,-12.280356180917464,12.280356180917464,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+64,FD003,official_test,91,56,81.0,102.85123447975192,21.85123447975191,21.85123447975191,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+65,FD003,official_test,12,146,115.0,103.04410903604315,-11.955890963956849,11.955890963956849,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+66,FD003,official_test,95,213,127.0,106.00779065750233,-20.992209342497688,20.992209342497688,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+67,FD003,official_test,5,138,101.0,107.93044762611264,6.930447626112638,6.930447626112638,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+68,FD003,official_test,19,115,85.0,108.0749035852898,23.074903585289803,23.074903585289803,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+69,FD003,official_test,69,105,100.0,108.22699774231036,8.226997742310346,8.226997742310346,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+70,FD003,official_test,45,88,111.0,108.6542734452416,-2.3457265547584143,2.3457265547584143,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+71,FD003,official_test,67,186,92.0,111.97581033852282,19.97581033852282,19.97581033852282,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+72,FD003,official_test,18,244,132.0,112.03759474439724,-19.96240525560277,19.96240525560277,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+73,FD003,official_test,47,56,137.0,112.060977746454,-24.939022253546,24.939022253546,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+74,FD003,official_test,60,112,128.0,113.38159608038616,-14.61840391961384,14.61840391961384,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+75,FD003,official_test,54,50,87.0,113.80263839239758,26.802638392397583,26.802638392397583,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+76,FD003,official_test,6,64,99.0,114.19857292625508,15.198572926255068,15.198572926255068,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+77,FD003,official_test,73,109,99.0,114.383998379158,15.383998379158,15.383998379158,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+78,FD003,official_test,49,211,135.0,115.55249699577494,-19.44750300422505,19.44750300422505,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+79,FD003,official_test,84,76,104.0,115.85502091761649,11.855020917616471,11.855020917616471,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+80,FD003,official_test,4,68,120.0,116.99911439213264,-3.0008856078673745,3.0008856078673745,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+81,FD003,official_test,13,65,115.0,118.26562038563188,3.265620385631877,3.265620385631877,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+82,FD003,official_test,80,85,133.0,118.92170959577538,-14.078290404224616,14.078290404224616,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+83,FD003,official_test,35,144,87.0,119.26026925124454,32.26026925124454,32.26026925124454,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+84,FD003,official_test,43,133,128.0,120.34360802599193,-7.656391974008088,7.656391974008088,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+85,FD003,official_test,27,104,88.0,121.16857046846214,33.168570468462136,33.168570468462136,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+86,FD003,official_test,29,89,124.0,122.07849945391372,-1.9215005460862928,1.9215005460862928,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+87,FD003,official_test,28,70,144.0,122.27351602044097,-21.726483979559035,21.726483979559035,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+88,FD003,official_test,17,230,136.0,122.29335892040125,-13.706641079598768,13.706641079598768,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+89,FD003,official_test,65,79,115.0,122.8493852121695,7.849385212169494,7.849385212169494,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+90,FD003,official_test,36,90,137.0,122.91610288719328,-14.08389711280671,14.08389711280671,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+91,FD003,official_test,63,137,117.0,122.9628732143406,5.96287321434059,5.96287321434059,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+92,FD003,official_test,22,119,119.0,123.22632774067074,4.22632774067074,4.22632774067074,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+93,FD003,official_test,97,95,123.0,123.28286942736588,0.2828694273658811,0.2828694273658811,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+94,FD003,official_test,88,41,144.0,123.7312536113786,-20.268746388621395,20.268746388621395,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+95,FD003,official_test,15,112,108.0,123.8317764499666,15.831776449966611,15.831776449966611,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+96,FD003,official_test,61,78,129.0,124.63728778995268,-4.362712210047334,4.362712210047334,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+97,FD003,official_test,52,38,120.0,124.71271449651016,4.712714496510145,4.712714496510145,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+98,FD003,official_test,41,101,131.0,124.84585285720983,-6.1541471427901655,6.1541471427901655,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+99,FD003,official_test,74,68,117.0,125.04262451221156,8.042624512211546,8.042624512211546,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+100,FD003,official_test,37,47,145.0,128.1083347495772,-16.89166525042279,16.89166525042279,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+1,FD004,official_test,118,178,8.0,6.614097595214844,-1.3859024047851562,1.3859024047851562,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+2,FD004,official_test,173,151,8.0,7.204617500305176,-0.7953824996948242,0.7953824996948242,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+3,FD004,official_test,58,185,8.0,7.253655433654785,-0.7463445663452148,0.7463445663452148,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+4,FD004,official_test,135,435,7.0,7.70959997177124,0.7095999717712402,0.7095999717712402,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+5,FD004,official_test,238,177,16.0,8.581364631652832,-7.418635368347168,7.418635368347168,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+6,FD004,official_test,184,154,10.0,8.721426010131836,-1.278573989868164,1.278573989868164,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+7,FD004,official_test,158,171,6.0,9.55734634399414,3.5573463439941406,3.5573463439941406,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+8,FD004,official_test,174,135,10.0,9.742000579833984,-0.2579994201660156,0.2579994201660156,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+9,FD004,official_test,113,132,13.0,10.384814262390137,-2.6151857376098637,2.6151857376098637,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+10,FD004,official_test,126,220,15.0,10.638467788696287,-4.361532211303711,4.361532211303711,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+11,FD004,official_test,40,266,10.0,10.848761558532717,0.8487615585327148,0.8487615585327148,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+12,FD004,official_test,172,132,12.0,10.964412689208984,-1.0355873107910156,1.0355873107910156,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+13,FD004,official_test,69,162,12.0,11.429905891418455,-0.570094108581543,0.570094108581543,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+14,FD004,official_test,224,152,14.0,11.531364440917969,-2.4686355590820312,2.4686355590820312,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+15,FD004,official_test,209,171,11.0,11.803558349609377,0.803558349609375,0.803558349609375,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+16,FD004,official_test,202,222,13.0,11.850412368774414,-1.149587631225586,1.149587631225586,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+17,FD004,official_test,198,115,11.0,11.873093605041504,0.8730936050415039,0.8730936050415039,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+18,FD004,official_test,183,125,15.0,12.799349784851074,-2.200650215148926,2.200650215148926,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+19,FD004,official_test,103,145,9.0,12.929673194885254,3.929673194885254,3.929673194885254,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+20,FD004,official_test,12,270,7.0,13.10083293914795,6.100832939147949,6.100832939147949,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+21,FD004,official_test,31,134,6.0,13.150558471679688,7.150558471679688,7.150558471679688,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+22,FD004,official_test,116,161,13.0,13.4386625289917,0.4386625289916992,0.4386625289916992,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+23,FD004,official_test,155,161,7.0,13.551307678222656,6.551307678222656,6.551307678222656,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+24,FD004,official_test,216,264,17.0,13.776082038879396,-3.223917961120605,3.223917961120605,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+25,FD004,official_test,65,186,12.0,14.151005744934082,2.151005744934082,2.151005744934082,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+26,FD004,official_test,179,262,12.0,14.275032997131348,2.275032997131348,2.275032997131348,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+27,FD004,official_test,8,248,14.0,15.229207992553713,1.229207992553711,1.229207992553711,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+28,FD004,official_test,38,125,11.0,15.879179000854492,4.879179000854492,4.879179000854492,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+29,FD004,official_test,32,260,22.0,16.966049194335938,-5.033950805664063,5.033950805664063,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+30,FD004,official_test,101,166,13.0,17.21527099609375,4.21527099609375,4.21527099609375,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+31,FD004,official_test,177,146,12.0,18.070634841918945,6.070634841918945,6.070634841918945,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+32,FD004,official_test,237,221,18.0,18.1578426361084,0.1578426361083984,0.1578426361083984,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+33,FD004,official_test,213,288,14.0,18.721248626708984,4.721248626708984,4.721248626708984,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+34,FD004,official_test,71,292,15.0,18.77772331237793,3.7777233123779297,3.7777233123779297,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+35,FD004,official_test,100,196,7.0,19.051624298095703,12.051624298095703,12.051624298095703,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+36,FD004,official_test,22,158,11.0,19.86798477172852,8.867984771728516,8.867984771728516,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+37,FD004,official_test,82,146,10.0,20.55765151977539,10.55765151977539,10.55765151977539,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+38,FD004,official_test,194,214,15.0,20.97644805908203,5.976448059082031,5.976448059082031,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+39,FD004,official_test,102,443,22.0,21.12574577331543,-0.8742542266845703,0.8742542266845703,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+40,FD004,official_test,1,230,22.0,21.55990982055664,-0.4400901794433594,0.4400901794433594,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+41,FD004,official_test,159,160,22.0,21.709009170532227,-0.2909908294677734,0.2909908294677734,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+42,FD004,official_test,49,273,24.0,23.24887466430664,-0.7511253356933594,0.7511253356933594,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+43,FD004,official_test,151,285,31.0,23.343690872192383,-7.656309127807617,7.656309127807617,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+44,FD004,official_test,35,278,36.0,24.1193962097168,-11.880603790283203,11.880603790283203,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+45,FD004,official_test,15,168,12.0,24.82977867126465,12.829778671264648,12.829778671264648,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+46,FD004,official_test,73,149,23.0,25.0039005279541,2.0039005279541016,2.0039005279541016,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+47,FD004,official_test,114,218,14.0,25.135120391845703,11.135120391845703,11.135120391845703,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+48,FD004,official_test,187,121,24.0,26.00438117980957,2.0043811798095703,2.0043811798095703,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+49,FD004,official_test,248,281,26.0,26.122234344482425,0.1222343444824218,0.1222343444824218,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+50,FD004,official_test,47,224,34.0,26.595706939697266,-7.404293060302734,7.404293060302734,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+51,FD004,official_test,23,162,26.0,27.89916229248047,1.8991622924804688,1.8991622924804688,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+52,FD004,official_test,231,230,33.0,28.601259231567383,-4.398740768432617,4.398740768432617,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+53,FD004,official_test,123,236,23.0,28.90492820739746,5.904928207397461,5.904928207397461,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+54,FD004,official_test,181,199,37.0,29.47660446166992,-7.523395538330078,7.523395538330078,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+55,FD004,official_test,235,362,24.0,29.569324493408203,5.569324493408203,5.569324493408203,urgent_replace,priorizar intervencion inmediata,within_20_cycles
+56,FD004,official_test,180,367,32.0,30.44965934753418,-1.5503406524658203,1.5503406524658203,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+57,FD004,official_test,111,342,18.0,31.570741653442383,13.570741653442385,13.570741653442385,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+58,FD004,official_test,2,153,39.0,33.729129791259766,-5.270870208740234,5.270870208740234,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+59,FD004,official_test,42,200,30.0,34.79230499267578,4.792304992675781,4.792304992675781,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+60,FD004,official_test,244,184,35.0,35.49876022338867,0.4987602233886719,0.4987602233886719,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+61,FD004,official_test,62,240,33.0,35.759429931640625,2.759429931640625,2.759429931640625,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+62,FD004,official_test,121,194,41.0,35.80854797363281,-5.191452026367188,5.191452026367188,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+63,FD004,official_test,70,190,33.0,36.70062255859375,3.70062255859375,3.70062255859375,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+64,FD004,official_test,219,110,41.0,37.3238525390625,-3.6761474609375,3.6761474609375,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+65,FD004,official_test,134,266,36.0,37.33173370361328,1.3317337036132812,1.3317337036132812,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+66,FD004,official_test,77,108,25.0,37.51686477661133,12.516864776611328,12.516864776611328,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+67,FD004,official_test,240,204,98.0,37.87605667114258,-60.12394332885742,60.12394332885742,schedule_soon,programar mantenimiento preventivo,conservative_underestimate
+68,FD004,official_test,197,196,36.0,38.23874282836914,2.2387428283691406,2.2387428283691406,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+69,FD004,official_test,154,122,34.0,38.57679748535156,4.5767974853515625,4.5767974853515625,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+70,FD004,official_test,67,150,46.0,38.803348541259766,-7.196651458740234,7.196651458740234,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+71,FD004,official_test,185,203,46.0,40.153541564941406,-5.846458435058594,5.846458435058594,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+72,FD004,official_test,150,202,57.0,42.63080596923828,-14.36919403076172,14.36919403076172,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+73,FD004,official_test,25,486,39.0,42.8270263671875,3.8270263671875,3.8270263671875,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+74,FD004,official_test,99,237,37.0,43.77518081665039,6.775180816650391,6.775180816650391,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+75,FD004,official_test,223,305,58.0,44.29124450683594,-13.708755493164062,13.708755493164062,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+76,FD004,official_test,48,214,45.0,48.23264694213867,3.232646942138672,3.232646942138672,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+77,FD004,official_test,44,406,60.0,48.315216064453125,-11.684783935546877,11.684783935546877,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+78,FD004,official_test,222,178,39.0,48.940574645996094,9.940574645996094,9.940574645996094,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+79,FD004,official_test,107,121,41.0,51.15520095825195,10.155200958251951,10.155200958251951,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+80,FD004,official_test,61,396,51.0,52.14094543457031,1.1409454345703125,1.1409454345703125,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+81,FD004,official_test,68,241,46.0,53.12377548217773,7.123775482177734,7.123775482177734,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+82,FD004,official_test,64,251,46.0,53.98548889160156,7.985488891601562,7.985488891601562,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+83,FD004,official_test,143,327,53.0,56.60829925537109,3.6082992553710938,3.6082992553710938,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+84,FD004,official_test,91,144,50.0,57.77558898925781,7.775588989257812,7.775588989257812,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+85,FD004,official_test,190,200,43.0,59.79269790649414,16.79269790649414,16.79269790649414,schedule_soon,programar mantenimiento preventivo,within_20_cycles
+86,FD004,official_test,110,348,59.0,60.34806442260742,1.348064422607422,1.348064422607422,monitor_close,monitorear de cerca,within_20_cycles
+87,FD004,official_test,43,120,42.0,60.72112655639648,18.721126556396484,18.721126556396484,monitor_close,monitorear de cerca,within_20_cycles
+88,FD004,official_test,149,320,76.0,61.00508499145508,-14.994915008544922,14.994915008544922,monitor_close,monitorear de cerca,within_20_cycles
+89,FD004,official_test,89,285,86.0,62.32356643676758,-23.676433563232425,23.676433563232425,monitor_close,monitorear de cerca,conservative_underestimate
+90,FD004,official_test,86,254,70.0,64.06329345703125,-5.93670654296875,5.93670654296875,monitor_close,monitorear de cerca,within_20_cycles
+91,FD004,official_test,212,261,76.0,64.919921875,-11.080078125,11.080078125,monitor_close,monitorear de cerca,within_20_cycles
+92,FD004,official_test,37,345,89.0,65.83976745605469,-23.160232543945312,23.160232543945312,monitor_close,monitorear de cerca,conservative_underestimate
+93,FD004,official_test,29,216,64.0,65.86800384521484,1.868003845214844,1.868003845214844,monitor_close,monitorear de cerca,within_20_cycles
+94,FD004,official_test,124,230,86.0,66.24381256103516,-19.756187438964844,19.756187438964844,monitor_close,monitorear de cerca,within_20_cycles
+95,FD004,official_test,234,179,68.0,67.51123046875,-0.48876953125,0.48876953125,monitor_close,monitorear de cerca,within_20_cycles
+96,FD004,official_test,145,102,59.0,68.94872283935547,9.948722839355469,9.948722839355469,monitor_close,monitorear de cerca,within_20_cycles
+97,FD004,official_test,36,159,73.0,69.20802307128906,-3.7919769287109375,3.7919769287109375,monitor_close,monitorear de cerca,within_20_cycles
+98,FD004,official_test,217,141,66.0,70.2947998046875,4.2947998046875,4.2947998046875,monitor_close,monitorear de cerca,within_20_cycles
+99,FD004,official_test,88,140,56.0,71.10787963867188,15.107879638671877,15.107879638671877,monitor_close,monitorear de cerca,within_20_cycles
+100,FD004,official_test,56,180,67.0,73.62503051757812,6.625030517578125,6.625030517578125,monitor_close,monitorear de cerca,within_20_cycles
+101,FD004,official_test,79,184,78.0,74.61006164550781,-3.3899383544921875,3.3899383544921875,monitor_close,monitorear de cerca,within_20_cycles
+102,FD004,official_test,34,361,126.0,74.99626159667969,-51.00373840332031,51.00373840332031,monitor_close,monitorear de cerca,conservative_underestimate
+103,FD004,official_test,106,148,107.0,75.24394226074219,-31.75605773925781,31.75605773925781,monitor_close,monitorear de cerca,conservative_underestimate
+104,FD004,official_test,221,176,73.0,75.36091613769531,2.3609161376953125,2.3609161376953125,monitor_close,monitorear de cerca,within_20_cycles
+105,FD004,official_test,147,116,56.0,76.73917388916016,20.73917388916016,20.73917388916016,monitor_close,monitorear de cerca,dangerous_overestimate
+106,FD004,official_test,13,227,71.0,77.0199966430664,6.019996643066406,6.019996643066406,monitor_close,monitorear de cerca,within_20_cycles
+107,FD004,official_test,18,247,104.0,79.10404968261719,-24.89595031738281,24.89595031738281,monitor_close,monitorear de cerca,conservative_underestimate
+108,FD004,official_test,4,208,75.0,79.5201187133789,4.520118713378906,4.520118713378906,monitor_close,monitorear de cerca,within_20_cycles
+109,FD004,official_test,236,176,75.0,79.61579895019531,4.6157989501953125,4.6157989501953125,monitor_close,monitorear de cerca,within_20_cycles
+110,FD004,official_test,161,257,82.0,80.61458587646484,-1.3854141235351562,1.3854141235351562,monitor_close,monitorear de cerca,within_20_cycles
+111,FD004,official_test,199,177,92.0,80.9400405883789,-11.059959411621094,11.059959411621094,monitor_close,monitorear de cerca,within_20_cycles
+112,FD004,official_test,210,135,88.0,81.38834381103516,-6.611656188964844,6.611656188964844,monitor_close,monitorear de cerca,within_20_cycles
+113,FD004,official_test,201,139,59.0,82.14446258544922,23.14446258544922,23.14446258544922,monitor_close,monitorear de cerca,dangerous_overestimate
+114,FD004,official_test,105,351,100.0,82.31987762451172,-17.68012237548828,17.68012237548828,monitor_close,monitorear de cerca,within_20_cycles
+115,FD004,official_test,27,144,76.0,83.04366302490234,7.043663024902344,7.043663024902344,monitor_close,monitorear de cerca,within_20_cycles
+116,FD004,official_test,41,414,97.0,83.09557342529297,-13.904426574707031,13.904426574707031,monitor_close,monitorear de cerca,within_20_cycles
+117,FD004,official_test,21,202,91.0,83.19756317138672,-7.802436828613281,7.802436828613281,monitor_close,monitorear de cerca,within_20_cycles
+118,FD004,official_test,50,206,86.0,83.72203826904297,-2.2779617309570312,2.2779617309570312,monitor_close,monitorear de cerca,within_20_cycles
+119,FD004,official_test,39,214,151.0,84.2790298461914,-66.7209701538086,66.7209701538086,monitor_close,monitorear de cerca,conservative_underestimate
+120,FD004,official_test,175,116,123.0,84.55670928955078,-38.44329071044922,38.44329071044922,monitor_close,monitorear de cerca,conservative_underestimate
+121,FD004,official_test,131,193,101.0,85.53238677978516,-15.467613220214844,15.467613220214844,monitor_close,monitorear de cerca,within_20_cycles
+122,FD004,official_test,78,106,74.0,88.78558349609375,14.78558349609375,14.78558349609375,monitor_close,monitorear de cerca,within_20_cycles
+123,FD004,official_test,200,115,96.0,89.35533142089844,-6.6446685791015625,6.6446685791015625,monitor_close,monitorear de cerca,within_20_cycles
+124,FD004,official_test,9,284,99.0,89.64388275146484,-9.356117248535156,9.356117248535156,monitor_close,monitorear de cerca,within_20_cycles
+125,FD004,official_test,247,94,112.0,90.96500396728516,-21.034996032714844,21.034996032714844,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+126,FD004,official_test,162,99,84.0,91.8373031616211,7.837303161621094,7.837303161621094,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+127,FD004,official_test,242,112,81.0,92.8597183227539,11.859718322753906,11.859718322753906,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+128,FD004,official_test,243,199,118.0,93.4953384399414,-24.504661560058597,24.504661560058597,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+129,FD004,official_test,188,157,135.0,94.3813705444336,-40.618629455566406,40.618629455566406,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+130,FD004,official_test,178,279,106.0,94.43621063232422,-11.56378936767578,11.56378936767578,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+131,FD004,official_test,74,223,89.0,94.44132232666016,5.441322326660156,5.441322326660156,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+132,FD004,official_test,20,115,82.0,94.81924438476562,12.819244384765623,12.819244384765623,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+133,FD004,official_test,208,180,91.0,94.9594268798828,3.959426879882813,3.959426879882813,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+134,FD004,official_test,171,355,126.0,95.44401550292967,-30.555984497070312,30.555984497070312,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+135,FD004,official_test,152,195,88.0,96.40748596191406,8.407485961914062,8.407485961914062,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+136,FD004,official_test,129,315,120.0,96.4511260986328,-23.548873901367188,23.548873901367188,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+137,FD004,official_test,138,239,88.0,96.52944946289062,8.529449462890625,8.529449462890625,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+138,FD004,official_test,176,185,103.0,96.96044158935548,-6.039558410644531,6.039558410644531,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+139,FD004,official_test,17,334,162.0,97.31220245361328,-64.68779754638672,64.68779754638672,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+140,FD004,official_test,230,157,98.0,98.30457305908205,0.3045730590820312,0.3045730590820312,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+141,FD004,official_test,6,146,78.0,98.79402160644533,20.794021606445312,20.794021606445312,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+142,FD004,official_test,169,34,179.0,99.2128677368164,-79.7871322631836,79.7871322631836,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+143,FD004,official_test,112,88,66.0,99.29619598388672,33.29619598388672,33.29619598388672,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+144,FD004,official_test,206,291,109.0,100.0123062133789,-8.987693786621094,8.987693786621094,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+145,FD004,official_test,189,107,56.0,100.18629455566406,44.18629455566406,44.18629455566406,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+146,FD004,official_test,163,122,95.0,100.25636291503906,5.256362915039063,5.256362915039063,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+147,FD004,official_test,92,116,73.0,100.3015365600586,27.301536560058597,27.301536560058597,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+148,FD004,official_test,14,102,105.0,100.90758514404295,-4.092414855957031,4.092414855957031,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+149,FD004,official_test,226,59,88.0,101.12744140625,13.12744140625,13.12744140625,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+150,FD004,official_test,193,263,104.0,101.73119354248048,-2.2688064575195312,2.2688064575195312,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+151,FD004,official_test,90,118,96.0,102.4202880859375,6.4202880859375,6.4202880859375,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+152,FD004,official_test,214,102,89.0,102.72051239013672,13.72051239013672,13.72051239013672,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+153,FD004,official_test,51,137,119.0,104.36454010009766,-14.635459899902344,14.635459899902344,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+154,FD004,official_test,120,170,137.0,104.90493774414062,-32.095062255859375,32.095062255859375,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+155,FD004,official_test,156,28,133.0,105.1772918701172,-27.82270812988281,27.82270812988281,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+156,FD004,official_test,7,54,94.0,105.43408966064452,11.434089660644531,11.434089660644531,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+157,FD004,official_test,54,81,176.0,106.11067962646484,-69.88932037353516,69.88932037353516,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+158,FD004,official_test,205,95,154.0,106.4626007080078,-47.53739929199219,47.53739929199219,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+159,FD004,official_test,119,228,109.0,106.47779846191406,-2.522201538085937,2.522201538085937,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+160,FD004,official_test,30,229,118.0,106.68815612792967,-11.311843872070312,11.311843872070312,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+161,FD004,official_test,192,203,71.0,106.84485626220705,35.84485626220703,35.84485626220703,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+162,FD004,official_test,196,70,89.0,107.1473159790039,18.147315979003903,18.147315979003903,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+163,FD004,official_test,241,42,176.0,107.5230712890625,-68.4769287109375,68.4769287109375,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+164,FD004,official_test,140,160,146.0,107.7195816040039,-38.280418395996094,38.280418395996094,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+165,FD004,official_test,66,97,133.0,108.36097717285156,-24.63902282714844,24.63902282714844,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+166,FD004,official_test,233,111,110.0,109.0663070678711,-0.9336929321289062,0.9336929321289062,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+167,FD004,official_test,160,122,83.0,109.09265899658205,26.09265899658203,26.09265899658203,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+168,FD004,official_test,232,370,184.0,109.5772933959961,-74.4227066040039,74.4227066040039,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+169,FD004,official_test,182,98,116.0,110.0862045288086,-5.913795471191406,5.913795471191406,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+170,FD004,official_test,97,51,105.0,110.24070739746094,5.2407073974609375,5.2407073974609375,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+171,FD004,official_test,80,112,114.0,110.5934066772461,-3.4065933227539062,3.4065933227539062,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+172,FD004,official_test,26,90,92.0,110.7177963256836,18.717796325683597,18.717796325683597,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+173,FD004,official_test,5,51,149.0,111.04364013671876,-37.95635986328125,37.95635986328125,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+174,FD004,official_test,132,115,116.0,111.19206237792967,-4.8079376220703125,4.8079376220703125,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+175,FD004,official_test,117,97,75.0,111.314208984375,36.314208984375,36.314208984375,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+176,FD004,official_test,168,74,87.0,111.70665740966795,24.70665740966797,24.70665740966797,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+177,FD004,official_test,96,123,71.0,113.23017120361328,42.23017120361328,42.23017120361328,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+178,FD004,official_test,167,99,109.0,113.2494125366211,4.249412536621094,4.249412536621094,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+179,FD004,official_test,93,200,154.0,113.30133819580078,-40.69866180419922,40.69866180419922,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+180,FD004,official_test,211,206,108.0,113.3760223388672,5.376022338867188,5.376022338867188,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+181,FD004,official_test,98,82,113.0,113.47408294677734,0.4740829467773437,0.4740829467773437,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+182,FD004,official_test,218,63,154.0,113.80976104736328,-40.19023895263672,40.19023895263672,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+183,FD004,official_test,60,135,139.0,114.08812713623048,-24.91187286376953,24.91187286376953,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+184,FD004,official_test,130,107,165.0,114.19768524169922,-50.80231475830078,50.80231475830078,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+185,FD004,official_test,53,67,142.0,114.82899475097656,-27.17100524902344,27.17100524902344,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+186,FD004,official_test,16,240,160.0,115.0731430053711,-44.926856994628906,44.926856994628906,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+187,FD004,official_test,108,145,153.0,115.26800537109376,-37.73199462890625,37.73199462890625,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+188,FD004,official_test,137,291,159.0,115.38258361816406,-43.61741638183594,43.61741638183594,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+189,FD004,official_test,148,126,145.0,115.75335693359376,-29.24664306640625,29.24664306640625,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+190,FD004,official_test,57,121,97.0,116.58704376220705,19.58704376220703,19.58704376220703,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+191,FD004,official_test,136,56,122.0,116.96485900878906,-5.0351409912109375,5.0351409912109375,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+192,FD004,official_test,76,48,163.0,117.0388641357422,-45.96113586425781,45.96113586425781,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+193,FD004,official_test,87,167,94.0,117.2638702392578,23.26387023925781,23.26387023925781,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+194,FD004,official_test,144,34,162.0,117.68647003173828,-44.31352996826172,44.31352996826172,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+195,FD004,official_test,10,23,162.0,118.2382583618164,-43.7617416381836,43.7617416381836,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+196,FD004,official_test,165,178,111.0,118.27873992919922,7.278739929199219,7.278739929199219,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+197,FD004,official_test,207,179,116.0,118.3632583618164,2.3632583618164062,2.3632583618164062,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+198,FD004,official_test,94,105,129.0,119.15145111083984,-9.848548889160156,9.848548889160156,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+199,FD004,official_test,204,19,151.0,119.1882553100586,-31.811744689941406,31.811744689941406,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+200,FD004,official_test,84,88,166.0,119.43859100341795,-46.56140899658203,46.56140899658203,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+201,FD004,official_test,142,69,108.0,119.45336151123048,11.453361511230469,11.453361511230469,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+202,FD004,official_test,72,118,176.0,119.69876861572266,-56.301231384277344,56.301231384277344,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+203,FD004,official_test,85,174,115.0,119.72160339355467,4.721603393554688,4.721603393554688,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+204,FD004,official_test,133,74,126.0,119.7537841796875,-6.2462158203125,6.2462158203125,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+205,FD004,official_test,11,82,143.0,119.83128356933594,-23.168716430664062,23.168716430664062,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+206,FD004,official_test,33,107,147.0,120.30350494384766,-26.696495056152344,26.696495056152344,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+207,FD004,official_test,81,60,96.0,120.4881591796875,24.4881591796875,24.4881591796875,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+208,FD004,official_test,225,39,145.0,120.6330337524414,-24.366966247558597,24.366966247558597,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+209,FD004,official_test,191,71,178.0,120.82691955566406,-57.17308044433594,57.17308044433594,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+210,FD004,official_test,215,72,145.0,121.09235382080078,-23.90764617919922,23.90764617919922,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+211,FD004,official_test,166,63,72.0,121.1511688232422,49.15116882324219,49.15116882324219,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+212,FD004,official_test,46,37,134.0,121.1685791015625,-12.8314208984375,12.8314208984375,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+213,FD004,official_test,239,28,166.0,121.28387451171876,-44.71612548828125,44.71612548828125,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+214,FD004,official_test,127,98,195.0,121.5370635986328,-73.46293640136719,73.46293640136719,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+215,FD004,official_test,195,186,166.0,121.58026123046876,-44.41973876953125,44.41973876953125,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+216,FD004,official_test,115,82,139.0,121.65950012207033,-17.340499877929688,17.340499877929688,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+217,FD004,official_test,157,138,172.0,121.71930694580078,-50.28069305419922,50.28069305419922,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+218,FD004,official_test,153,130,173.0,121.7513198852539,-51.248680114746094,51.248680114746094,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+219,FD004,official_test,3,141,107.0,121.8469696044922,14.846969604492188,14.846969604492188,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+220,FD004,official_test,246,29,194.0,122.4421844482422,-71.55781555175781,71.55781555175781,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+221,FD004,official_test,104,65,120.0,122.4988784790039,2.4988784790039062,2.4988784790039062,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+222,FD004,official_test,83,274,172.0,122.69863891601562,-49.301361083984375,49.301361083984375,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+223,FD004,official_test,63,158,184.0,122.91541290283205,-61.08458709716797,61.08458709716797,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+224,FD004,official_test,55,103,157.0,123.1273422241211,-33.872657775878906,33.872657775878906,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+225,FD004,official_test,95,110,171.0,123.17174530029295,-47.82825469970703,47.82825469970703,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+226,FD004,official_test,24,174,142.0,123.41751861572266,-18.582481384277344,18.582481384277344,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+227,FD004,official_test,146,84,100.0,123.59589385986328,23.59589385986328,23.59589385986328,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+228,FD004,official_test,45,78,85.0,123.6313934326172,38.63139343261719,38.63139343261719,continue_monitoring,seguir operando con monitoreo normal,dangerous_overestimate
+229,FD004,official_test,245,63,131.0,123.72917938232422,-7.270820617675781,7.270820617675781,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+230,FD004,official_test,128,139,126.0,123.8949966430664,-2.1050033569335938,2.1050033569335938,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+231,FD004,official_test,59,37,154.0,124.4408187866211,-29.559181213378903,29.559181213378903,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+232,FD004,official_test,186,47,142.0,125.05601501464844,-16.943984985351562,16.943984985351562,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+233,FD004,official_test,19,24,194.0,125.21050262451172,-68.78949737548828,68.78949737548828,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+234,FD004,official_test,141,19,130.0,125.55303192138672,-4.446968078613281,4.446968078613281,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+235,FD004,official_test,75,203,124.0,125.98902130126952,1.9890213012695312,1.9890213012695312,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+236,FD004,official_test,109,66,126.0,126.31636810302734,0.3163681030273437,0.3163681030273437,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+237,FD004,official_test,125,21,184.0,127.05847930908205,-56.94152069091797,56.94152069091797,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+238,FD004,official_test,227,62,162.0,127.07880401611328,-34.92119598388672,34.92119598388672,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+239,FD004,official_test,164,29,174.0,127.17520904541016,-46.82479095458984,46.82479095458984,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+240,FD004,official_test,170,48,158.0,127.41388702392578,-30.58611297607422,30.58611297607422,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+241,FD004,official_test,139,88,173.0,127.57697296142578,-45.42302703857422,45.42302703857422,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+242,FD004,official_test,203,87,167.0,127.5925750732422,-39.40742492675781,39.40742492675781,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+243,FD004,official_test,220,65,182.0,127.60377502441406,-54.39622497558594,54.39622497558594,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+244,FD004,official_test,228,126,189.0,128.7252655029297,-60.27473449707031,60.27473449707031,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+245,FD004,official_test,52,58,151.0,128.8397216796875,-22.1602783203125,22.1602783203125,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+246,FD004,official_test,122,117,192.0,128.9921417236328,-63.00785827636719,63.00785827636719,continue_monitoring,seguir operando con monitoreo normal,conservative_underestimate
+247,FD004,official_test,229,20,120.0,130.86465454101562,10.864654541015623,10.864654541015623,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles
+248,FD004,official_test,28,20,124.0,131.49635314941406,7.4963531494140625,7.4963531494140625,continue_monitoring,seguir operando con monitoreo normal,within_20_cycles

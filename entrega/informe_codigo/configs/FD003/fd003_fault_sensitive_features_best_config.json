@@ -1,0 +1,27 @@
+{
+  "model_name": "fd003_lgbm_w50_cap125_quantile_a04_none_fault_sensitive",
+  "approach": "fault_sensitive_features",
+  "model_family": "LightGBM",
+  "window_size": 50,
+  "rul_cap": 125,
+  "objective": "quantile",
+  "alpha": 0.4,
+  "sample_weight_scheme": "none",
+  "feature_set": "fault_sensitive",
+  "hyperparameters": {
+    "colsample_bytree": 0.8,
+    "learning_rate": 0.03,
+    "max_depth": -1,
+    "min_child_samples": 10,
+    "n_estimators": 1300,
+    "num_leaves": 15,
+    "reg_alpha": 0.5,
+    "reg_lambda": 10.0,
+    "subsample": 0.9
+  },
+  "selected_by": "artificial_validation_multi_split",
+  "selection_basis": "best C-MAPSS among base vs fault-sensitive feature sets",
+  "validation_protocol": "train_FD003 only, held-out units, artificial cutoffs, multi-split",
+  "official_test_used": false,
+  "extra_feature_note": "fault_sensitive adds slope/delta/volatility/acceleration features for sensors 7, 9, 12, 14, 15; cluster_id is not used."
+}

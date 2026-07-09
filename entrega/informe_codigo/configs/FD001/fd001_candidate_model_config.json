@@ -1,0 +1,20 @@
+{
+  "dataset": "FD001",
+  "task": "RUL regression",
+  "selected_by": "artificial_validation",
+  "model_name": "LGBMRegressor",
+  "representation": "temporal",
+  "window_size": 50,
+  "rul_cap": 125,
+  "sample_weight_scheme": "bin_weights",
+  "dangerous_error_threshold": 20,
+  "validation_protocol": "artificial cutoffs by held-out units",
+  "use_official_test": false,
+  "feature_notes": "temporal features with last, mean, std, min, max, delta, slope",
+  "selection_criterion": {
+    "primary": "cmapss_score",
+    "secondary": "rmse",
+    "tertiary": "dangerous_error_pct",
+    "mae": "secondary/reporting only"
+  }
+}

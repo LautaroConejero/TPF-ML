@@ -1,0 +1,2 @@
+representation,model_name,n_eval,mae,rmse,r2,cmapss_score,cmapss_score_mean,dangerous_error_pct
+temporal_w50,candidate_03_B_quantile_a040_search_14,100,10.673098571038599,13.94871384763963,0.8873298725026293,283.89783207257466,2.8389783207257464,8.0
