@@ -46,7 +46,7 @@ Lectura final:
 - Las predicciones ejecutables finales estan en `predictions/final_executable/`.
 - Las metricas por rango de RUL estan en `final_rul_bin_metrics.csv`.
 - La priorizacion de mantenimiento queda materializada en `maintenance_priority_ranking.csv` y `maintenance_decision_summary.csv`.
-- Los notebooks historicos de conclusion estan en `notebooks/conclusion/archive/` y no son fuente de metricas finales.
+- Los notebooks de conclusion vigentes estan en `notebooks/conclusion/` y son la referencia de cierre; no se incluyen backups historicos en esta entrega.
 - El manifiesto final registra scripts, configs, predicciones, notebooks de evidencia y materiales de reporte sin mover ni reescribir notebooks.
 
 Interpretacion fisico-operativa:

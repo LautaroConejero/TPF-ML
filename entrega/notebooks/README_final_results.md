@@ -4,18 +4,16 @@ Los notebooks se conservan como evidencia del proceso experimental. Sus outputs 
 
 La entrega reproducible se concentra en los scripts finales (`predict_final.py`, `conclusion/build_conclusion_artifacts.py`, `conclusion/build_physical_operational_artifacts.py`) y en los artefactos de `conclusion/`.
 
+El analisis exploratorio completo esta documentado en `notebooks/EDA/`: alli se revisan distribuciones de ciclos y RUL, diferencias entre subsets, condiciones operativas, correlaciones sensor--RUL y patrones de degradacion que justifican decisiones posteriores de modelado.
+
+Las calibraciones y busquedas finales se realizaron solo con validacion interna por motores completos y cortes artificiales. El test oficial se uso unicamente para el reporte final, no para seleccionar hiperparametros ni recalibrar candidatos.
+
+Algunos notebooks pueden conservar celdas sin `execution_count` visible. Esos notebooks se incluyen como trazabilidad del recorrido experimental; la reproduccion verificable esta en los scripts finales y el smoke test, no en reejecutar toda la historia experimental.
+
 ## Notebooks de conclusion
 
 - `notebooks/conclusion/01_conclusion_final.ipynb`: cierre principal, lectura de metricas finales y comparacion por subset.
 - `notebooks/conclusion/02_interpretacion_fisica_operativa.ipynb`: reporte compacto del analisis fisico-operativo generado desde CSV finales.
-
-## Archivo historico de conclusion
-
-Estos notebooks fueron movidos a `notebooks/conclusion/archive/` para no confundir versiones historicas con el cierre vigente. No son fuente vigente de metricas finales y pueden contener resultados previos; se preservan solo por trazabilidad.
-
-- `notebooks/conclusion/archive/notebook_conclusion_final_v03.ipynb`: version historica del cierre final v03.
-- `notebooks/conclusion/archive/notebook_conclusion_final_actualizado_backup_pre_v03.ipynb`: respaldo historico anterior al cierre v03.
-- `notebooks/conclusion/archive/01_conclusion_final_backup_before_calibration_v01.ipynb`: respaldo historico previo a calibraciones finales.
 
 ## FD001
 

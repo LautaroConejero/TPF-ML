@@ -13,6 +13,8 @@ El cierre final usa modelos separados por subset, porque FD001, FD002, FD003 y F
 
 La seleccion de modelos, hiperparametros, predicciones y metricas finales no deben modificarse para la entrega.
 
+Las calibraciones y comparaciones de candidatos se hicieron solo sobre validacion interna por motores completos y cortes artificiales; el test oficial se uso unicamente para el reporte final, una vez congelados los modelos e hiperparametros.
+
 ## Datos Esperados
 
 El repo espera los archivos C-MAPSS en `CMAPSSData/`:
@@ -78,11 +80,13 @@ El primer script reconstruye la interpretacion por sensor fisico, importancia ag
 
 Los notebooks son evidencia del desarrollo experimental: EDA, validacion, busqueda de modelos, calibraciones y cierre. Sus outputs se conservan para evitar recalcular experimentos pesados. No se deben limpiar automaticamente ni reescribir con herramientas como `nbstripout` o `nbconvert --clear-output`.
 
+El analisis exploratorio completo esta documentado en los notebooks de `notebooks/EDA/`, que muestran la estructura de los subsets, distribuciones de ciclos y RUL, condiciones operativas, correlaciones y patrones de degradacion usados para orientar el modelado.
+
 La entrega ejecutable final esta concentrada en `predict_final.py`, `conclusion/build_conclusion_artifacts.py`, `conclusion/build_physical_operational_artifacts.py`, `conclusion/build_physical_area_summary.py` y los artefactos de `conclusion/`.
 
 Indice de notebooks relevantes para entrega: `notebooks/README_final_results.md`.
 
-Los notebooks historicos de conclusion se conservan en `notebooks/conclusion/archive/` y no son fuente de metricas finales.
+Algunos notebooks pueden tener celdas sin `execution_count` visible porque se conservan como trazabilidad de desarrollo o fueron generados como soporte; la reproduccion verificable de la entrega no depende de ejecutar notebooks, sino de los scripts finales y de los artefactos incluidos.
 
 ## Smoke Test
 

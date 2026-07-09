@@ -20,8 +20,8 @@ Columnas:
 La carpeta final_executable/ contiene salidas generadas por el ejecutable final, incluyendo métricas y archivos con diagnósticos cuando está disponible el RUL real. Esos archivos se incluyen para trazabilidad y reproducción del análisis, no como formato principal de predicción.
 
 El dataset usado para reproducir y evaluar está en:
-../informe_codigo/CMAPSSData/
+../CMAPSSData/
 
 El informe y las tablas de resultados están en:
-../informe_codigo/informe_final.pdf
-../informe_codigo/conclusion/
+../informe_final.pdf
+../conclusion/
